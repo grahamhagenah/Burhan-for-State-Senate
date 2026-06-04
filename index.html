@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Burhan for Massachusetts</title>
 <link rel="stylesheet" href="project/site/site.css">
+<style>
+#video-trigger.vthumb::after { display: none; }
+</style>
 </head>
 <body>
 <div class="site">
@@ -58,11 +61,10 @@
     </div>
     <div class="media">
       <span class="script">Burhan delivers</span>
-      <div class="frame vthumb" id="video-trigger" role="button" tabindex="0" aria-label="Watch video: Burhan delivers" style="background-image:url('project/site/assets/why_burhan_runs.jpg');cursor:pointer">
+      <div class="frame vthumb" id="video-trigger" role="button" tabindex="0" aria-label="Watch video: Burhan delivers" style="background-image:url('project/site/assets/why_burhan_runs.jpg');cursor:pointer;--vthumb-overlay:none">
         <span class="play">
           <svg viewBox="0 0 24 24" fill="#003DA5" aria-hidden="true"><path d="M5 3.5v17l15-8.5z"/></svg>
         </span>
-        <span class="vlabel">Watch</span>
       </div>
     </div>
   </div>
