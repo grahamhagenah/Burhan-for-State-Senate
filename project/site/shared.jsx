@@ -71,7 +71,7 @@ function SiteHeader({ active }) {
     { label: "Receipts", href: "receipts.html" },
   ];
   return (
-    <header className="hdr motif-bg">
+    <header className="hdr">
       <Logo />
       <nav>
         <div className="navlinks">
