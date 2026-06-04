@@ -111,10 +111,26 @@ function Clippings({ layout }) {
   );
 }
 
+function WhiteStats() {
+  return (
+    <div className="white-stats">
+      <Reveal className="stats-row">
+        {STATS.map((s, i) => (
+          <div className={`statbox${s.hl ? " hl" : ""}`} key={i}>
+            <span className="snum">{s.num}</span>
+            <span className="slabel">{s.label}</span>
+            {s.src && <span className="ssrc">&mdash; {s.src}</span>}
+          </div>
+        ))}
+      </Reveal>
+    </div>
+  );
+}
+
 function ReceiptsBody({ timeline, clips }) {
   return (
     <>
-      <StatsBar />
+      <WhiteStats />
       <Timeline orientation={timeline} />
       <Clippings layout={clips} />
     </>

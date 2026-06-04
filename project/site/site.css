@@ -79,6 +79,14 @@ a { color: inherit; }
 .page-hero.light p { color: var(--blue); }
 /* volunteer hero: centered, headline on one line */
 .page-hero.vol-hero h1 { white-space: nowrap; max-width: none; }
+/* receipts hero: two-column layout */
+.page-hero-grid { display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: center; }
+.page-hero-text { display: flex; flex-direction: column; }
+.page-hero h1 { max-width: none; }
+.page-hero-photo img { display: block; width: 100%; height: auto; max-height: 540px; object-fit: cover; object-position: top center; box-shadow: 14px 14px 0 0 rgba(255,255,255,.18); }
+/* white stats band below receipts hero */
+.white-stats { padding: 52px 120px; background: #fff; }
+.white-stats .stats-row { border: 1px solid var(--line-grey); box-shadow: none; }
 
 /* ============================================================
    FOOTER CTA (consistent across pages)
