@@ -11,10 +11,7 @@ html, body { margin: 0; }
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-body); color: var(--blue);
-  /* soft tinted field + faint transit-map texture so white sections read as designed, not blank */
   background-color: #EBF1FA;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='80' viewBox='0 0 140 80'%3E%3Cg fill='%23003DA5' fill-opacity='0.06'%3E%3Crect x='0' y='16' width='44' height='4'/%3E%3Crect x='70' y='16' width='44' height='4'/%3E%3Crect x='-35' y='56' width='44' height='4'/%3E%3Crect x='35' y='56' width='44' height='4'/%3E%3Crect x='105' y='56' width='44' height='4'/%3E%3Ccircle cx='57' cy='18' r='6'/%3E%3Ccircle cx='127' cy='18' r='6'/%3E%3Ccircle cx='22' cy='58' r='6'/%3E%3Ccircle cx='92' cy='58' r='6'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: 140px 80px;
 }
 .site { background: transparent; }
 img { display: block; }
@@ -30,20 +27,8 @@ a { color: inherit; }
 
 .site { width: 100%; max-width: 1280px; margin: 0 auto; overflow-x: clip; }
 
-/* ---- transit-map motif background ---- */
-/* --motif-img / --motif-size can be overridden per-page (e.g. Issues tweaks).
-   Motif: one continuous full-width line per tile, dots sitting on top of the line.
-   Noise layer: Duo, size 0.5, density 75%, black 10% + white 25%, rendered via SVG feTurbulence. */
-:root {
-  --motif-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='80'%3E%3Cg fill='%23ffffff' fill-opacity='0.12'%3E%3Crect x='0' y='18.5' width='160' height='3'/%3E%3Ccircle cx='0' cy='20' r='5'/%3E%3Ccircle cx='80' cy='20' r='5'/%3E%3Crect x='0' y='58.5' width='160' height='3'/%3E%3Ccircle cx='40' cy='60' r='5'/%3E%3Ccircle cx='120' cy='60' r='5'/%3E%3C/g%3E%3C/svg%3E");
-  --motif-size: 160px 80px;
-  --noise-img: url("noise.svg");
-  --noise-size: 200px 200px;
-}
 .motif-bg {
   background-color: #003DA5;
-  background-image: var(--noise-img), var(--motif-img);
-  background-size: var(--noise-size), var(--motif-size);
 }
 
 /* ============================================================
@@ -130,12 +115,12 @@ a { color: inherit; }
    HOMEPAGE
    ============================================================ */
 /* hero */
-.home-hero { padding: 56px 120px 72px; display: grid; grid-template-columns: 420px 1fr; gap: 64px; align-items: center; }
-.hero-photo { justify-self: center; }
-.hero-photo img { display: block; width: 100%; max-width: 420px; height: auto; }
-.home-hero .htag { position: absolute; top: 6px; right: 24px; background: #fff; color: var(--blue); font-family: var(--font-heading); font-weight: 700; font-size: 17px; letter-spacing: .06em; padding: 7px 16px; transform: rotate(-7deg); text-transform: uppercase; box-shadow: 4px 4px 0 0 rgba(0,0,0,.15); }
-.home-hero .hcol { position: relative; }
-.home-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: 88px; line-height: .98; letter-spacing: .01em; color: #fff; margin: 8px 0 20px; text-transform: uppercase; }
+.home-hero { padding: 56px 120px 72px; display: grid; grid-template-columns: 340px 1fr; gap: 64px; align-items: center; }
+.hero-photo { justify-self: center; align-self: start; overflow: hidden; }
+.hero-photo img { display: block; width: 100%; max-width: 340px; max-height: 480px; object-fit: cover; object-position: top center; height: auto; }
+.home-hero .htag { display: inline-block; background: #fff; color: var(--blue); font-family: var(--font-heading); font-weight: 700; font-size: 17px; letter-spacing: .06em; padding: 7px 16px; transform: rotate(-13deg); transform-origin: left center; text-transform: uppercase; box-shadow: 4px 4px 0 0 rgba(0,0,0,.15); margin-bottom: 20px; }
+.home-hero .hcol { display: flex; flex-direction: column; align-items: flex-start; }
+.home-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: 88px; line-height: .98; letter-spacing: .01em; color: #fff; margin: 0 0 20px; text-transform: uppercase; }
 .home-hero p.hsub { color: #fff; font-size: 21px; line-height: 1.45; max-width: 48ch; margin: 0 0 26px; }
 .home-hero .hbtns { display: flex; gap: 16px; flex-wrap: wrap; }
 

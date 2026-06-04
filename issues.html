@@ -21,38 +21,8 @@
 const ISSUES_DEFAULTS = /*EDITMODE-BEGIN*/{
   "top": "Hero video",
   "mode": "Modal",
-  "startOpen": true,
-  "lineGap": 46,
-  "lineW": 3,
-  "dotR": 4
+  "startOpen": true
 }/*EDITMODE-END*/;
-
-// Parametric transit-map motif. Builds the repeating SVG tile from three knobs:
-//  lineGap — vertical distance between the two horizontal lines (and tile rows)
-//  lineW   — thickness of the lines
-//  dotR    — radius of the station dots (dots touch: center-to-center = 2*dotR)
-// Lines are continuous full-width; dots are packed on top (no gaps).
-// Two lines per tile with equal spacing guaranteed by the tiling geometry.
-// Returns { img, size } to drop straight onto the --motif-img / --motif-size vars.
-function buildMotif({ lineGap = 46, lineW = 3, dotR = 4, opacity = 0.12 }) {
-  const dotSpacing = dotR * 2;   // touching dots — no gaps
-  const W = dotSpacing * 10;     // 10 dots per row
-  const H = lineGap * 2;         // lines at H/4 and 3H/4 → equal tiled spacing
-  const rowY = [lineGap / 2, lineGap * 1.5];
-  const r2 = (n) => Math.round(n * 100) / 100;
-  let shapes = "";
-  rowY.forEach(y => {
-    shapes += `<rect x='0' y='${r2(y - lineW / 2)}' width='${W}' height='${lineW}'/>`;
-    for (let cx = dotR; cx <= W - dotR; cx += dotSpacing) {
-      shapes += `<circle cx='${cx}' cy='${r2(y)}' r='${dotR}'/>`;
-    }
-  });
-  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${W}' height='${H}'><g fill='#ffffff' fill-opacity='${opacity}'>${shapes}</g></svg>`;
-  return {
-    img: `url("data:image/svg+xml,${encodeURIComponent(svg)}")`,
-    size: `${W}px ${H}px`,
-  };
-}
 
 // The top of the page, in three directions (compare via the "Top section" tweak):
 //  Overlap    — intro video card straddles the hero edge (original)
@@ -69,7 +39,7 @@ function IssuesTop({ style }) {
 
   if (style === "Hero video") {
     return (
-      <section className="page-hero motif-bg ihv">
+      <section className="page-hero ihv">
         <Reveal className="ihv-grid">
           <div className="ihv-text">
             {heroText}
@@ -90,7 +60,7 @@ function IssuesTop({ style }) {
   // Overlap (original) and Stacked share the same pieces; only the overlap differs
   return (
     <>
-      <section className="page-hero motif-bg">
+      <section className="page-hero">
         <Reveal>{heroText}</Reveal>
       </section>
       <div className={`issues-intro-video${style === "Stacked" ? " stacked" : ""}`}>
@@ -111,9 +81,8 @@ function IssuesTop({ style }) {
 
 function IssuesApp() {
   const [t, setTweak] = useTweaks(ISSUES_DEFAULTS);
-  const motif = buildMotif({ lineGap: t.lineGap, lineW: t.lineW, dotR: t.dotR });
   return (
-    <div className="site" style={{ "--motif-img": motif.img, "--motif-size": motif.size }}>
+    <div className="site">
       <SiteHeader active="Issues" />
 
       <IssuesTop style={t.top} />
@@ -138,13 +107,6 @@ function IssuesApp() {
           onChange={(v) => setTweak("mode", v)} />
         <TweakToggle label="Start with first issue open" value={t.startOpen}
           onChange={(v) => setTweak("startOpen", v)} />
-        <TweakSection label="Transit motif" />
-        <TweakSlider label="Distance between lines" value={t.lineGap} min={24} max={80} step={2} unit="px"
-          onChange={(v) => setTweak("lineGap", v)} />
-        <TweakSlider label="Line width" value={t.lineW} min={2} max={14} step={1} unit="px"
-          onChange={(v) => setTweak("lineW", v)} />
-        <TweakSlider label="Dot size" value={t.dotR} min={3} max={14} step={1} unit="px"
-          onChange={(v) => setTweak("dotR", v)} />
       </TweaksPanel>
     </div>
   );
