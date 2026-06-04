@@ -206,7 +206,7 @@ a { color: inherit; }
 .acard .atoggle { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-weight: 700; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; color: var(--orange); margin-top: 6px; }
 .acard .atoggle .chev { width: 16px; height: 16px; transition: transform .2s ease; }
 .acard.open .atoggle .chev { transform: rotate(180deg); }
-.acard .athumb { position: relative; overflow: hidden; min-height: 208px; }
+.acard .athumb { position: relative; overflow: hidden; min-height: 208px; background: var(--line-grey) center/cover no-repeat; }
 .acard .abody { display: grid; grid-template-rows: 0fr; }
 .acard.open .abody { grid-template-rows: 1fr; }
 .acard .abody-inner { overflow: hidden; }

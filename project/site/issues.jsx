@@ -89,7 +89,7 @@ function IssueThumb({ it }) {
       </div>
     );
   }
-  return <VideoThumb className="athumb" label="" />;
+  return <div className="athumb" />;
 }
 
 function InstagramEmbed({ url }) {
