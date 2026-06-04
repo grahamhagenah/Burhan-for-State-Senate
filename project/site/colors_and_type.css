@@ -1,0 +1,186 @@
+/* ============================================================
+   BURHAN FOR SENATE — Design Tokens
+   Burhan Azeem's campaign for State Senate, MA 2nd Middlesex
+   Visual system: MBTA transit-line inspired (Blue / Orange / Red)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700;800&family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Nothing+You+Could+Do&display=swap');
+
+:root {
+  /* ---- Core brand palette (MBTA transit lines) ---- */
+  --blue:        #003DA5;  /* MBTA Blue Line — primary. Backgrounds, headings, ink */
+  --orange:      #FF9600;  /* MBTA Orange Line — primary accent. CTAs, tags, highlight bands */
+  --red:         #DA291C;  /* MBTA Red Line — energy accent. Icon badges, stat boxes, offset shadows */
+  --white:       #FFFFFF;
+
+  /* ---- Blue ramp (motif / pattern brights sampled from poster) ---- */
+  --blue-900:    #052460;  /* deepest — rare, dark text on light */
+  --blue-700:    #003DA5;  /* = --blue, solid primary */
+  --blue-600:    #215BBE;  /* transit-map pattern stroke on blue */
+  --blue-500:    #3370D8;  /* lighter pattern / hover lift on blue */
+  --blue-300:    #6B94E6;  /* faint lines */
+  --blue-100:    #CFDAF6;  /* tint chips */
+
+  /* ---- Warm accents (from photography + poster) ---- */
+  --orange-bright: #FFA01A;
+  --peach:         #FFA996;  /* soft warm, used sparingly behind imagery */
+  --amber-cream:   #FFEECD;
+
+  /* ---- Neutrals / surfaces ---- */
+  --surface:       #FFFFFF;
+  --surface-tint:  #F2F5FA;  /* form fields, subtle panels */
+  --surface-grey:  #F5F5F5;
+  --line-grey:     #D9D9D9;  /* image placeholders, dividers */
+  --ink:           #003DA5;  /* default text color IS brand blue */
+  --ink-on-blue:   #FFFFFF;
+
+  /* ---- Semantic ---- */
+  --bg:            var(--white);
+  --bg-section:    var(--blue);
+  --bg-highlight:  var(--orange);
+  --fg:            var(--blue);
+  --fg-muted:      rgba(0,61,165,0.72);
+  --accent:        var(--orange);
+  --danger:        var(--red);
+
+  /* ---- Type families ---- */
+  --font-display:  'Unbounded', system-ui, sans-serif;        /* hero headlines, big statements */
+  --font-heading:  'Barlow Condensed', 'Arial Narrow', sans-serif; /* section heads, buttons, labels */
+  --font-body:     'Instrument Sans', system-ui, sans-serif;  /* paragraphs, form text */
+  --font-script:   'Nothing You Could Do', cursive;           /* handwritten "for" accent */
+
+  /* ---- Type scale (px) ---- */
+  --fs-hero:    72px;   /* Unbounded — MORE IS POSSIBLE */
+  --fs-display: 48px;   /* Unbounded / Barlow boxed section titles */
+  --fs-h2:      36px;
+  --fs-title:   24px;   /* Barlow buttons / tile titles / small section label */
+  --fs-body-lg: 20px;   /* Instrument Sans body */
+  --fs-body:    16px;
+  --fs-label:   12px;   /* form labels */
+
+  --lh-tight:   1.1;
+  --lh-snug:    1.2;
+  --lh-body:    1.4;
+  --tracking:   0.02em;  /* Barlow Condensed letter-spacing */
+
+  /* ---- Geometry & elevation ---- */
+  --radius:      0px;    /* SHARP. The brand is square-cornered. */
+  --radius-pill: 999px;  /* only for icon badges + amount chips */
+  --shadow-offset-orange: 12px 12px 0 0 var(--orange);  /* hard, no blur */
+  --shadow-offset-red:    12px 12px 0 0 var(--red);
+  --shadow-offset-blue:   8px 8px 0 0 var(--blue);
+
+  /* ---- Spacing (8pt-ish, with brand's signature 21px gaps) ---- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-section: 21px;   /* signature vertical rhythm between blocks */
+  --sp-6: 32px;
+  --sp-8: 64px;
+  --pad-section: 120px; /* desktop section padding */
+}
+
+/* ============================================================
+   SEMANTIC TYPE CLASSES
+   ============================================================ */
+
+.t-hero {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-hero);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking);
+  text-transform: uppercase;
+}
+
+.t-display {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking);
+}
+
+/* The signature "boxed" section header: white Barlow on a solid blue block */
+.t-boxed {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking);
+  color: var(--white);
+  background: var(--blue);
+  padding: 4px 8px;
+}
+
+.t-eyebrow {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--fs-title);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking);
+  color: var(--blue);
+}
+
+.t-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--fs-title);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking);
+}
+
+.t-body-lg {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body);
+}
+
+.t-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+
+.t-label {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--fs-label);
+  line-height: var(--lh-body);
+}
+
+.t-script {
+  font-family: var(--font-script);
+  font-weight: 400;
+}
+
+/* ============================================================
+   SIGNATURE BUTTON (sharp, solid, Barlow Condensed)
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--fs-title);
+  letter-spacing: var(--tracking);
+  line-height: 1.2;
+  cursor: pointer;
+  transition: filter .15s ease, transform .05s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-orange { background: var(--orange); color: var(--blue); }
+.btn-red    { background: var(--red);    color: var(--white); }
+.btn-blue   { background: var(--blue);   color: var(--white); }
+.btn-ghost  { background: var(--blue);   color: var(--orange); border: 1px solid var(--orange); }
+.btn:hover  { filter: brightness(1.07); }
+.btn-orange:hover { filter: brightness(1.04); }

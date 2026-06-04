@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Burhan for Senate — Issues</title>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="shared.jsx"></script>
+<script type="text/babel" src="issues.jsx"></script>
+
+<script type="text/babel">
+const ISSUES_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "top": "Hero video",
+  "mode": "Modal",
+  "startOpen": true,
+  "segLen": 96,
+  "lineGap": 46,
+  "lineW": 3,
+  "dotR": 4
+}/*EDITMODE-END*/;
+
+// Parametric transit-map motif. Builds the repeating SVG tile from four knobs:
+//  segLen  — length of each line segment
+//  lineGap — vertical distance between the two horizontal lines (and tile rows)
+//  lineW   — thickness of the lines
+//  dotR    — radius of the station dots
+// Returns { img, size } to drop straight onto the --motif-img / --motif-size vars.
+function buildMotif({ segLen, lineGap, lineW, dotR, gap = 28, opacity = 0.12 }) {
+  const P = segLen + gap;       // horizontal period
+  const W = 2 * P;              // tile width (two offset rows need 2 periods)
+  const H = 2 * lineGap;        // tile height (rows lineGap apart, evenly)
+  const rowY = [lineGap / 2, lineGap * 1.5];
+  const r2 = (n) => Math.round(n * 100) / 100;
+  let shapes = "";
+  rowY.forEach((y, ri) => {
+    const base = ri === 1 ? P / 2 : 0;
+    // segments — placed every period, clipped to the tile so they wrap cleanly
+    for (let k = -2; k <= 3; k++) {
+      let x0 = base + k * P, x1 = x0 + segLen;
+      if (x1 <= 0 || x0 >= W) continue;
+      x0 = Math.max(0, x0); x1 = Math.min(W, x1);
+      shapes += `<rect x='${r2(x0)}' y='${r2(y - lineW / 2)}' width='${r2(x1 - x0)}' height='${lineW}'/>`;
+    }
+    // station dots sit in the gap after each segment
+    for (let k = -2; k <= 3; k++) {
+      const cx = base + k * P + segLen + gap / 2;
+      if (cx <= 0 || cx >= W) continue;
+      shapes += `<circle cx='${r2(cx)}' cy='${r2(y)}' r='${dotR}'/>`;
+    }
+  });
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${W}' height='${H}' viewBox='0 0 ${W} ${H}'><g fill='#ffffff' fill-opacity='${opacity}'>${shapes}</g></svg>`;
+  return {
+    img: `url("data:image/svg+xml,${encodeURIComponent(svg)}")`,
+    size: `${W}px ${H}px`,
+  };
+}
+
+// The top of the page, in three directions (compare via the "Top section" tweak):
+//  Overlap    — intro video card straddles the hero edge (original)
+//  Stacked    — intro video card sits cleanly below the hero, no overlap
+//  Hero video — the hero itself integrates the video + a callout
+function IssuesTop({ style }) {
+  const heroText = (
+    <>
+      <span className="kicker">The plan</span>
+      <h1>What Burhan will deliver</h1>
+      <p>Burhan is running to make Massachusetts affordable. He knows it's possible because he's already started.</p>
+    </>
+  );
+
+  if (style === "Hero video") {
+    return (
+      <section className="page-hero motif-bg ihv">
+        <Reveal className="ihv-grid">
+          <div className="ihv-text">
+            {heroText}
+            <a className="ihv-cta" href="#watch">
+              Hear why he's running
+              <ArrowIcon color="#003DA5" className="ar" />
+            </a>
+          </div>
+          <div className="ihv-media">
+            <span className="ihv-badge">Burhan's plan in 60 seconds</span>
+            <VideoThumb className="ihv-video" label="" />
+          </div>
+        </Reveal>
+      </section>
+    );
+  }
+
+  // Overlap (original) and Stacked share the same pieces; only the overlap differs
+  return (
+    <>
+      <section className="page-hero motif-bg">
+        <Reveal>{heroText}</Reveal>
+      </section>
+      <div className={`issues-intro-video${style === "Stacked" ? " stacked" : ""}`}>
+        <Reveal>
+          <div className="ii-card">
+            <div className="ii-copy">
+              <span className="ii-eyebrow">Watch · 60 seconds</span>
+              <h2>Why I'm running for State Senate</h2>
+              <p>The quick version — what's broken on Beacon Hill, and exactly how we fix it.</p>
+            </div>
+            <VideoThumb className="ii-video" label="Play intro" />
+          </div>
+        </Reveal>
+      </div>
+    </>
+  );
+}
+
+function IssuesApp() {
+  const [t, setTweak] = useTweaks(ISSUES_DEFAULTS);
+  const motif = buildMotif({ segLen: t.segLen, lineGap: t.lineGap, lineW: t.lineW, dotR: t.dotR });
+  return (
+    <div className="site" style={{ "--motif-img": motif.img, "--motif-size": motif.size }}>
+      <SiteHeader active="Issues" />
+
+      <IssuesTop style={t.top} />
+
+      <section className="section">
+        <Reveal style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+          <BoxedHeader>Tap to see the plan</BoxedHeader>
+          <IssuesList key={`${t.mode}-${t.startOpen}`} mode={t.mode} startOpen={t.startOpen} />
+        </Reveal>
+      </section>
+
+      <SiteFooter headline="More is possible" sub={"These aren't just promises. They're plans Burhan has already started delivering. \nHelp finish the job."} />
+
+      <TweaksPanel>
+        <TweakSection label="Top section" />
+        <TweakRadio label="Header layout" value={t.top}
+          options={["Overlap", "Stacked", "Hero video"]}
+          onChange={(v) => setTweak("top", v)} />
+        <TweakSection label="Issue cards" />
+        <TweakRadio label="Interaction" value={t.mode}
+          options={["Accordion", "Inline", "Modal"]}
+          onChange={(v) => setTweak("mode", v)} />
+        <TweakToggle label="Start with first issue open" value={t.startOpen}
+          onChange={(v) => setTweak("startOpen", v)} />
+        <TweakSection label="Transit motif" />
+        <TweakSlider label="Segment length" value={t.segLen} min={16} max={96} step={2} unit="px"
+          onChange={(v) => setTweak("segLen", v)} />
+        <TweakSlider label="Distance between lines" value={t.lineGap} min={24} max={80} step={2} unit="px"
+          onChange={(v) => setTweak("lineGap", v)} />
+        <TweakSlider label="Line width" value={t.lineW} min={2} max={14} step={1} unit="px"
+          onChange={(v) => setTweak("lineW", v)} />
+        <TweakSlider label="Dot size" value={t.dotR} min={3} max={14} step={1} unit="px"
+          onChange={(v) => setTweak("dotR", v)} />
+      </TweaksPanel>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<IssuesApp />);
+</script>
+</body>
+</html>
