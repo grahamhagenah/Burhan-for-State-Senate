@@ -228,19 +228,19 @@ a { color: inherit; }
 .acard .athumb { position: relative; overflow: hidden; min-height: 208px; background: var(--line-grey) center/cover no-repeat; }
 .acard .abody-video { width: 100%; aspect-ratio: 9/12; box-shadow: 10px 10px 0 0 var(--red); align-self: start; }
 .acard .ig-embed-wrap { aspect-ratio: unset; box-shadow: 10px 10px 0 0 var(--red); }
-.ig-embed-wrap { overflow: hidden; }
+.ig-embed-wrap { overflow: hidden; max-width: 100%; }
 .acard.climate .athumb { background: linear-gradient(135deg, #0a4d8c, #0a2a6e); }
 
 /* issues modal */
 .imodal-scrim { position: fixed; inset: 0; z-index: 200; background: rgba(0,28,82,.62); display: flex; align-items: flex-start; justify-content: center; padding: 48px 24px; overflow-y: auto; }
-.imodal { position: relative; width: 100%; max-width: 880px; background: #fff; border: 1px solid var(--orange); box-shadow: 16px 16px 0 0 var(--orange); padding: 40px 44px 44px; animation: rise .28s ease; }
+.imodal { position: relative; width: 100%; max-width: 880px; background: #fff; border: 1px solid var(--orange); box-shadow: 16px 16px 0 0 var(--orange); padding: 40px 44px 44px; animation: rise .28s ease; overflow-x: hidden; }
 .imodal-close { position: absolute; top: 14px; right: 16px; width: 40px; height: 40px; border: none; background: var(--blue); color: #fff; font-size: 26px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 .imodal-close:hover { background: var(--orange); color: var(--blue); }
 .imodal-head { display: flex; flex-direction: column; gap: 10px; padding-bottom: 24px; margin-bottom: 26px; border-bottom: 1px solid var(--line-grey); }
 .imodal-eyebrow { font-family: var(--font-heading); font-weight: 700; font-size: 15px; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); display: flex; align-items: center; gap: 10px; }
 .imodal-eyebrow::before { content: ""; width: 26px; height: 5px; background: var(--orange); }
 .imodal .imodal-head .atitle { font-size: 46px; line-height: 1.02; }
-.imodal-body { display: grid; grid-template-columns: 1fr 300px; gap: 36px; align-items: start; }
+.imodal-body { display: grid; grid-template-columns: 1fr 380px; gap: 36px; align-items: start; }
 @media (max-width: 760px) { .imodal-body { grid-template-columns: 1fr; } .imodal-body .abody-video { max-width: 260px; } }
 
 /* ============================================================
