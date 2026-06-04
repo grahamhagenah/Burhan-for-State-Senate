@@ -76,7 +76,7 @@ const ISSUES = [
 // collapsed thumbnail (video or climate still)
 function IssueThumb({ it }) {
   if (it.climate) {
-    return <div className="athumb" style={{ backgroundImage: "url(project/site/assets/climate_thumb.png)" }} />;
+    return <div className="athumb" style={{ backgroundImage: "url(project/site/assets/climate_thumb.png)", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }} />;
   }
   return <div className="athumb" style={it.thumb ? { backgroundImage: `url(${it.thumb})` } : undefined} />;
 }
@@ -112,7 +112,7 @@ function IssueBodyContent({ it, modal }) {
       </div>
       <div>
         {it.climate ? (
-          <img className="abody-video" src="project/site/assets/climate_thumb.png" alt="Climate" style={{ objectFit: "cover", boxShadow: "10px 10px 0 0 var(--red)" }} />
+          <div className="abody-video" style={{ backgroundImage: "url(project/site/assets/climate_thumb.png)", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat", boxShadow: "10px 10px 0 0 var(--red)" }} />
         ) : it.instagram ? (
           <InstagramEmbed url={it.instagram} />
         ) : (
