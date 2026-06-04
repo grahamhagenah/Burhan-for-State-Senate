@@ -9,6 +9,7 @@ const ISSUES = [
   {
     n: 1, title: "Housing", kicker: "Issue 01",
     teaser: "Allow neighborhoods to build the housing they want and need",
+    instagram: "https://www.instagram.com/reel/DZFl2SGoJQg/",
     video: "https://www.instagram.com/reel/DZFl2SGoJQg/",
     body: [
       "Massachusetts has a housing crisis because one hundred years ago, the state began making it illegal to build affordable housing. Burhan knows how to undo those laws and unlock new housing. In Cambridge, he passed the Affordable Housing Overlay and re-legalized triple-deckers and starter homes. As state senator, he'll roll out that model statewide.",
@@ -18,6 +19,7 @@ const ISSUES = [
   {
     n: 2, title: "Transit", kicker: "Issue 02",
     teaser: "Extend the T and fix the reason it keeps breaking",
+    instagram: "https://www.instagram.com/reel/DXHveu6Ebon/",
     video: "https://www.instagram.com/reel/DXHveu6Ebon/",
     body: [
       "The T can be faster, cheaper to run, and more reliable. It just hasn't happened because the people making decisions don't ride it. Burhan's plan: extend the Red Line to Lexington, the Green Line to Medford, and build multiple connectors to make transfers faster. He'll fund this construction by implementing congestion pricing and curtailing the MBTA's spending on redundant consultants.",
@@ -27,6 +29,7 @@ const ISSUES = [
   {
     n: 3, title: "The Statehouse", kicker: "Issue 03",
     teaser: "Restructure Beacon Hill so it's actually productive",
+    instagram: "https://www.instagram.com/reel/DXKitzFiETD/",
     video: "https://www.instagram.com/reel/DXKitzFiETD/",
     body: [
       "Beacon Hill hasn't been delivering for Massachusetts voters for three reasons.",
