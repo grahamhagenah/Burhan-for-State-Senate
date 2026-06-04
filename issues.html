@@ -22,42 +22,32 @@ const ISSUES_DEFAULTS = /*EDITMODE-BEGIN*/{
   "top": "Hero video",
   "mode": "Modal",
   "startOpen": true,
-  "segLen": 96,
   "lineGap": 46,
   "lineW": 3,
   "dotR": 4
 }/*EDITMODE-END*/;
 
-// Parametric transit-map motif. Builds the repeating SVG tile from four knobs:
-//  segLen  — length of each line segment
+// Parametric transit-map motif. Builds the repeating SVG tile from three knobs:
 //  lineGap — vertical distance between the two horizontal lines (and tile rows)
 //  lineW   — thickness of the lines
-//  dotR    — radius of the station dots
+//  dotR    — radius of the station dots (dots touch: center-to-center = 2*dotR)
+// Lines are continuous full-width; dots are packed on top (no gaps).
+// Two lines per tile with equal spacing guaranteed by the tiling geometry.
 // Returns { img, size } to drop straight onto the --motif-img / --motif-size vars.
-function buildMotif({ segLen, lineGap, lineW, dotR, gap = 28, opacity = 0.12 }) {
-  const P = segLen + gap;       // horizontal period
-  const W = 2 * P;              // tile width (two offset rows need 2 periods)
-  const H = 2 * lineGap;        // tile height (rows lineGap apart, evenly)
+function buildMotif({ lineGap = 46, lineW = 3, dotR = 4, opacity = 0.12 }) {
+  const dotSpacing = dotR * 2;   // touching dots — no gaps
+  const W = dotSpacing * 10;     // 10 dots per row
+  const H = lineGap * 2;         // lines at H/4 and 3H/4 → equal tiled spacing
   const rowY = [lineGap / 2, lineGap * 1.5];
   const r2 = (n) => Math.round(n * 100) / 100;
   let shapes = "";
-  rowY.forEach((y, ri) => {
-    const base = ri === 1 ? P / 2 : 0;
-    // segments — placed every period, clipped to the tile so they wrap cleanly
-    for (let k = -2; k <= 3; k++) {
-      let x0 = base + k * P, x1 = x0 + segLen;
-      if (x1 <= 0 || x0 >= W) continue;
-      x0 = Math.max(0, x0); x1 = Math.min(W, x1);
-      shapes += `<rect x='${r2(x0)}' y='${r2(y - lineW / 2)}' width='${r2(x1 - x0)}' height='${lineW}'/>`;
-    }
-    // station dots sit in the gap after each segment
-    for (let k = -2; k <= 3; k++) {
-      const cx = base + k * P + segLen + gap / 2;
-      if (cx <= 0 || cx >= W) continue;
-      shapes += `<circle cx='${r2(cx)}' cy='${r2(y)}' r='${dotR}'/>`;
+  rowY.forEach(y => {
+    shapes += `<rect x='0' y='${r2(y - lineW / 2)}' width='${W}' height='${lineW}'/>`;
+    for (let cx = dotR; cx <= W - dotR; cx += dotSpacing) {
+      shapes += `<circle cx='${cx}' cy='${r2(y)}' r='${dotR}'/>`;
     }
   });
-  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${W}' height='${H}' viewBox='0 0 ${W} ${H}'><g fill='#ffffff' fill-opacity='${opacity}'>${shapes}</g></svg>`;
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${W}' height='${H}'><g fill='#ffffff' fill-opacity='${opacity}'>${shapes}</g></svg>`;
   return {
     img: `url("data:image/svg+xml,${encodeURIComponent(svg)}")`,
     size: `${W}px ${H}px`,
@@ -121,7 +111,7 @@ function IssuesTop({ style }) {
 
 function IssuesApp() {
   const [t, setTweak] = useTweaks(ISSUES_DEFAULTS);
-  const motif = buildMotif({ segLen: t.segLen, lineGap: t.lineGap, lineW: t.lineW, dotR: t.dotR });
+  const motif = buildMotif({ lineGap: t.lineGap, lineW: t.lineW, dotR: t.dotR });
   return (
     <div className="site" style={{ "--motif-img": motif.img, "--motif-size": motif.size }}>
       <SiteHeader active="Issues" />
@@ -149,8 +139,6 @@ function IssuesApp() {
         <TweakToggle label="Start with first issue open" value={t.startOpen}
           onChange={(v) => setTweak("startOpen", v)} />
         <TweakSection label="Transit motif" />
-        <TweakSlider label="Segment length" value={t.segLen} min={16} max={96} step={2} unit="px"
-          onChange={(v) => setTweak("segLen", v)} />
         <TweakSlider label="Distance between lines" value={t.lineGap} min={24} max={80} step={2} unit="px"
           onChange={(v) => setTweak("lineGap", v)} />
         <TweakSlider label="Line width" value={t.lineW} min={2} max={14} step={1} unit="px"
