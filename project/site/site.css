@@ -96,8 +96,8 @@ a { color: inherit; }
 .page-hero-grid { display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: center; }
 .page-hero-text { display: flex; flex-direction: column; min-width: 0; }
 .page-hero h1 { max-width: none; }
-.page-hero-photo { min-width: 0; overflow: hidden; }
-.page-hero-photo img { display: block; width: 100%; height: auto; max-height: 540px; object-fit: cover; object-position: top center; box-shadow: 14px 14px 0 0 rgba(255,255,255,.18); }
+.page-hero-photo { min-width: 0; }
+.page-hero-photo img { display: block; width: 100%; height: auto; max-height: 540px; object-fit: cover; object-position: top center; box-shadow: 14px 14px 0 0 var(--orange); }
 /* white stats band below receipts hero */
 .white-stats { padding: 52px 120px; background: #fff; }
 .white-stats .stats-row { border: 1px solid var(--line-grey); box-shadow: none; }
@@ -228,6 +228,7 @@ a { color: inherit; }
 .acard .athumb { position: relative; overflow: hidden; min-height: 208px; background: var(--line-grey) center/cover no-repeat; }
 .acard .abody-video { width: 100%; aspect-ratio: 9/12; box-shadow: 10px 10px 0 0 var(--red); align-self: start; }
 .acard .ig-embed-wrap { aspect-ratio: unset; box-shadow: 10px 10px 0 0 var(--red); }
+.ig-embed-wrap { overflow: hidden; }
 .acard.climate .athumb { background: linear-gradient(135deg, #0a4d8c, #0a2a6e); }
 
 /* issues modal */
@@ -357,21 +358,28 @@ a { color: inherit; }
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1080px) {
-  .section, .page-hero, .fcta, .vol-wrap, .home-hero, .stats-band, .issues-intro-video { padding-left: 56px; padding-right: 56px; }
+  .section, .page-hero, .fcta, .vol-wrap, .home-hero, .stats-band, .issues-intro-video, .white-stats { padding-left: 56px; padding-right: 56px; }
 }
 @media (max-width: 900px) {
-  .section, .page-hero, .fcta, .vol-wrap, .home-hero, .stats-band, .issues-intro-video { padding-left: 24px; padding-right: 24px; }
+  .section, .page-hero, .fcta, .vol-wrap, .home-hero, .stats-band, .issues-intro-video, .white-stats { padding-left: 24px; padding-right: 24px; }
   .hdr { padding: 0 20px; }
   .hdr .navlinks { display: none; }
   .hdr nav .btn { display: none; }
   .hdr .hamburger { display: flex; flex-direction: column; }
-  .home-hero, .thirty, .feature, .vol-wrap, .endorse .egrid, .priorities .pgrid, .ii-card, .tl-with-image, .ihv-grid { grid-template-columns: 1fr; }
+  .home-hero, .thirty, .feature, .vol-wrap, .endorse .egrid, .priorities .pgrid, .ii-card, .tl-with-image, .ihv-grid, .page-hero-grid { grid-template-columns: 1fr; }
+  /* receipts hero: photo stacks above bio */
+  .page-hero-grid { gap: 32px; }
+  .page-hero-photo { order: -1; }
+  .page-hero-photo img { max-height: 340px; }
   .ii-video { min-height: 200px; }
   .home-hero h1 { font-size: 60px; }
   .page-hero h1 { font-size: 44px; }
   .endorse .egrid { grid-template-columns: 1fr 1fr; }
   .stats-row, .checks-grid { grid-template-columns: 1fr; }
+  .statbox { border-right: none; border-bottom: 1px solid var(--line-grey); }
+  .statbox:last-child { border-bottom: none; }
   .vol-aside { position: static; }
+  .vform { padding: 28px 22px 32px; }
   /* issues card → stack */
   .acard .ahead { grid-template-columns: 1fr; }
   .acard .athumb { display: none; }
@@ -390,4 +398,17 @@ a { color: inherit; }
   .clip.c1, .clip.c2, .clip.c3, .clip.c4, .clip.c5 { grid-column: 1 / -1; transform: none; }
   .qbar { flex-wrap: wrap; gap: 14px; }
   .qbar .qrule { display: none; }
+}
+@media (max-width: 600px) {
+  .home-hero h1 { font-size: 48px; }
+  .page-hero h1 { font-size: 36px; }
+  .fcta h2 { font-size: 40px; }
+  .boxed { font-size: 36px; }
+  .frow { flex-direction: column; gap: 0; }
+  .section { padding-top: 56px; padding-bottom: 56px; }
+  .page-hero { padding-top: 40px; padding-bottom: 48px; }
+  .thirty .media .frame { height: 240px; }
+  .feature .fmedia { height: 240px; }
+  .vol-wrap { padding-top: 48px; padding-bottom: 48px; }
+  .fcta { padding-top: 60px; padding-bottom: 60px; }
 }

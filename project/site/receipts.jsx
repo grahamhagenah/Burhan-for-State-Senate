@@ -9,7 +9,7 @@ const MILESTONES = [
   { year: "2023", win: "Passed the Affordable Housing Overlay 2.0" },
   { year: "2024", win: "Secured universal childcare for Cambridge" },
   { year: "2025", win: "Re-legalized triple-deckers in Cambridge" },
-  { year: "2026", win: "Announced his bid for State Senate", last: true },
+  { year: "2026", win: "Elected Cambridge Vice Mayor", last: true },
 ];
 
 const CLIPS = [
