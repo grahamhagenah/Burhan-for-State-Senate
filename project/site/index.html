@@ -3,32 +3,244 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Burhan for Senate — More is Possible</title>
+<title>Burhan for Massachusetts</title>
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
-<div id="root"></div>
+<div class="site">
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-
-<script type="text/babel" src="shared.jsx"></script>
-<script type="text/babel" src="home.jsx"></script>
-
-<script type="text/babel">
-function HomeApp() {
-  return (
-    <div className="site">
-      <SiteHeader active="Home" />
-      <HomeHero />
-      <HomeNote />
-      <HomeCards />
-      <SiteFooter headline="More is possible" sub="Add your name, or chip in today — every bit moves us forward." />
+<header class="hdr motif-bg">
+  <a class="logo" href="index.html">
+    <span class="word">BURHAN</span>
+    <span class="tag">2ND MIDDLESEX · STATE SENATE</span>
+  </a>
+  <nav>
+    <div class="navlinks">
+      <a href="receipts.html">Meet Burhan</a>
+      <a href="issues.html">Issues</a>
+      <a href="volunteer.html">Volunteer</a>
     </div>
-  );
-}
-ReactDOM.createRoot(document.getElementById("root")).render(<HomeApp />);
+    <a class="btn btn-orange" href="https://secure.actblue.com/donate/burhan2026" target="_blank" rel="noopener noreferrer" style="font-size:17px;padding:9px 18px">Donate</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="home-hero motif-bg">
+  <div class="bullseye">
+    <span class="ring r-orange"></span>
+    <span class="ring r-red"></span>
+    <span class="ring r-photo">
+      <img src="assets/burhan-portrait-cutout.png" alt="Burhan Azeem">
+    </span>
+  </div>
+  <div class="hcol">
+    <span class="htag">State Senate &rsquo;26</span>
+    <h1>More is possible</h1>
+    <p class="hsub">Burhan Azeem is running for State Senate in the 2nd Middlesex to create more housing, transit, and opportunity for working families.</p>
+    <div class="hbtns">
+      <a class="btn btn-orange" href="volunteer.html">
+        Join the campaign
+        <svg class="ar" viewBox="0 0 16 16" fill="#003DA5" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="issues.html">Why I&rsquo;m running</a>
+    </div>
+  </div>
+</section>
+
+<!-- BURHAN IN 30 SECONDS -->
+<section class="section">
+  <div class="reveal thirty">
+    <div class="body">
+      <div class="col" style="gap:8px;align-items:flex-start;margin-bottom:24px">
+        <span class="boxed">Burhan in 30 seconds</span>
+      </div>
+      <p>Every politician talks about affordability. Burhan spent four years making it happen. As Cambridge City Councilor, he re-legalized affordable housing, delivered universal pre-K, and built a public legislation tracker so residents could finally hold their representatives accountable.</p>
+      <p>Now he&rsquo;s running for State Senate to tackle the state&rsquo;s biggest problems.</p>
+      <a class="btn btn-orange" href="receipts.html" style="margin-top:8px">
+        See his track record
+        <svg class="ar" viewBox="0 0 16 16" fill="#003DA5" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+      </a>
+    </div>
+    <div class="media">
+      <span class="script">Burhan delivers</span>
+      <div class="frame vthumb">
+        <span class="play">
+          <svg viewBox="0 0 24 24" fill="#003DA5" aria-hidden="true"><path d="M5 3.5v17l15-8.5z"/></svg>
+        </span>
+        <span class="vlabel">Watch</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BURHAN HAS PROVEN HE CAN DELIVER -->
+<section class="section priorities motif-bg">
+  <div class="reveal" style="display:flex;flex-direction:column;gap:28px">
+    <div class="col" style="gap:8px;align-items:flex-start">
+      <span class="boxed on-orange">Burhan has proven he can deliver</span>
+    </div>
+    <div class="pgrid">
+      <div class="pcard">
+        <span class="pbadge">
+          <span class="material-symbols-rounded" style="font-size:26px">tram</span>
+        </span>
+        <h3>Better Transit</h3>
+        <p>Burhan will extend the Green line, extend the Red line, and shift MBTA governance to the riders who depend on it.</p>
+        <a href="issues.html#issues" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);text-decoration:none;margin-top:auto">
+          Read the plan
+          <svg class="ar" viewBox="0 0 16 16" fill="#FF9600" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+        </a>
+      </div>
+      <div class="pcard">
+        <span class="pbadge">
+          <span class="material-symbols-rounded" style="font-size:26px">apartment</span>
+        </span>
+        <h3>More Housing</h3>
+        <p>Massachusetts made it illegal to build affordable housing like triple-deckers. Burhan will roll those laws back.</p>
+        <a href="issues.html#issues" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);text-decoration:none;margin-top:auto">
+          Read the plan
+          <svg class="ar" viewBox="0 0 16 16" fill="#FF9600" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+        </a>
+      </div>
+      <div class="pcard">
+        <span class="pbadge">
+          <span class="material-symbols-rounded" style="font-size:26px">child_care</span>
+        </span>
+        <h3>Universal Pre-K</h3>
+        <p>Burhan passed universal pre-K in Cambridge. Now he&rsquo;ll expand it statewide, putting $21,000 back in every family&rsquo;s pocket.</p>
+        <a href="issues.html#issues" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);text-decoration:none;margin-top:auto">
+          Read the plan
+          <svg class="ar" viewBox="0 0 16 16" fill="#FF9600" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED: THE TRANSIT PLAN -->
+<section class="section">
+  <div class="reveal feature">
+    <div class="vthumb fmedia">
+      <span class="play">
+        <svg viewBox="0 0 24 24" fill="#003DA5" aria-hidden="true"><path d="M5 3.5v17l15-8.5z"/></svg>
+      </span>
+      <span class="vlabel">Green Line extension</span>
+    </div>
+    <div class="body">
+      <span class="eyebrow orange">Featured:</span>
+      <div class="col" style="gap:8px;align-items:flex-start;margin-top:14px;margin-bottom:24px">
+        <span class="boxed">The Transit Plan</span>
+      </div>
+      <p>The T can be faster, cheaper to run, and more reliable. It just hasn&rsquo;t happened because the people making decisions don&rsquo;t ride it.</p>
+      <p>Burhan&rsquo;s plan: extend the Red Line to Lexington, the Green Line to Medford, and build multiple connectors to make transfers faster.</p>
+      <p>Because a better T isn&rsquo;t just a transit win &mdash; it means faster commutes and a stronger local economy for everyone.</p>
+      <div class="fbtns">
+        <a class="btn btn-orange" href="issues.html#issues">
+          Learn more
+          <svg class="ar" viewBox="0 0 16 16" fill="#003DA5" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT PEOPLE ARE SAYING -->
+<section class="section saying">
+  <div class="reveal" style="display:flex;flex-direction:column;gap:28px">
+    <div class="col" style="gap:8px;align-items:flex-start">
+      <span class="boxed on-orange">What people are saying</span>
+    </div>
+    <div class="qbars">
+      <div class="qbar">
+        <div class="qpub"><img src="assets/logo-boston-globe.png" alt="The Boston Globe"></div>
+        <div class="qrule"></div>
+        <span class="qtext">&ldquo;The most ambitious new zoning anywhere in the nation&rdquo;</span>
+      </div>
+      <div class="qbar">
+        <div class="qpub"><img src="assets/logo-mit-tech-review.png" alt="MIT Technology Review"></div>
+        <div class="qrule"></div>
+        <span class="qtext">&ldquo;A walking antidote to political cynicism&rdquo;</span>
+      </div>
+      <div class="qbar">
+        <div class="qpub"><img src="assets/logo-harvard-crimson.png" alt="The Harvard Crimson"></div>
+        <div class="qrule"></div>
+        <span class="qtext">&ldquo;One of the Council&rsquo;s most vocal advocates for legalizing multifamily housing citywide&rdquo;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENDORSEMENTS -->
+<section class="section endorse">
+  <div class="reveal" style="display:flex;flex-direction:column;gap:28px">
+    <div class="col" style="gap:8px;align-items:flex-start">
+      <span class="boxed">Endorsements</span>
+    </div>
+    <div class="egrid">
+      <div class="ecard">
+        <div class="ephoto"></div>
+        <span class="enm">Jim Aloisi</span>
+        <span class="erole">Former MA Secretary of Transportation</span>
+      </div>
+      <div class="ecard">
+        <div class="ephoto"></div>
+        <span class="enm">Jarred Johnson</span>
+        <span class="erole">TransitMatters</span>
+      </div>
+      <div class="ecard">
+        <div class="ephoto"></div>
+        <span class="enm">Placeholder Name</span>
+        <span class="erole">Placeholder description</span>
+      </div>
+      <div class="ecard">
+        <div class="ephoto"></div>
+        <span class="enm">Placeholder Name</span>
+        <span class="erole">Placeholder description</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fcta motif-bg">
+  <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:22px">
+    <h2>More is possible</h2>
+    <p>Add your name, or chip in today &mdash; every bit moves us forward.</p>
+    <div class="fbtns">
+      <a class="btn btn-orange" href="volunteer.html">Volunteer
+        <svg class="ar" viewBox="0 0 16 16" fill="#003DA5" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+      </a>
+      <a class="btn btn-red" href="https://secure.actblue.com/donate/burhan2026" target="_blank" rel="noopener noreferrer">Donate
+        <svg class="ar" viewBox="0 0 16 16" fill="#fff" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+<div class="fcopy">
+  <span>&copy; 2026 Committee to Elect Burhan Azeem</span>
+  <a href="#contact">Contact Us</a>
+</div>
+
+</div>
+
+<script>
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < (window.innerHeight || 800) * 0.94) el.classList.add('in');
+      else io.observe(el);
+    });
+  } else {
+    els.forEach(function (el) { el.classList.add('in'); });
+  }
+}());
 </script>
+
 </body>
 </html>
