@@ -107,8 +107,7 @@ a { color: inherit; }
    VIDEO THUMBNAIL (branded placeholder w/ play button)
    ============================================================ */
 .vthumb { position: relative; background: #0a2a6e center/cover no-repeat; overflow: hidden; }
-.vthumb::after { content: ""; position: absolute; inset: 0; background:
-  repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 2px, transparent 2px 22px); }
+.vthumb::after { display: none; }
 .vthumb .play { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 64px; height: 64px; border-radius: 999px; background: var(--orange); display: flex; align-items: center; justify-content: center; z-index: 2; box-shadow: 0 6px 24px rgba(0,0,0,.28); transition: transform .15s ease; }
 .vthumb .play svg { width: 26px; height: 26px; margin-left: 4px; }
 .vthumb:hover .play { transform: translate(-50%,-50%) scale(1.08); }
