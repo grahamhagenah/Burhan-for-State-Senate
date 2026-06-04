@@ -69,7 +69,7 @@ function VolForm() {
       LNAME: f.last.trim(),
       PHONE: f.phone.trim(),
       ZIP: f.zip.trim(),
-      INTERESTS: interests,
+      VOLUNTEER: interests,
     });
 
     const callbackName = "mc_cb_" + Date.now();
