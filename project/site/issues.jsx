@@ -47,6 +47,7 @@ const ISSUES = [
   {
     n: 5, title: "Trump & Federal Cuts", kicker: "Issue 05",
     teaser: "Build state resilience to Trump's policies",
+    instagram: "https://www.instagram.com/reel/DXR86ohEd9f/",
     video: "https://www.instagram.com/reel/DXR86ohEd9f/",
     body: [
       "Massachusetts is facing one of the deepest recessions in the country right now. NIH cuts are threatening the research hospitals and universities that employ tens of thousands of people. Vaccine program cuts are dismantling the public health programs families depend on.",
@@ -88,6 +89,29 @@ function IssueThumb({ it }) {
   return <VideoThumb className="athumb" label="" />;
 }
 
+function InstagramEmbed({ url }) {
+  React.useEffect(() => {
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+    } else {
+      const s = document.createElement("script");
+      s.src = "//www.instagram.com/embed.js";
+      s.async = true;
+      document.body.appendChild(s);
+    }
+  }, []);
+  return (
+    <div className="abody-video ig-embed-wrap">
+      <blockquote
+        className="instagram-media"
+        data-instgrm-permalink={`${url}?utm_source=ig_embed&utm_campaign=loading`}
+        data-instgrm-version="14"
+        style={{ background: "#FFF", border: 0, borderRadius: 3, margin: "0 auto", maxWidth: 540, minWidth: 0, padding: 0, width: "100%" }}
+      />
+    </div>
+  );
+}
+
 function IssueBodyContent({ it, modal }) {
   return (
     <>
@@ -102,6 +126,8 @@ function IssueBodyContent({ it, modal }) {
           <div className="abody-video" style={{ aspectRatio: "9/12", background: "linear-gradient(135deg,#0a6b4f,#0a2a6e)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "10px 10px 0 0 var(--red)" }}>
             <TurbineGraphic />
           </div>
+        ) : it.instagram ? (
+          <InstagramEmbed url={it.instagram} />
         ) : (
           <VideoThumb className="abody-video" label="Watch the clip" style={modal ? { aspectRatio: "9/14" } : null} />
         )}

@@ -213,6 +213,7 @@ a { color: inherit; }
 .acard .abody-pad { border-top: 1px solid var(--line-grey); display: grid; grid-template-columns: 1fr 360px; gap: 40px; padding: 32px 42px 38px; }
 .acard .abody-pad .atext p { font-family: var(--font-body); font-size: 18px; line-height: 1.55; color: var(--blue); margin: 0 0 16px; }
 .acard .abody-video { width: 100%; aspect-ratio: 9/12; box-shadow: 10px 10px 0 0 var(--red); align-self: start; }
+.acard .ig-embed-wrap { aspect-ratio: unset; box-shadow: 10px 10px 0 0 var(--red); }
 .acard.climate .athumb { background: linear-gradient(135deg, #0a4d8c, #0a2a6e); }
 
 /* issues modal */
