@@ -9,6 +9,7 @@ const ISSUES = [
   {
     n: 1, title: "Housing", kicker: "Issue 01",
     teaser: "Allow neighborhoods to build the housing they want and need",
+    thumb: "project/site/assets/why_burhan_runs.jpg",
     instagram: "https://www.instagram.com/reel/DZFl2SGoJQg/",
     video: "https://www.instagram.com/reel/DZFl2SGoJQg/",
     body: [
@@ -19,6 +20,7 @@ const ISSUES = [
   {
     n: 2, title: "Transit", kicker: "Issue 02",
     teaser: "Extend the T and fix the reason it keeps breaking",
+    thumb: "project/site/assets/why_burhan_runs.jpg",
     instagram: "https://www.instagram.com/reel/DXHveu6Ebon/",
     video: "https://www.instagram.com/reel/DXHveu6Ebon/",
     body: [
@@ -29,6 +31,7 @@ const ISSUES = [
   {
     n: 3, title: "The Statehouse", kicker: "Issue 03",
     teaser: "Restructure Beacon Hill so it's actually productive",
+    thumb: "project/site/assets/why_burhan_runs.jpg",
     instagram: "https://www.instagram.com/reel/DXKitzFiETD/",
     video: "https://www.instagram.com/reel/DXKitzFiETD/",
     body: [
@@ -41,6 +44,7 @@ const ISSUES = [
   {
     n: 4, title: "Affordability", kicker: "Issue 04",
     teaser: "Ensure families can stay in our district",
+    thumb: "project/site/assets/burhan-portrait-cutout.png",
     video: "https://www.youtube.com/watch?v=C2SwXPgurkU",
     body: [
       "The number one reason families leave the district is when they have children. Childcare costs more than tuition at UMass, which is why Burhan passed universal pre-K in Cambridge. As state senator, he'll expand that model statewide, putting $21,000 back in every family's pocket.",
@@ -50,6 +54,7 @@ const ISSUES = [
   {
     n: 5, title: "Trump & Federal Cuts", kicker: "Issue 05",
     teaser: "Build state resilience to Trump's policies",
+    thumb: "project/site/assets/burhan-portrait-cutout.png",
     instagram: "https://www.instagram.com/reel/DXR86ohEd9f/",
     video: "https://www.instagram.com/reel/DXR86ohEd9f/",
     body: [
@@ -89,7 +94,7 @@ function IssueThumb({ it }) {
       </div>
     );
   }
-  return <div className="athumb" />;
+  return <div className="athumb" style={it.thumb ? { backgroundImage: `url(${it.thumb})` } : undefined} />;
 }
 
 function InstagramEmbed({ url }) {
