@@ -49,6 +49,8 @@ function VolForm() {
   const set = (k) => (e) => { setF((s) => ({ ...s, [k]: e.target.value })); setErrs((s) => ({ ...s, [k]: null })); };
   const toggle = (v) => setPicks((s) => ({ ...s, [v]: !s[v] }));
 
+  const [submitting, setSubmitting] = useStateV(false);
+
   const submit = (e) => {
     e.preventDefault();
     const next = {};
@@ -57,7 +59,34 @@ function VolForm() {
     if (!/^\S+@\S+\.\S+$/.test(f.email.trim())) next.email = f.email.trim() ? "Enter a valid email" : "Required";
     if (!/^\d{5}$/.test(f.zip.trim())) next.zip = f.zip.trim() ? "5-digit ZIP" : "Required";
     setErrs(next);
-    if (Object.keys(next).length === 0) setDone(true);
+    if (Object.keys(next).length > 0) return;
+
+    setSubmitting(true);
+    const interests = Object.keys(picks).filter((k) => picks[k]).join(", ");
+    const params = new URLSearchParams({
+      EMAIL: f.email.trim(),
+      FNAME: f.first.trim(),
+      LNAME: f.last.trim(),
+      PHONE: f.phone.trim(),
+      ZIP: f.zip.trim(),
+      INTERESTS: interests,
+    });
+
+    const callbackName = "mc_cb_" + Date.now();
+    const script = document.createElement("script");
+    window[callbackName] = (data) => {
+      delete window[callbackName];
+      script.remove();
+      setSubmitting(false);
+      if (data.result === "success") {
+        window.location.href = "https://www.mobilize.us/burhanforstatesenate/";
+      } else {
+        setErrs({ form: data.msg.replace(/<[^>]*>/g, "") });
+      }
+    };
+    const base = "https://voteburhan.us20.list-manage.com/subscribe/post-json?u=1597408c6e4707fa041c3da45&id=f4bf312185&f_id=001479f1f0";
+    script.src = `${base}&${params.toString()}&c=${callbackName}`;
+    document.body.appendChild(script);
   };
 
   if (done) {
@@ -101,7 +130,10 @@ function VolForm() {
           ))}
         </div>
       </div>
-      <Button variant="orange" type="submit" className="vsubmit" arrow arrowColor="#003DA5">Count me in</Button>
+      {errs.form && <p style={{ color: "var(--red, #c0392b)", fontSize: 14, margin: "0 0 8px" }}>{errs.form}</p>}
+      <Button variant="orange" type="submit" className="vsubmit" arrow arrowColor="#003DA5" disabled={submitting}>
+        {submitting ? "Sending…" : "Count me in"}
+      </Button>
     </form>
   );
 }

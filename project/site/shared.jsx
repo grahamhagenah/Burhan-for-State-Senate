@@ -65,10 +65,9 @@ function Logo() {
 // ---- site header ----
 function SiteHeader({ active }) {
   const links = [
-    { label: "Home", href: "index.html" },
+    { label: "Meet Burhan", href: "index.html" },
     { label: "Issues", href: "issues.html" },
     { label: "Volunteer", href: "volunteer.html" },
-    { label: "Receipts", href: "receipts.html" },
   ];
   return (
     <header className="hdr">
