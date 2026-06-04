@@ -1,7 +1,6 @@
 // ============================================================
 // ISSUES PAGE — "What Burhan will deliver"
-// 6 issue cards, collapsed by default. Interaction mode is a
-// Tweak: Accordion (one open) / Inline (open many) / Modal.
+// 6 issue cards; clicking opens a modal.
 // ============================================================
 const { useState: useStateI } = React;
 
@@ -73,27 +72,11 @@ const ISSUES = [
   },
 ];
 
-function TurbineGraphic() {
-  return (
-    <svg viewBox="0 0 120 120" width="84" height="84" fill="none" stroke="#fff" strokeWidth="3" aria-hidden="true" style={{ opacity: .92 }}>
-      <circle cx="60" cy="52" r="6" fill="#FF9600" stroke="none" />
-      <path d="M60 52 L60 14 M60 52 L93 71 M60 52 L27 71" strokeLinecap="round" strokeWidth="7" stroke="#fff" />
-      <path d="M60 58 L60 106" strokeLinecap="round" />
-    </svg>
-  );
-}
 
 // collapsed thumbnail (video or climate still)
 function IssueThumb({ it }) {
   if (it.climate) {
-    return (
-      <div className="athumb" style={{ background: "linear-gradient(135deg,#0a6b4f,#0a2a6e)" }}>
-        <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8 }}>
-          <TurbineGraphic />
-          <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 13, letterSpacing: ".1em", color: "#fff", textTransform: "uppercase" }}>Built in Massachusetts</span>
-        </div>
-      </div>
-    );
+    return <div className="athumb" style={{ backgroundImage: "url(project/site/assets/climate_thumb.png)" }} />;
   }
   return <div className="athumb" style={it.thumb ? { backgroundImage: `url(${it.thumb})` } : undefined} />;
 }
@@ -126,15 +109,10 @@ function IssueBodyContent({ it, modal }) {
     <>
       <div className="atext">
         {it.body.map((p, i) => <p key={i}>{p}</p>)}
-        <a className="atoggle" href="#plan" style={{ marginTop: 4, textDecoration: "none" }}>
-          Read the full plan <ArrowIcon color="#FF9600" className="ar" />
-        </a>
       </div>
       <div>
         {it.climate ? (
-          <div className="abody-video" style={{ aspectRatio: "9/12", background: "linear-gradient(135deg,#0a6b4f,#0a2a6e)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "10px 10px 0 0 var(--red)" }}>
-            <TurbineGraphic />
-          </div>
+          <img className="abody-video" src="project/site/assets/climate_thumb.png" alt="Climate" style={{ objectFit: "cover", boxShadow: "10px 10px 0 0 var(--red)" }} />
         ) : it.instagram ? (
           <InstagramEmbed url={it.instagram} />
         ) : (
@@ -145,31 +123,21 @@ function IssueBodyContent({ it, modal }) {
   );
 }
 
-function IssueCard({ it, mode, open, onToggle }) {
-  const isModal = mode === "Modal";
+function IssueCard({ it, onToggle }) {
   return (
-    <div className={`acard${open && !isModal ? " open" : ""}${it.climate ? " climate" : ""}`}>
+    <div className={`acard${it.climate ? " climate" : ""}`}>
       <div className="ahead" onClick={onToggle} role="button" tabIndex={0}
            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onToggle(); } }}>
         <div className="amid">
           <h3 className="atitle">{it.title}</h3>
           <p className="ateaser">{it.teaser}</p>
           <span className="atoggle">
-            {isModal ? "Read the full story" : (open ? "Close" : "Read the full story")}
-            {isModal ? <ArrowIcon color="#FF9600" className="ar" /> : <ChevronIcon color="#FF9600" />}
+            See the Plan
+            <ArrowIcon color="#FF9600" className="ar" />
           </span>
         </div>
         <IssueThumb it={it} />
       </div>
-      {!isModal && (
-        <div className="abody">
-          <div className="abody-inner">
-            <div className="abody-pad">
-              <IssueBodyContent it={it} />
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
@@ -201,27 +169,16 @@ function IssueModal({ it, onClose }) {
   );
 }
 
-function IssuesList({ mode, startOpen }) {
-  // accordion: single open index; inline: set of open indices; modal: open id
-  const [openOne, setOpenOne] = useStateI(startOpen && mode !== "Modal" ? 0 : null);
-  const [openMany, setOpenMany] = useStateI(startOpen && mode === "Inline" ? { 0: true } : {});
+function IssuesList() {
   const [modalIt, setModalIt] = useStateI(null);
-
-  const toggle = (it, i) => {
-    if (mode === "Modal") { setModalIt(it); return; }
-    if (mode === "Accordion") { setOpenOne((c) => (c === i ? null : i)); return; }
-    setOpenMany((s) => ({ ...s, [i]: !s[i] }));
-  };
-  const isOpen = (i) => mode === "Accordion" ? openOne === i : !!openMany[i];
-
   return (
     <>
       <div className="acc">
-        {ISSUES.map((it, i) => (
-          <IssueCard key={it.n} it={it} mode={mode} open={isOpen(i)} onToggle={() => toggle(it, i)} />
+        {ISSUES.map((it) => (
+          <IssueCard key={it.n} it={it} onToggle={() => setModalIt(it)} />
         ))}
       </div>
-      {mode === "Modal" && modalIt && <IssueModal it={modalIt} onClose={() => setModalIt(null)} />}
+      {modalIt && <IssueModal it={modalIt} onClose={() => setModalIt(null)} />}
     </>
   );
 }

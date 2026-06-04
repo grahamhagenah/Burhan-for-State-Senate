@@ -19,9 +19,7 @@
 
 <script type="text/babel">
 const ISSUES_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "top": "Hero video",
-  "mode": "Modal",
-  "startOpen": true
+  "top": "Hero video"
 }/*EDITMODE-END*/;
 
 // The top of the page, in three directions (compare via the "Top section" tweak):
@@ -90,7 +88,7 @@ function IssuesApp() {
       <section className="section">
         <Reveal style={{ display: "flex", flexDirection: "column", gap: 28 }}>
           <BoxedHeader>Tap to see the plan</BoxedHeader>
-          <IssuesList key={`${t.mode}-${t.startOpen}`} mode={t.mode} startOpen={t.startOpen} />
+          <IssuesList />
         </Reveal>
       </section>
 
@@ -101,12 +99,6 @@ function IssuesApp() {
         <TweakRadio label="Header layout" value={t.top}
           options={["Overlap", "Stacked", "Hero video"]}
           onChange={(v) => setTweak("top", v)} />
-        <TweakSection label="Issue cards" />
-        <TweakRadio label="Interaction" value={t.mode}
-          options={["Accordion", "Inline", "Modal"]}
-          onChange={(v) => setTweak("mode", v)} />
-        <TweakToggle label="Start with first issue open" value={t.startOpen}
-          onChange={(v) => setTweak("startOpen", v)} />
       </TweaksPanel>
     </div>
   );

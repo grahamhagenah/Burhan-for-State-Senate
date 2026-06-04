@@ -64,23 +64,53 @@ function Logo() {
 
 // ---- site header ----
 function SiteHeader({ active }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const hdrRef = useRef(null);
   const links = [
-    { label: "Meet Burhan", href: "index.html" },
+    { label: "Meet Burhan", href: "receipts.html" },
     { label: "Issues", href: "issues.html" },
     { label: "Volunteer", href: "volunteer.html" },
   ];
+
+  useEffect(() => {
+    function handleClick(e) {
+      if (hdrRef.current && !hdrRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    }
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, []);
+
   return (
-    <header className="hdr">
-      <Logo />
-      <nav>
-        <div className="navlinks">
-          {links.map((l) => (
-            <a key={l.label} href={l.href} className={active === l.label ? "active" : ""}>{l.label}</a>
-          ))}
-        </div>
-        <Button variant="orange" href={ACTBLUE} target="_blank" style={{ fontSize: 17, padding: "9px 18px" }}>Donate</Button>
-      </nav>
-    </header>
+    <>
+      <header className={"hdr" + (menuOpen ? " menu-open" : "")} ref={hdrRef}>
+        <Logo />
+        <nav>
+          <div className="navlinks">
+            {links.map((l) => (
+              <a key={l.label} href={l.href} className={active === l.label ? "active" : ""}>{l.label}</a>
+            ))}
+          </div>
+          <Button variant="orange" href={ACTBLUE} target="_blank" style={{ fontSize: 17, padding: "9px 18px" }}>Donate</Button>
+          <button
+            className="hamburger"
+            aria-label="Open menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setMenuOpen(o => !o)}
+          >
+            <span /><span /><span />
+          </button>
+        </nav>
+      </header>
+      <div className={"mobile-menu" + (menuOpen ? " open" : "")} id="mobile-menu" role="dialog" aria-label="Navigation menu">
+        {links.map((l) => (
+          <a key={l.label} href={l.href} className={active === l.label ? "active" : ""}>{l.label}</a>
+        ))}
+        <a className="btn btn-orange" href={ACTBLUE} target="_blank" rel="noopener noreferrer">Donate</a>
+      </div>
+    </>
   );
 }
 

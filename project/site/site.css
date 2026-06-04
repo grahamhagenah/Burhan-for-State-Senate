@@ -55,6 +55,19 @@ a { color: inherit; }
 .hdr .navlinks a { font-family: var(--font-heading); font-weight: 400; font-size: 16px; letter-spacing: .03em; text-transform: uppercase; color: #fff; text-decoration: none; opacity: .9; padding-bottom: 3px; border-bottom: 2px solid transparent; }
 .hdr .navlinks a:hover { opacity: 1; }
 .hdr .navlinks a.active { opacity: 1; border-bottom-color: var(--orange); }
+.hdr .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; margin-right: -6px; }
+.hdr .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: transform .2s, opacity .2s; }
+.hdr .hamburger span + span { margin-top: 5px; }
+.hdr.menu-open .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hdr.menu-open .hamburger span:nth-child(2) { opacity: 0; }
+.hdr.menu-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu { display: none; position: fixed; top: 78px; left: 0; right: 0; background: #003DA5; z-index: 49; padding: 20px 20px 28px; flex-direction: column; gap: 0; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-family: var(--font-heading); font-weight: 400; font-size: 18px; letter-spacing: .03em; text-transform: uppercase; color: #fff; text-decoration: none; opacity: .9; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.15); }
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { opacity: 1; }
+.mobile-menu a.active { opacity: 1; color: var(--orange); }
+.mobile-menu .btn { margin-top: 20px; align-self: flex-start; font-size: 17px; padding: 9px 18px; }
 
 /* ============================================================
    SECTION FRAME / SHARED TYPE BLOCKS
@@ -212,14 +225,7 @@ a { color: inherit; }
 .acard .atitle { font-family: var(--font-heading); font-weight: 700; font-size: 40px; line-height: 1.0; letter-spacing: .02em; color: var(--blue); text-transform: uppercase; margin: 0; }
 .acard .ateaser { font-family: var(--font-body); font-size: 19px; line-height: 1.4; color: var(--blue); margin: 0; max-width: 48ch; }
 .acard .atoggle { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-weight: 700; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; color: var(--orange); margin-top: 6px; }
-.acard .atoggle .chev { width: 16px; height: 16px; transition: transform .2s ease; }
-.acard.open .atoggle .chev { transform: rotate(180deg); }
 .acard .athumb { position: relative; overflow: hidden; min-height: 208px; background: var(--line-grey) center/cover no-repeat; }
-.acard .abody { display: grid; grid-template-rows: 0fr; }
-.acard.open .abody { grid-template-rows: 1fr; }
-.acard .abody-inner { overflow: hidden; }
-.acard .abody-pad { border-top: 1px solid var(--line-grey); display: grid; grid-template-columns: 1fr 360px; gap: 40px; padding: 32px 42px 38px; }
-.acard .abody-pad .atext p { font-family: var(--font-body); font-size: 18px; line-height: 1.55; color: var(--blue); margin: 0 0 16px; }
 .acard .abody-video { width: 100%; aspect-ratio: 9/12; box-shadow: 10px 10px 0 0 var(--red); align-self: start; }
 .acard .ig-embed-wrap { aspect-ratio: unset; box-shadow: 10px 10px 0 0 var(--red); }
 .acard.climate .athumb { background: linear-gradient(135deg, #0a4d8c, #0a2a6e); }
@@ -357,6 +363,8 @@ a { color: inherit; }
   .section, .page-hero, .fcta, .vol-wrap, .home-hero, .stats-band, .issues-intro-video { padding-left: 24px; padding-right: 24px; }
   .hdr { padding: 0 20px; }
   .hdr .navlinks { display: none; }
+  .hdr nav .btn { display: none; }
+  .hdr .hamburger { display: flex; flex-direction: column; }
   .home-hero, .thirty, .feature, .vol-wrap, .endorse .egrid, .priorities .pgrid, .ii-card, .tl-with-image, .ihv-grid { grid-template-columns: 1fr; }
   .ii-video { min-height: 200px; }
   .home-hero h1 { font-size: 60px; }
@@ -367,8 +375,6 @@ a { color: inherit; }
   /* issues card → stack */
   .acard .ahead { grid-template-columns: 1fr; }
   .acard .athumb { display: none; }
-  .acard .abody-pad { grid-template-columns: 1fr; padding: 24px; }
-  .acard .abody-video { max-width: 280px; }
   /* timeline → force vertical on mobile (both orientations) */
   .timeline { padding: 16px 4px 8px; }
   .timeline .tl-line { display: none; }

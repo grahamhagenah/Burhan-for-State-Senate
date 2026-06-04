@@ -12,7 +12,7 @@
 <body>
 <div class="site">
 
-<header class="hdr">
+<header class="hdr" id="site-hdr">
   <a class="logo" href="index.html">
     <span class="word">BURHAN</span>
     <span class="tag">2ND MIDDLESEX · STATE SENATE</span>
@@ -24,8 +24,36 @@
       <a href="volunteer.html">Volunteer</a>
     </div>
     <a class="btn btn-orange" href="https://secure.actblue.com/donate/burhan2026" target="_blank" rel="noopener noreferrer" style="font-size:17px;padding:9px 18px">Donate</a>
+    <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 </header>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+  <a href="receipts.html">Meet Burhan</a>
+  <a href="issues.html">Issues</a>
+  <a href="volunteer.html">Volunteer</a>
+  <a class="btn btn-orange" href="https://secure.actblue.com/donate/burhan2026" target="_blank" rel="noopener noreferrer">Donate</a>
+</div>
+<script>
+(function() {
+  var btn = document.getElementById('hamburger-btn');
+  var menu = document.getElementById('mobile-menu');
+  var hdr = document.getElementById('site-hdr');
+  btn.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    hdr.classList.toggle('menu-open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', function(e) {
+    if (!hdr.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      hdr.classList.remove('menu-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
 
 <!-- HERO -->
 <section class="home-hero motif-bg">
