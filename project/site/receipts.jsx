@@ -38,13 +38,7 @@ function Timeline({ orientation }) {
   );
   const photo = (
     <div className="tl-image">
-      <div className="tl-image-ph">
-        <span className="tl-ph-ico">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5zM8 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" /></svg>
-        </span>
-        <span className="tl-ph-label">Photo placeholder</span>
-        <span className="tl-ph-sub">Burhan being sworn in at Cambridge City Hall</span>
-      </div>
+      <img src="project/site/Burhan_Youngest_Councilor.png" alt="Burhan being sworn in as the youngest-ever City Councilor in Cambridge history" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
     </div>
   );
   return (

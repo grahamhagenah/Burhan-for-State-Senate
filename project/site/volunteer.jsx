@@ -84,7 +84,7 @@ function VolForm() {
         setErrs({ form: data.msg.replace(/<[^>]*>/g, "") });
       }
     };
-    const base = "https://voteburhan.us20.list-manage.com/subscribe/post-json?u=1597408c6e4707fa041c3da45&id=f4bf312185&f_id=001479f1f0";
+    const base = "https://voteburhan.us20.list-manage.com/subscribe/post-json?u=1597408c6e4707fa041c3da45&id=f4bf312185";
     script.src = `${base}&${params.toString()}&c=${callbackName}`;
     document.body.appendChild(script);
   };
