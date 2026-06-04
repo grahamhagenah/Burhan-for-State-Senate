@@ -39,7 +39,7 @@ function IssuesTop({ style }) {
 
   if (style === "Hero video") {
     return (
-      <section className="page-hero ihv">
+      <section className="page-hero motif-bg ihv">
         <Reveal className="ihv-grid">
           <div className="ihv-text">
             {heroText}
@@ -60,7 +60,7 @@ function IssuesTop({ style }) {
   // Overlap (original) and Stacked share the same pieces; only the overlap differs
   return (
     <>
-      <section className="page-hero">
+      <section className="page-hero motif-bg">
         <Reveal>{heroText}</Reveal>
       </section>
       <div className={`issues-intro-video${style === "Stacked" ? " stacked" : ""}`}>
