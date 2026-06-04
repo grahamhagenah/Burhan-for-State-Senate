@@ -58,7 +58,7 @@
     </div>
     <div class="media">
       <span class="script">Burhan delivers</span>
-      <div class="frame vthumb">
+      <div class="frame vthumb" id="video-trigger" role="button" tabindex="0" aria-label="Watch video: Burhan delivers" style="background-image:url('project/uploads/video-thumbnail.jpg');cursor:pointer">
         <span class="play">
           <svg viewBox="0 0 24 24" fill="#003DA5" aria-hidden="true"><path d="M5 3.5v17l15-8.5z"/></svg>
         </span>
@@ -217,6 +217,12 @@
 
 </div>
 
+<!-- VIDEO MODAL -->
+<div id="video-modal" role="dialog" aria-modal="true" aria-label="Burhan delivers — campaign video" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.82);align-items:center;justify-content:center;padding:24px">
+  <button id="video-modal-close" aria-label="Close video" style="position:absolute;top:18px;right:22px;background:none;border:none;cursor:pointer;color:#fff;font-size:32px;line-height:1;padding:4px 8px">&times;</button>
+  <video id="video-player" src="project/site/assets/Why_Im_Running.MP4" controls playsinline style="max-width:min(900px,100%);max-height:90vh;width:100%;border-radius:4px;outline:none"></video>
+</div>
+
 <script>
 (function () {
   var els = document.querySelectorAll('.reveal');
@@ -234,6 +240,33 @@
   } else {
     els.forEach(function (el) { el.classList.add('in'); });
   }
+
+  // Video modal
+  var modal = document.getElementById('video-modal');
+  var player = document.getElementById('video-player');
+  var trigger = document.getElementById('video-trigger');
+  var closeBtn = document.getElementById('video-modal-close');
+
+  function openModal() {
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    player.play();
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    player.pause();
+    player.currentTime = 0;
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+    trigger.focus();
+  }
+
+  trigger.addEventListener('click', openModal);
+  trigger.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(); } });
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.style.display === 'flex') closeModal(); });
 }());
 </script>
 
