@@ -19,11 +19,11 @@ const MILESTONES = [
 ];
 
 const CLIPS = [
-  { c: "c1", logo: "assets/logo-city-journal.png", pub: "City Journal", quote: "Cambridge's city council deserves credit for showing other cities the way to a new approach.", big: true },
-  { c: "c2", logo: "assets/logo-mit-tech-review.png", pub: "MIT Technology Review", quote: "A walking antidote to political cynicism." },
-  { c: "c3", logo: "assets/logo-harvard-crimson.png", pub: "The Harvard Crimson", quote: "One of the Council's most vocal advocates for legalizing multifamily housing citywide" },
+  { c: "c1", logo: "project/site/assets/logo-city-journal.png", pub: "City Journal", quote: "Cambridge's city council deserves credit for showing other cities the way to a new approach.", big: true },
+  { c: "c2", logo: "project/site/assets/logo-mit-tech-review.png", pub: "MIT Technology Review", quote: "A walking antidote to political cynicism." },
+  { c: "c3", logo: "project/site/assets/logo-harvard-crimson.png", pub: "The Harvard Crimson", quote: "One of the Council's most vocal advocates for legalizing multifamily housing citywide" },
   { c: "c4", masthead: "Winchester News", pub: "Winchester News", quote: "In this race, [Burhan] is asking voters to expect more.", src: "https://winchesternews.org/" },
-  { c: "c5", logo: "assets/logo-boston-globe.png", pub: "The Boston Globe", quote: "The most ambitious new zoning anywhere in the nation.", big: true },
+  { c: "c5", logo: "project/site/assets/logo-boston-globe.png", pub: "The Boston Globe", quote: "The most ambitious new zoning anywhere in the nation.", big: true },
 ];
 
 function StatsBar() {
