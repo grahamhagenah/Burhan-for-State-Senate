@@ -31,88 +31,23 @@
 <script type="text/babel" src="project/site/issues.jsx"></script>
 
 <script type="text/babel">
-const ISSUES_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "top": "Hero video"
-}/*EDITMODE-END*/;
-
-// The top of the page, in three directions (compare via the "Top section" tweak):
-//  Overlap    — intro video card straddles the hero edge (original)
-//  Stacked    — intro video card sits cleanly below the hero, no overlap
-//  Hero video — the hero itself integrates the video + a callout
-function IssuesTop({ style }) {
-  const heroText = (
-    <>
-      <span className="kicker">The plan</span>
-      <h1>What Burhan will deliver</h1>
-      <p>Burhan is running to make Massachusetts affordable. He knows it's possible because he's already started.</p>
-    </>
-  );
-
-  if (style === "Hero video") {
-    return (
-      <section className="page-hero motif-bg ihv">
-        <Reveal className="ihv-grid">
-          <div className="ihv-text">
-            {heroText}
-            <a className="ihv-cta" href="volunteer.html">
-              He needs your help
-              <ArrowIcon color="#003DA5" className="ar" />
-            </a>
-          </div>
-          <div className="ihv-media">
-            <span className="ihv-badge">Burhan's plan in 60 seconds</span>
-            <VideoThumb className="ihv-video" label="" />
-          </div>
-        </Reveal>
-      </section>
-    );
-  }
-
-  // Overlap (original) and Stacked share the same pieces; only the overlap differs
-  return (
-    <>
-      <section className="page-hero motif-bg">
-        <Reveal>{heroText}</Reveal>
-      </section>
-      <div className={`issues-intro-video${style === "Stacked" ? " stacked" : ""}`}>
-        <Reveal>
-          <div className="ii-card">
-            <div className="ii-copy">
-              <span className="ii-eyebrow">Watch · 60 seconds</span>
-              <h2>Why I'm running for State Senate</h2>
-              <p>The quick version — what's broken on Beacon Hill, and exactly how we fix it.</p>
-            </div>
-            <VideoThumb className="ii-video" label="Play intro" />
-          </div>
-        </Reveal>
-      </div>
-    </>
-  );
-}
-
 function IssuesApp() {
-  const [t, setTweak] = useTweaks(ISSUES_DEFAULTS);
   return (
     <div className="site">
       <SiteHeader active="Issues" />
 
-      <IssuesTop style={t.top} />
-
-      <section className="section">
-        <Reveal style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-          <BoxedHeader>Tap to see the plan</BoxedHeader>
+      <section className="page-hero motif-bg issues-hero">
+        <Reveal>
+          <div className="issues-hero-text">
+            <span className="kicker">The plan</span>
+            <h1>What Burhan will deliver</h1>
+            <p>Burhan is running to make Massachusetts affordable. He knows it's possible because he's already started.</p>
+          </div>
           <IssuesList />
         </Reveal>
       </section>
 
-      <SiteFooter headline="More is possible" sub={"These aren't just promises. They're plans Burhan has already started delivering. \nHelp finish the job."} />
-
-      <TweaksPanel>
-        <TweakSection label="Top section" />
-        <TweakRadio label="Header layout" value={t.top}
-          options={["Overlap", "Stacked", "Hero video"]}
-          onChange={(v) => setTweak("top", v)} />
-      </TweaksPanel>
+      <SiteFooter headline="More is possible" sub={"These aren't just promises. They are plans Burhan has already started delivering. \nHelp finish the job."} />
     </div>
   );
 }

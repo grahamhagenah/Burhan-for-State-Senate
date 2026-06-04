@@ -215,6 +215,10 @@ a { color: inherit; }
 .ihv-video { width: 100%; aspect-ratio: 16/10; min-height: 320px; box-shadow: 16px 16px 0 0 var(--orange); }
 .ihv-badge { position: absolute; top: -16px; left: -16px; z-index: 5; background: var(--red); color: #fff; font-family: var(--font-heading); font-weight: 700; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; padding: 9px 16px; transform: rotate(-3deg); box-shadow: 4px 4px 0 0 rgba(0,0,0,.18); }
 
+/* issues page — hero with cards embedded */
+.issues-hero { padding-bottom: 80px; }
+.issues-hero-text { margin-bottom: 48px; }
+
 /* issue cards — number-free, title-led, orange transit-rail on the left */
 .acc { display: flex; flex-direction: column; gap: 20px; }
 .acard { border: 1px solid var(--blue); border-left: 7px solid var(--orange); background: #fff; transition: box-shadow .15s ease; }
@@ -402,8 +406,10 @@ a { color: inherit; }
 @media (max-width: 600px) {
   .home-hero h1 { font-size: 48px; }
   .page-hero h1 { font-size: 36px; }
+  .page-hero.vol-hero h1 { white-space: normal; }
+  .page-hero.ihv h1 { font-size: 32px; }
   .fcta h2 { font-size: 40px; }
-  .boxed { font-size: 36px; }
+  .boxed { font-size: 36px; white-space: normal; }
   .frow { flex-direction: column; gap: 0; }
   .section { padding-top: 56px; padding-bottom: 56px; }
   .page-hero { padding-top: 40px; padding-bottom: 48px; }
