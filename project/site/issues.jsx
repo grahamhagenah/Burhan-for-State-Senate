@@ -9,7 +9,7 @@ const ISSUES = [
   {
     n: 1, title: "Housing", kicker: "Issue 01",
     teaser: "Allow neighborhoods to build the housing they want and need",
-    thumb: "project/site/assets/why_burhan_runs.jpg",
+    thumb: "project/site/assets/housing_thumbnail.png",
     instagram: "https://www.instagram.com/reel/DZFl2SGoJQg/",
     video: "https://www.instagram.com/reel/DZFl2SGoJQg/",
     body: [
@@ -20,7 +20,7 @@ const ISSUES = [
   {
     n: 2, title: "Transit", kicker: "Issue 02",
     teaser: "Extend the T and fix the reason it keeps breaking",
-    thumb: "project/site/assets/why_burhan_runs.jpg",
+    thumb: "project/site/assets/transit_thumbnail.png",
     instagram: "https://www.instagram.com/reel/DXHveu6Ebon/",
     video: "https://www.instagram.com/reel/DXHveu6Ebon/",
     body: [
