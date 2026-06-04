@@ -4,12 +4,6 @@
 // C) press clippings (collage/grid tweak)
 // ============================================================
 
-const STATS = [
-  { num: "$0", label: "Taken from corporate PACs", src: null, hl: true },
-  { num: "20,000", label: "Doors knocked personally by Burhan", src: null, hl: true },
-  { num: "#1", label: "\u201CMost ambitious new zoning anywhere in the nation\u201D", src: "The Boston Globe", hl: true },
-];
-
 const MILESTONES = [
   { year: "2022", win: "Became the youngest-ever City Councilor in Cambridge history" },
   { year: "2023", win: "Passed the Affordable Housing Overlay 2.0" },
@@ -25,24 +19,6 @@ const CLIPS = [
   { c: "c4", masthead: "Winchester News", pub: "Winchester News", quote: "In this race, [Burhan] is asking voters to expect more.", src: "https://winchesternews.org/" },
   { c: "c5", logo: "project/site/assets/logo-boston-globe.png", pub: "The Boston Globe", quote: "The most ambitious new zoning anywhere in the nation.", big: true },
 ];
-
-function StatsBar() {
-  return (
-    <div className="stats-band">
-      <Reveal>
-        <div className="stats-row">
-          {STATS.map((s, i) => (
-            <div className={`statbox${s.hl ? " hl" : ""}`} key={i}>
-              <span className="snum">{s.num}</span>
-              <span className="slabel">{s.label}</span>
-              {s.src && <span className="ssrc">— {s.src}</span>}
-            </div>
-          ))}
-        </div>
-      </Reveal>
-    </div>
-  );
-}
 
 function Timeline({ orientation }) {
   const vertical = orientation === "Vertical";
@@ -111,26 +87,9 @@ function Clippings({ layout }) {
   );
 }
 
-function WhiteStats() {
-  return (
-    <div className="white-stats">
-      <Reveal className="stats-row">
-        {STATS.map((s, i) => (
-          <div className={`statbox${s.hl ? " hl" : ""}`} key={i}>
-            <span className="snum">{s.num}</span>
-            <span className="slabel">{s.label}</span>
-            {s.src && <span className="ssrc">&mdash; {s.src}</span>}
-          </div>
-        ))}
-      </Reveal>
-    </div>
-  );
-}
-
 function ReceiptsBody({ timeline, clips }) {
   return (
     <>
-      <WhiteStats />
       <Timeline orientation={timeline} />
       <Clippings layout={clips} />
     </>
