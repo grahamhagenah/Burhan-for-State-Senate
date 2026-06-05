@@ -282,6 +282,13 @@ a { color: inherit; }
 .vsubmit { width: 100%; justify-content: center; margin-top: 26px; font-size: 26px; padding: 16px; }
 .vthanks { display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; padding: 40px 10px; }
 
+/* contact page */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 760px; }
+.contact-card { display: flex; flex-direction: column; gap: 10px; border: 1px solid var(--blue); padding: 36px 40px; }
+.contact-label { font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); }
+.contact-email { font-family: var(--font-heading); font-weight: 700; font-size: 22px; color: var(--blue); text-decoration: none; word-break: break-all; }
+.contact-email:hover { text-decoration: underline; }
+
 /* ============================================================
    RECEIPTS PAGE
    ============================================================ */
@@ -309,6 +316,7 @@ a { color: inherit; }
 /* vertical timeline paired with a photo */
 .tl-with-image { display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: start; }
 .tl-image { position: sticky; top: 104px; }
+.tl-image img { display: block; width: 100%; height: auto; box-shadow: 16px 16px 0 0 var(--red); }
 .tl-image-ph { position: relative; width: 100%; aspect-ratio: 4/5; background: var(--line-grey); box-shadow: 16px 16px 0 0 var(--red); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; overflow: hidden; }
 .tl-image-ph .tl-ph-ico { width: 60px; height: 60px; border: 3px solid rgba(0,61,165,.32); border-radius: 999px; display: flex; align-items: center; justify-content: center; }
 .tl-image-ph .tl-ph-ico svg { width: 30px; height: 30px; fill: rgba(0,61,165,.32); }
@@ -379,7 +387,7 @@ a { color: inherit; }
   .home-hero h1 { font-size: 60px; }
   .page-hero h1 { font-size: 44px; }
   .endorse .egrid { grid-template-columns: 1fr 1fr; }
-  .stats-row, .checks-grid { grid-template-columns: 1fr; }
+  .stats-row, .checks-grid, .contact-grid { grid-template-columns: 1fr; }
   .statbox { border-right: none; border-bottom: 1px solid var(--line-grey); }
   .statbox:last-child { border-bottom: none; }
   .vol-aside { position: static; }

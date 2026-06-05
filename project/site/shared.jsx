@@ -130,7 +130,7 @@ function SiteFooter({ headline = "More is possible", sub }) {
       </section>
       <div className="fcopy">
         <span>© 2026 Committee to Elect Burhan Azeem</span>
-        <a href="#contact">Contact Us</a>
+        <a href="contact.html">Contact Us</a>
       </div>
     </>
   );
