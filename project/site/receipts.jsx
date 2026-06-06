@@ -8,7 +8,7 @@ const MILESTONES = [
   { year: "2022", win: "Became the youngest-ever City Councilor in Cambridge history" },
   { year: "2023", win: "Passed the Affordable Housing Overlay 2.0" },
   { year: "2024", win: "Secured universal childcare for Cambridge" },
-  { year: "2025", win: "Re-legalized triple-deckers in Cambridge" },
+  { year: "2025", win: "Re-legalized triple-deckers and affordable apartments in Cambridge" },
   { year: "2026", win: "Elected Cambridge Vice Mayor", last: true },
 ];
 

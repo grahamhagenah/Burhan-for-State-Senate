@@ -23,7 +23,7 @@ const ISSUES = [
     instagram: "https://www.instagram.com/reel/DXHveu6Ebon/",
     video: "https://www.instagram.com/reel/DXHveu6Ebon/",
     body: [
-      "The T can be faster, cheaper to run, and more reliable. It just hasn't happened because the people making decisions don't ride it. Burhan's plan: extend the Red Line to Lexington, the Green Line to Medford, and build multiple connectors to make transfers faster. He'll fund this construction by implementing congestion pricing and curtailing the MBTA's spending on redundant consultants.",
+      "The T can be faster, cheaper to run, and more reliable. It just hasn't happened because the people making decisions don't ride it. Burhan's plan: extend the Red Line to Arlington, the Green Line to West Medford, and build multiple connectors to make transfers faster. He'll fund this construction by implementing congestion pricing and curtailing the MBTA's spending on redundant consultants.",
       "He'll also fix the MBTA longer term by empowering riders. Today, suburban drivers have more say than Boston metro riders. Burhan will propose a new governing body that gives the people who depend on the T more governance control — because a better T means faster commutes and a stronger local economy for everyone.",
     ],
   },
