@@ -24,7 +24,7 @@ const ISSUES = [
     video: "https://www.instagram.com/reel/DXHveu6Ebon/",
     body: [
       "The T can be faster, cheaper to run, and more reliable. It just hasn't happened because the people making decisions don't ride it. Burhan's plan: extend the Red Line to Arlington, the Green Line to West Medford, and build multiple connectors to make transfers faster. He'll fund this construction by implementing congestion pricing and curtailing the MBTA's spending on redundant consultants.",
-      "He'll also fix the MBTA longer term by empowering riders. Today, suburban drivers have more say than Boston metro riders. Burhan will propose a new governing body that gives the people who depend on the T more governance control — because a better T means faster commutes and a stronger local economy for everyone.",
+      "He'll also fix the MBTA longer term by empowering riders. Today, suburban drivers have more say than Boston metro riders. Burhan will propose a new governing body that gives the people who depend on the T more governance control, because a better T means faster commutes and a stronger local economy for everyone.",
     ],
   },
   {
@@ -35,9 +35,9 @@ const ISSUES = [
     video: "https://www.instagram.com/reel/DXKitzFiETD/",
     body: [
       "Beacon Hill hasn't been delivering for Massachusetts voters for three reasons.",
-      "First, secret voting. Fewer than 100 votes are made public each year, which means bills with 80% public support can die with no record of who killed them. Burhan built Cambridge's public legislative tracker so constituents could see exactly how their representatives voted. He'll push for the same transparency at the State House.",
-      "Second, the State House has exempted itself from the public records law that applies to every other governing body in Massachusetts. Burhan will end that exception.",
-      "Third, a corrupt compensation system. Legislators earn an $82,000 base salary but can collect an additional $120,000 in stipends, awarded at the sole discretion of Beacon Hill leadership. Any legislator who tries to change the system gets a massive pay cut. Burhan already works on an $83,000 salary, so he has nothing to lose.",
+      "First, the State House has exempted itself from the public records law that applies to every other governing body in Massachusetts. Burhan will end that exception.",
+      "Second, secret voting. Fewer than 100 votes are made public each year, which means bills with 80% public support can die with no record of who killed them. Burhan built Cambridge's public legislative tracker so constituents could see exactly how their representatives voted. He'll push for the same transparency at the State House.",
+      "Third, a corrupt compensation system. Legislators earn an $82,000 base salary but can collect an additional $120,000 in stipends, awarded at the sole discretion of Beacon Hill leadership. Any legislator who tries to change the system gets a massive pay cut.",
     ],
   },
   {
@@ -48,7 +48,7 @@ const ISSUES = [
     video: "https://www.youtube.com/watch?v=C2SwXPgurkU",
     body: [
       "The number one reason families leave the district is when they have children. Childcare costs more than tuition at UMass, which is why Burhan passed universal pre-K in Cambridge. As state senator, he'll expand that model statewide, putting $21,000 back in every family's pocket.",
-      "The second bill that hits families hard is energy. Third-party electricity suppliers have never once saved a customer money. Burhan will ban them on day one. He'll also expand Cambridge's Community Energy bulk-purchasing model to every community in the district — a program that has already returned $95 million in savings to Cambridge residents, nearly $2,000 per household.",
+      "The second bill that hits families hard is energy. Third-party electricity suppliers have never once saved a customer money. Burhan will move to ban them on day one. He'll also expand Cambridge's Community Energy bulk-purchasing model to every community in the district — a program that has already returned $95 million in savings to Cambridge residents, nearly $2,000 per household.",
     ],
   },
   {
@@ -65,7 +65,8 @@ const ISSUES = [
   {
     n: 6, title: "Climate", kicker: "Issue 06", climate: true,
     teaser: "Clean tech is invented here, and should be built here, too",
-    video: null,
+    instagram: "https://www.instagram.com/reel/DZNJVYJobww/",
+    video: "https://www.instagram.com/reel/DZNJVYJobww/",
     body: [
       "Massachusetts invents clean energy, but the manufacturing jobs and climate benefits go elsewhere. Burhan will change the green drain by making it easier for manufacturers to stay. He will speed up the permitting process for wind energy, which currently takes a decade to build. And he'll push the state to subsidize geothermal wells and fusion development — because those technologies are good climate policy and an economic strategy for what comes after fossil fuels.",
     ],
@@ -111,10 +112,10 @@ function IssueBodyContent({ it, modal }) {
         {it.body.map((p, i) => <p key={i}>{p}</p>)}
       </div>
       <div>
-        {it.climate ? (
-          <div className="abody-video" style={{ backgroundImage: "url(project/site/assets/climate_thumb.png)", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat", boxShadow: "10px 10px 0 0 var(--red)" }} />
-        ) : it.instagram ? (
+        {it.instagram ? (
           <InstagramEmbed url={it.instagram} />
+        ) : it.climate ? (
+          <div className="abody-video" style={{ backgroundImage: "url(project/site/assets/climate_thumb.png)", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat", boxShadow: "10px 10px 0 0 var(--red)" }} />
         ) : (
           <VideoThumb className="abody-video" label="Watch the clip" style={modal ? { aspectRatio: "9/14" } : null} />
         )}
