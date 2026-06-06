@@ -28,15 +28,15 @@ const ISSUES = [
     ],
   },
   {
-    n: 3, title: "The Statehouse", kicker: "Issue 03",
+    n: 3, title: "The State House", kicker: "Issue 03",
     teaser: "Restructure Beacon Hill so it's actually productive",
     thumb: "project/site/assets/statehouse_thumb.png",
     instagram: "https://www.instagram.com/reel/DXKitzFiETD/",
     video: "https://www.instagram.com/reel/DXKitzFiETD/",
     body: [
       "Beacon Hill hasn't been delivering for Massachusetts voters for three reasons.",
-      "First, secret voting. Fewer than 100 votes are made public each year, which means bills with 80% public support can die with no record of who killed them. Burhan built Cambridge's public legislative tracker so constituents could see exactly how their representatives voted. He'll push for the same transparency at the Statehouse.",
-      "Second, the Statehouse has exempted itself from the public records law that applies to every other governing body in Massachusetts. Burhan will end that exception.",
+      "First, secret voting. Fewer than 100 votes are made public each year, which means bills with 80% public support can die with no record of who killed them. Burhan built Cambridge's public legislative tracker so constituents could see exactly how their representatives voted. He'll push for the same transparency at the State House.",
+      "Second, the State House has exempted itself from the public records law that applies to every other governing body in Massachusetts. Burhan will end that exception.",
       "Third, a corrupt compensation system. Legislators earn an $82,000 base salary but can collect an additional $120,000 in stipends, awarded at the sole discretion of Beacon Hill leadership. Any legislator who tries to change the system gets a massive pay cut. Burhan already works on an $83,000 salary, so he has nothing to lose.",
     ],
   },

@@ -30,7 +30,7 @@ function HomeHero() {
 
 function HomeCards() {
   const cards = [
-    { n: "01", title: "The Issues", body: "Six fights worth having — from housing and transit to a Statehouse that actually works.", href: "issues.html", cta: "See the plan" },
+    { n: "01", title: "The Issues", body: "Six fights worth having — from housing and transit to a State House that actually works.", href: "issues.html", cta: "See the plan" },
     { n: "02", title: "The Receipts", body: "Don't take our word for it. A record of results Burhan has already delivered.", href: "receipts.html", cta: "See the proof" },
     { n: "03", title: "Volunteer", body: "More is possible if we build it together. Knock doors, make calls, host an event.", href: "volunteer.html", cta: "Join us" },
   ];

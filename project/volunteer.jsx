@@ -12,7 +12,7 @@ function VolAside() {
   ["Knock doors", "The single highest-impact thing you can do. We'll train you and pair you up."],
   ["Make calls", "Help the campaign from your couch."],
   ["Host an event", "Gather neighbors for a house party or meet-and-greet."],
-  ["Lend a skill.", "Graphic design, childcare at events, bartender -- every skill can be put to good use!"]];
+  ["Lend a skill.", "Graphic design, childcare at events, bartender — every skill can be put to good use!"]];
 
   return (
     <div className="vol-aside">
