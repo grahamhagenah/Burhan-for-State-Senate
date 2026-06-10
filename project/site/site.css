@@ -56,7 +56,7 @@ a { color: inherit; }
 /* ============================================================
    HEADER (sticky, consistent across pages)
    ============================================================ */
-.hdr { position: sticky; top: 0; z-index: 50; height: 78px; display: flex; align-items: center; justify-content: space-between; padding: 0 40px; background-color: #003DA5; }
+.hdr { position: sticky; top: 0; z-index: 50; height: 78px; display: flex; align-items: center; justify-content: space-between; padding: 0 calc((100vw - 100%) / 2 + 40px); background-color: #003DA5; margin-left: calc((100% - 100vw) / 2); margin-right: calc((100% - 100vw) / 2); }
 .hdr .logo { display: flex; flex-direction: column; gap: 3px; flex: none; text-decoration: none; }
 .hdr .logo .word { font-family: var(--font-display); font-weight: 700; font-size: 22px; color: #fff; letter-spacing: .02em; line-height: 1; }
 .hdr .logo .tag { background:#fff; color: var(--blue); font-family: var(--font-heading); font-weight: 700; font-size: 9px; letter-spacing: .06em; padding: 1px 5px; white-space: nowrap; align-self: flex-start; }
