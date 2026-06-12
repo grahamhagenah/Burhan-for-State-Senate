@@ -437,7 +437,7 @@ a { color: inherit; }
   .page-hero.intern-hero h1 { white-space: normal; }
   .hdr { padding: 0 20px; }
   .hdr .navlinks { display: none; }
-  .hdr nav .btn { display: none; }
+  .hdr nav .btn { display: inline-flex; font-size: 14px; padding: 7px 13px; }
   .hdr .hamburger { display: flex; flex-direction: column; }
   .home-hero, .thirty, .feature, .vol-wrap, .endorse .egrid, .priorities .pgrid, .ii-card, .tl-with-image, .ihv-grid, .page-hero-grid { grid-template-columns: 1fr; }
   /* receipts hero: photo stacks above bio */
