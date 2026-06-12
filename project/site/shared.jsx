@@ -70,6 +70,7 @@ function SiteHeader({ active }) {
     { label: "Meet Burhan", href: "receipts.html" },
     { label: "Issues", href: "issues.html" },
     { label: "Volunteer", href: "volunteer.html" },
+    { label: "Internship", href: "internship.html" },
   ];
 
   useEffect(() => {

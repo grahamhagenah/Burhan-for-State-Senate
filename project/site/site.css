@@ -377,13 +377,66 @@ a { color: inherit; }
 .page-hero.sentence h1 { text-transform: none; font-size: 52px; line-height: 1.06; max-width: 20ch; }
 
 /* ============================================================
+   INTERNSHIP PAGE
+   ============================================================ */
+.page-hero.intern-hero { padding-bottom: 80px; text-align: center; }
+.page-hero.intern-hero h1 { white-space: nowrap; max-width: none; }
+.page-hero.intern-hero p { margin: 0 auto; }
+
+/* logistics strip — pulls up into hero bottom edge */
+.intern-stats-band { padding: 0 120px; margin-top: -44px; position: relative; z-index: 2; }
+.intern-stats-row { display: grid; grid-template-columns: repeat(3, 1fr); background: #fff; border: 1px solid var(--blue); box-shadow: 14px 14px 0 0 var(--orange); }
+.intern-stat { padding: 30px 36px; display: flex; flex-direction: column; gap: 6px; border-right: 1px solid var(--line-grey); }
+.intern-stat:last-child { border-right: none; }
+.intern-stat-label { font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); }
+.intern-stat-val { font-family: var(--font-display); font-weight: 700; font-size: 24px; line-height: 1.1; color: var(--blue); }
+.intern-stat-sub { font-family: var(--font-body); font-size: 15px; color: var(--blue); opacity: .6; }
+
+/* two-column body */
+.intern-body { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding: 80px 120px; align-items: start; }
+
+/* section headers */
+.intern-section-head { display: flex; align-items: center; gap: 12px; font-family: var(--font-heading); font-weight: 700; font-size: 28px; letter-spacing: .03em; color: var(--blue); text-transform: uppercase; margin: 0 0 16px; }
+.intern-dot { width: 16px; height: 16px; border-radius: 999px; background: var(--orange); flex: none; display: inline-block; }
+
+/* cards */
+.intern-card { background: #fff; border: 1px solid var(--blue); padding: 34px 38px 36px; }
+
+/* typography */
+.intern-lead { font-family: var(--font-body); font-size: 17px; line-height: 1.5; color: var(--blue); opacity: .75; margin: 0 0 26px; }
+.intern-lead-italic { font-family: var(--font-body); font-size: 17px; line-height: 1.5; color: var(--blue); font-style: italic; opacity: .75; margin: 0 0 14px; }
+
+/* sub-groups within "what you'll do" */
+.intern-group { margin-bottom: 26px; }
+.intern-group:last-child { margin-bottom: 0; }
+.intern-group-label { font-family: var(--font-heading); font-weight: 700; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin: 0 0 10px; }
+
+/* bullet list */
+.intern-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.intern-list li { display: flex; gap: 12px; align-items: flex-start; font-family: var(--font-body); font-size: 17px; line-height: 1.45; color: var(--blue); }
+.intern-list li .intern-dot { margin-top: 5px; flex: none; }
+
+/* bonus callout */
+.intern-bonus { background: var(--amber-cream); border-left: 5px solid var(--orange); padding: 14px 18px; margin-top: 22px; }
+.intern-bonus-label { font-family: var(--font-heading); font-weight: 700; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); display: block; margin-bottom: 4px; }
+.intern-bonus p { font-family: var(--font-body); font-size: 16px; line-height: 1.45; color: var(--blue); margin: 0; }
+
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1080px) {
   .section, .page-hero, .fcta, .vol-wrap, .home-hero, .stats-band, .issues-intro-video, .white-stats { padding-left: 56px; padding-right: 56px; }
+  .intern-stats-band, .intern-body { padding-left: 56px; padding-right: 56px; }
 }
 @media (max-width: 900px) {
   .section, .page-hero, .fcta, .vol-wrap, .home-hero, .stats-band, .issues-intro-video, .white-stats { padding-left: 24px; padding-right: 24px; }
+  .intern-stats-band, .intern-body { padding-left: 24px; padding-right: 24px; }
+  .intern-stats-row { grid-template-columns: 1fr; }
+  .intern-stat { border-right: none; border-bottom: 1px solid var(--line-grey); }
+  .intern-stat:last-child { border-bottom: none; }
+  .intern-body { grid-template-columns: 1fr; padding-top: 56px; padding-bottom: 56px; }
+  .page-hero.intern-hero h1 { white-space: normal; }
   .hdr { padding: 0 20px; }
   .hdr .navlinks { display: none; }
   .hdr nav .btn { display: none; }
@@ -434,4 +487,5 @@ a { color: inherit; }
   .thirty .media .frame { height: 240px; }
   .vol-wrap { padding-top: 48px; padding-bottom: 48px; }
   .fcta { padding-top: 60px; padding-bottom: 60px; }
+  .intern-card { padding: 24px 22px 28px; }
 }
