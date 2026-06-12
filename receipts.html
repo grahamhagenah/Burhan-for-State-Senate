@@ -32,19 +32,12 @@
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
-<script type="text/babel" src="project/site/tweaks-panel.jsx"></script>
 <script type="text/babel" src="project/site/shared.jsx"></script>
 <script type="text/babel" src="project/site/receipts.jsx"></script>
 
 <script type="text/babel">
 
-const REC_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "timeline": "Vertical",
-  "clips": "Collage"
-} /*EDITMODE-END*/;
-
 function ReceiptsApp() {
-  const [t, setTweak] = useTweaks(REC_DEFAULTS);
   return (
     <div className="site">
       <SiteHeader active="Meet Burhan" />
@@ -65,20 +58,9 @@ function ReceiptsApp() {
         </Reveal>
       </section>
 
-      <ReceiptsBody timeline={t.timeline} clips={t.clips} />
+      <ReceiptsBody timeline="Vertical" clips="Collage" />
 
       <SiteFooter headline="And this is just the beginning." sub="Help send a proven problem solver to the State Senate." />
-
-      <TweaksPanel>
-        <TweakSection label="Timeline" />
-        <TweakRadio label="Orientation" value={t.timeline}
-        options={["Horizontal", "Vertical"]}
-        onChange={(v) => setTweak("timeline", v)} />
-        <TweakSection label="Press clippings" />
-        <TweakRadio label="Layout" value={t.clips}
-        options={["Collage", "Clean grid"]}
-        onChange={(v) => setTweak("clips", v)} />
-      </TweaksPanel>
     </div>);
 
 }

@@ -356,12 +356,12 @@ a { color: inherit; }
 .clip.c2 .clip-quote { font-size: 18px; }
 .clip .masthead { font-family: Georgia, 'Times New Roman', serif; font-weight: 700; font-size: 27px; line-height: .95; color: var(--blue); letter-spacing: -.01em; }
 
-/* clippings — clean grid variant (tweak) */
+/* clippings — clean grid variant */
 .clip-grid.plain { grid-template-columns: repeat(3, 1fr); align-items: start; }
 .clip-grid.plain .clip { grid-column: auto; transform: none; box-shadow: 6px 8px 0 0 rgba(0,61,165,.12); }
 .clip-grid.plain .clip.big .clip-quote { font-size: 20px; }
 
-/* timeline — VERTICAL variant (tweak). Self-aligning rail via per-stop ::before. */
+/* timeline — VERTICAL variant. Self-aligning rail via per-stop ::before. */
 .timeline.vertical { padding: 16px 20px 8px; }
 .timeline.vertical .tl-line { display: none; }
 .timeline.vertical .tl-stops { grid-template-columns: 1fr; }

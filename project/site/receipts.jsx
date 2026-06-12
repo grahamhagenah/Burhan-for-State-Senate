@@ -1,7 +1,7 @@
 // ============================================================
 // RECEIPTS PAGE — "Burhan has proved that more is possible."
-// A) stats bar  B) transit-map timeline (H/V tweak)
-// C) press clippings (collage/grid tweak)
+// A) stats bar  B) transit-map timeline (vertical)
+// C) press clippings (collage)
 // ============================================================
 
 const MILESTONES = [

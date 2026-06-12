@@ -1,7 +1,7 @@
 // ============================================================
 // VOLUNTEER PAGE — "Join the movement"
 // Sign-up form (visual design only; dev wires the backend).
-// Layout is a Tweak: Split (aside + form) / Centered card.
+// Layout: Split (aside + form).
 // ============================================================
 const { useState: useStateV } = React;
 
