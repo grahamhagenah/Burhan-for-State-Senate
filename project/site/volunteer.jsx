@@ -79,6 +79,7 @@ function VolForm() {
       script.remove();
       setSubmitting(false);
       if (data.result === "success") {
+        window.plausible && window.plausible('Volunteer Form Submit');
         window.location.href = "https://www.mobilize.us/burhanforstatesenate/";
       } else {
         setErrs({ form: data.msg.replace(/<[^>]*>/g, "") });
@@ -99,7 +100,7 @@ function VolForm() {
             {f.zip ? ` ${f.zip}` : " you"} — and get you plugged in close to home.
           </p>
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap", justifyContent: "center", marginTop: 6 }}>
-            <Button variant="orange" href={ACTBLUE} target="_blank" arrow arrowColor="#003DA5">Chip in too</Button>
+            <Button variant="orange" href={ACTBLUE} target="_blank" arrow arrowColor="#003DA5" onClick={trackDonate}>Chip in too</Button>
             <Button variant="ghost" onClick={() => { setDone(false); }}>Edit my info</Button>
           </div>
         </div>

@@ -5,6 +5,10 @@
 const { useState, useEffect, useRef } = React;
 
 const ACTBLUE = "https://secure.actblue.com/donate/burhan2026";
+const trackDonate = () => {
+  const page = window.location.pathname.split('/').pop().replace('.html', '') || 'home';
+  window.plausible && window.plausible('Donate Click', { props: { page } });
+};
 
 // ---- icons ----
 function ArrowIcon({ color = "#fff", className = "ar" }) {
@@ -93,7 +97,7 @@ function SiteHeader({ active }) {
               <a key={l.label} href={l.href} className={active === l.label ? "active" : ""}>{l.label}</a>
             ))}
           </div>
-          <Button variant="orange" href={ACTBLUE} target="_blank" style={{ fontSize: 17, padding: "9px 18px" }}>Donate</Button>
+          <Button variant="orange" href={ACTBLUE} target="_blank" style={{ fontSize: 17, padding: "9px 18px" }} onClick={trackDonate}>Donate</Button>
           <button
             className="hamburger"
             aria-label="Open menu"
@@ -109,7 +113,7 @@ function SiteHeader({ active }) {
         {links.map((l) => (
           <a key={l.label} href={l.href} className={active === l.label ? "active" : ""}>{l.label}</a>
         ))}
-        <a className="btn btn-orange" href={ACTBLUE} target="_blank" rel="noopener noreferrer">Donate</a>
+        <a className="btn btn-orange" href={ACTBLUE} target="_blank" rel="noopener noreferrer" onClick={trackDonate}>Donate</a>
       </div>
     </>
   );
@@ -125,7 +129,7 @@ function SiteFooter({ headline = "More is possible", sub }) {
           {sub && <p>{sub}</p>}
           <div className="fbtns">
             <Button variant="orange" href="volunteer.html" arrow arrowColor="#003DA5">Volunteer</Button>
-            <Button variant="red" href={ACTBLUE} target="_blank" arrow arrowColor="#fff">Donate</Button>
+            <Button variant="red" href={ACTBLUE} target="_blank" arrow arrowColor="#fff" onClick={trackDonate}>Donate</Button>
           </div>
         </Reveal>
       </section>
@@ -169,4 +173,4 @@ function Reveal({ children, as = "div", className = "", style }) {
   return <Tag ref={ref} className={`reveal ${shown ? "in" : ""} ${className}`} style={style}>{children}</Tag>;
 }
 
-Object.assign(window, { ACTBLUE, ArrowIcon, PlayIcon, ChevronIcon, Button, BoxedHeader, Logo, SiteHeader, SiteFooter, VideoThumb, Reveal });
+Object.assign(window, { ACTBLUE, trackDonate, ArrowIcon, PlayIcon, ChevronIcon, Button, BoxedHeader, Logo, SiteHeader, SiteFooter, VideoThumb, Reveal });

@@ -20,7 +20,8 @@ function InternshipHero() {
           By the end, you'll know more about how elections work than most adults do.
         </p>
         <Button variant="orange" href={APPLY_URL} target="_blank" arrow arrowColor="#003DA5"
-          style={{ fontSize: 22, padding: "14px 32px", marginTop: 8 }}>
+          style={{ fontSize: 22, padding: "14px 32px", marginTop: 8 }}
+          onClick={() => window.plausible && window.plausible('Internship Apply')}>
           Apply Now
         </Button>
       </Reveal>
@@ -112,7 +113,8 @@ function InternshipApply() {
         <h2>Apply by June 16</h2>
         <p>Parents, if you have questions, you can email <a href="mailto:niki@voteburhan.com" style={{ color: "inherit", textDecoration: "underline" }}>niki@voteburhan.com</a></p>
         <Button variant="orange" href={APPLY_URL} target="_blank" arrow arrowColor="#003DA5"
-          style={{ fontSize: 22, padding: "14px 32px" }}>
+          style={{ fontSize: 22, padding: "14px 32px" }}
+          onClick={() => window.plausible && window.plausible('Internship Apply')}>
           Apply Now
         </Button>
       </Reveal>
