@@ -11,10 +11,10 @@ function InternDot() {
 function InternshipHero() {
   return (
     <section className="page-hero motif-bg intern-hero">
-      <Reveal style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 20 }}>
+      <Reveal style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 20 }}>
         <span className="kicker">Deadline: June 16</span>
         <h1>Summer Internship</h1>
-        <p style={{ maxWidth: "58ch" }}>
+        <p style={{ maxWidth: "52ch" }}>
           We're looking for ambitious high school students to become part of the campaign. You'll
           register voters, help canvassers move faster, and get our message out to the district.
           By the end, you'll know more about how elections work than most adults do.

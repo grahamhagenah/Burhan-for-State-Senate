@@ -379,9 +379,7 @@ a { color: inherit; }
 /* ============================================================
    INTERNSHIP PAGE
    ============================================================ */
-.page-hero.intern-hero { padding-bottom: 80px; text-align: center; }
-.page-hero.intern-hero h1 { white-space: nowrap; max-width: none; }
-.page-hero.intern-hero p { margin: 0 auto; }
+.page-hero.intern-hero { padding-bottom: 80px; }
 
 /* logistics strip — pulls up into hero bottom edge */
 .intern-stats-band { padding: 0 120px; margin-top: -44px; position: relative; z-index: 2; }
