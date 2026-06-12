@@ -5,7 +5,7 @@
 // ============================================================
 
 const MILESTONES = [
-  { year: "2022", win: "Became the youngest-ever City Councilor in Cambridge history" },
+  { year: "2022", win: "Became the youngest City Councilor in Cambridge history" },
   { year: "2023", win: "Passed the Affordable Housing Overlay 2.0" },
   { year: "2024", win: "Secured universal childcare for Cambridge" },
   { year: "2025", win: "Re-legalized triple-deckers and affordable apartments in Cambridge" },
@@ -15,8 +15,8 @@ const MILESTONES = [
 const CLIPS = [
   { c: "c1", logo: "project/site/assets/logo-city-journal.png", pub: "City Journal", quote: "Cambridge's city council deserves credit for showing other cities the way to a new approach.", big: true },
   { c: "c2", logo: "project/site/assets/logo-mit-tech-review.png", pub: "MIT Technology Review", quote: "A walking antidote to political cynicism." },
-  { c: "c3", logo: "project/site/assets/logo-harvard-crimson.png", pub: "The Harvard Crimson", quote: "One of the Council's most vocal advocates for legalizing multifamily housing citywide" },
-  { c: "c4", masthead: "Winchester News", pub: "Winchester News", quote: "In this race, [Burhan] is asking voters to expect more.", src: "https://winchesternews.org/" },
+  { c: "c3", masthead: "Winchester News", pub: "Winchester News", quote: "In this race, [Burhan] is asking voters to expect more." },
+  { c: "c4", logo: "project/site/assets/logo-harvard-crimson.png", pub: "The Harvard Crimson", quote: "One of the Council's most vocal advocates for legalizing multifamily housing citywide" },
   { c: "c5", logo: "project/site/assets/logo-boston-globe.png", pub: "The Boston Globe", quote: "The most ambitious new zoning anywhere in the nation.", big: true },
 ];
 
