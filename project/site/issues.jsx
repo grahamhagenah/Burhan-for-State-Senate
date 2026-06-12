@@ -6,7 +6,7 @@ const { useState: useStateI } = React;
 
 const ISSUES = [
   {
-    n: 1, title: "Housing", kicker: "Issue 01",
+    n: 1, slug: "housing", title: "Housing", kicker: "Issue 01",
     teaser: "Allow neighborhoods to build the housing they want and need",
     thumb: "project/site/assets/tripledecker_thumb.png",
     instagram: "https://www.instagram.com/reel/DZFl2SGoJQg/",
@@ -17,7 +17,7 @@ const ISSUES = [
     ],
   },
   {
-    n: 2, title: "Transit", kicker: "Issue 02",
+    n: 2, slug: "transit", title: "Transit", kicker: "Issue 02",
     teaser: "Extend the T and fix the reason it keeps breaking",
     thumb: "project/site/assets/station_thumb.png",
     instagram: "https://www.instagram.com/reel/DXHveu6Ebon/",
@@ -28,7 +28,7 @@ const ISSUES = [
     ],
   },
   {
-    n: 3, title: "The State House", kicker: "Issue 03",
+    n: 3, slug: "statehouse", title: "The State House", kicker: "Issue 03",
     teaser: "Restructure Beacon Hill so it's actually productive",
     thumb: "project/site/assets/statehouse_thumb.png",
     instagram: "https://www.instagram.com/reel/DXKitzFiETD/",
@@ -41,7 +41,7 @@ const ISSUES = [
     ],
   },
   {
-    n: 4, title: "Affordability", kicker: "Issue 04",
+    n: 4, slug: "affordability", title: "Affordability", kicker: "Issue 04",
     teaser: "Ensure families can stay in our district",
     thumb: "project/site/assets/childcare_thumb.png",
     instagram: "https://www.instagram.com/reel/DYmoI_hIX60/",
@@ -52,7 +52,7 @@ const ISSUES = [
     ],
   },
   {
-    n: 5, title: "Trump & Federal Cuts", kicker: "Issue 05",
+    n: 5, slug: "federal", title: "Trump & Federal Cuts", kicker: "Issue 05",
     teaser: "Build state resilience to Trump's policies",
     thumb: "project/site/assets/trump_thumb.png",
     instagram: "https://www.instagram.com/reel/DXR86ohEd9f/",
@@ -63,7 +63,7 @@ const ISSUES = [
     ],
   },
   {
-    n: 6, title: "Climate", kicker: "Issue 06", climate: true,
+    n: 6, slug: "climate", title: "Climate", kicker: "Issue 06", climate: true,
     teaser: "Clean tech is invented here, and should be built here, too",
     instagram: "https://www.instagram.com/reel/DZNJVYJobww/",
     video: "https://www.instagram.com/reel/DZNJVYJobww/",
@@ -172,6 +172,13 @@ function IssueModal({ it, onClose }) {
 
 function IssuesList() {
   const [modalIt, setModalIt] = useStateI(null);
+  useEffect(() => {
+    const slug = window.location.hash.replace("#", "");
+    if (slug) {
+      const match = ISSUES.find((i) => i.slug === slug);
+      if (match) setModalIt(match);
+    }
+  }, []);
   return (
     <>
       <div className="acc">
