@@ -15,9 +15,9 @@ function InternshipHero() {
         <span className="kicker">Deadline: June 16</span>
         <h1>Summer Internship</h1>
         <p style={{ maxWidth: "52ch" }}>
-          We're looking for ambitious high school students to become part of the campaign. You'll
+          We're looking for college students and ambitious high schoolers to become part of the campaign. You'll
           register voters, help canvassers move faster, and get our message out to the district.
-          By the end, you'll know more about how elections work than most adults do.
+          By the end, you'll know more about how elections work than most voters do.
         </p>
         <Button variant="orange" href={APPLY_URL} target="_blank" arrow arrowColor="#003DA5"
           style={{ fontSize: 22, padding: "14px 32px", marginTop: 8 }}
@@ -100,7 +100,7 @@ function WhatYouGet() {
       <h2 className="intern-section-head">What you get</h2>
       <ul className="intern-list">
         <li><InternDot /><span>A <strong>letter of recommendation</strong> at the end of the summer</span></li>
-        <li><InternDot /><span><strong>Mentorship</strong> from campaign staff, including graduates of Harvard Law and ex-Googlers.</span></li>
+        <li><InternDot /><span><strong>Mentorship</strong> from campaign staff, including graduates of Harvard and Yale and ex-Googlers.</span></li>
       </ul>
     </div>
   );
