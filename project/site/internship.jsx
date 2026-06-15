@@ -12,7 +12,7 @@ function InternshipHero() {
   return (
     <section className="page-hero motif-bg intern-hero">
       <Reveal style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 20 }}>
-        <span className="kicker">Deadline: June 16</span>
+        <span className="kicker">Deadline: June 19</span>
         <h1>Summer Internship</h1>
         <p style={{ maxWidth: "52ch" }}>
           We're looking for college students and ambitious high schoolers to become part of the campaign. You'll
@@ -110,8 +110,8 @@ function InternshipApply() {
   return (
     <section className="fcta motif-bg">
       <Reveal style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 22 }}>
-        <h2>Apply by June 16</h2>
-        <p>Parents, if you have questions, you can email <a href="mailto:niki@voteburhan.com" style={{ color: "inherit", textDecoration: "underline" }}>niki@voteburhan.com</a></p>
+        <h2>Apply by June 19</h2>
+        <p>If you have questions, you can email <a href="mailto:niki@voteburhan.com" style={{ color: "inherit", textDecoration: "underline" }}>niki@voteburhan.com</a></p>
         <Button variant="orange" href={APPLY_URL} target="_blank" arrow arrowColor="#003DA5"
           style={{ fontSize: 22, padding: "14px 32px" }}
           onClick={() => window.plausible && window.plausible('Internship Apply')}>

@@ -29,12 +29,12 @@ function VolAside() {
   );
 }
 
-function Field({ label, opt, value, onChange, type = "text", placeholder, err, name }) {
+function Field({ label, opt, value, onChange, type = "text", placeholder, err, name, autoComplete }) {
   return (
     <label className={`field${err ? " err" : ""}`}>
       <span>{label}{opt && <span className="opt"> · optional</span>}</span>
       <input type={type} value={value} onChange={onChange} placeholder={placeholder} name={name}
-             aria-invalid={!!err} />
+             autoComplete={autoComplete} aria-invalid={!!err} />
       {err && <span className="errmsg">{err}</span>}
     </label>
   );
@@ -112,13 +112,13 @@ function VolForm() {
     <form className="vform" onSubmit={submit} noValidate>
       <h3 className="vform-h">Sign up to help</h3>
       <div className="frow">
-        <Field label="First name" value={f.first} onChange={set("first")} placeholder="Jane" err={errs.first} />
-        <Field label="Last name" value={f.last} onChange={set("last")} placeholder="Rivera" err={errs.last} />
+        <Field label="First name" value={f.first} onChange={set("first")} placeholder="Jane" err={errs.first} name="given-name" autoComplete="given-name" />
+        <Field label="Last name" value={f.last} onChange={set("last")} placeholder="Rivera" err={errs.last} name="family-name" autoComplete="family-name" />
       </div>
-      <Field label="Email" type="email" value={f.email} onChange={set("email")} placeholder="jane@email.com" err={errs.email} />
+      <Field label="Email" type="email" value={f.email} onChange={set("email")} placeholder="jane@email.com" err={errs.email} name="email" autoComplete="email" />
       <div className="frow">
-        <Field label="Phone" opt value={f.phone} onChange={set("phone")} placeholder="(617) 555-0148" />
-        <Field label="ZIP code" value={f.zip} onChange={set("zip")} placeholder="02143" err={errs.zip} />
+        <Field label="Phone" opt value={f.phone} onChange={set("phone")} placeholder="(617) 555-0148" name="tel" autoComplete="tel" />
+        <Field label="ZIP code" value={f.zip} onChange={set("zip")} placeholder="02143" err={errs.zip} name="postal-code" autoComplete="postal-code" />
       </div>
       <div className="field" style={{ marginBottom: 4 }}>
         <span>How do you want to help?</span>
