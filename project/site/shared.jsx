@@ -4,7 +4,7 @@
 // ============================================================
 const { useState, useEffect, useRef } = React;
 
-const ACTBLUE = "https://secure.actblue.com/donate/burhan2026";
+const ACTBLUE = "https://secure.actblue.com/donate/burhanwebsite";
 const trackDonate = () => {
   const page = window.location.pathname.split('/').pop().replace('.html', '') || 'home';
   window.plausible && window.plausible('Donate Click', { props: { page } });
