@@ -59,7 +59,7 @@ function BoxedHeader({ eyebrow, children, eyebrowClass = "", onOrange, style }) 
 // ---- logo ----
 function Logo() {
   return (
-    <a className="logo" href="index.html">
+    <a className="logo" href="/index.html">
       <span className="word">BURHAN</span>
       <span className="tag">2ND MIDDLESEX · STATE SENATE</span>
     </a>
@@ -71,9 +71,9 @@ function SiteHeader({ active }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const hdrRef = useRef(null);
   const links = [
-    { label: "Meet Burhan", href: "receipts.html" },
-    { label: "Issues", href: "issues.html" },
-    { label: "Volunteer", href: "volunteer.html" },
+    { label: "Meet Burhan", href: "/receipts.html" },
+    { label: "Issues", href: "/issues.html" },
+    { label: "Volunteer", href: "/volunteer.html" },
   ];
 
   useEffect(() => {
@@ -127,14 +127,14 @@ function SiteFooter({ headline = "More is possible", sub }) {
           <h2>{headline}</h2>
           {sub && <p>{sub}</p>}
           <div className="fbtns">
-            <Button variant="orange" href="volunteer.html" arrow arrowColor="#003DA5">Volunteer</Button>
+            <Button variant="orange" href="/volunteer.html" arrow arrowColor="#003DA5">Volunteer</Button>
             <Button variant="red" href={ACTBLUE} target="_blank" arrow arrowColor="#fff" onClick={trackDonate}>Donate</Button>
           </div>
         </Reveal>
       </section>
       <div className="fcopy">
         <span>© 2026 Committee to Elect Burhan Azeem</span>
-        <a href="contact.html">Contact Us</a>
+        <a href="/contact.html">Contact Us</a>
       </div>
     </>
   );
