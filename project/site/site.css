@@ -121,7 +121,7 @@ a { color: inherit; }
 .fcta p { font-family: var(--font-body); font-size: 20px; color: #fff; max-width: 60ch; margin: 0; opacity: .95; white-space: pre-line; }
 .fcta .fbtns { display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 16px; justify-content: center; }
 .fcta .fbtns .btn { justify-content: center; }
-.fcopy { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 40px; background: #00256a; color: rgba(255,255,255,.78); font-size: 14px; flex-wrap: wrap; }
+.fcopy { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px calc((100vw - 100%) / 2 + 40px); margin-left: calc((100% - 100vw) / 2); margin-right: calc((100% - 100vw) / 2); background: #00256a; color: rgba(255,255,255,.78); font-size: 14px; flex-wrap: wrap; }
 .fcopy a { color: #fff; text-decoration: none; }
 .fcopy a:hover { text-decoration: underline; }
 
