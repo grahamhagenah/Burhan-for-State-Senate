@@ -71,9 +71,9 @@ function SiteHeader({ active }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const hdrRef = useRef(null);
   const links = [
-    { label: "Meet Burhan", href: "/receipts.html" },
-    { label: "Issues", href: "/issues.html" },
-    { label: "Volunteer", href: "/volunteer.html" },
+    { label: "Meet Burhan", href: "/receipts" },
+    { label: "Issues", href: "/issues" },
+    { label: "Volunteer", href: "/volunteer" },
   ];
 
   useEffect(() => {
