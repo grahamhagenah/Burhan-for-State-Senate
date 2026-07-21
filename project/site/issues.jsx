@@ -8,7 +8,7 @@ const ISSUES = [
   {
     n: 1, slug: "housing", title: "Housing", kicker: "Issue 01",
     teaser: "Allow neighborhoods to build the housing they want and need",
-    thumb: "project/site/assets/tripledecker_thumb.png",
+    thumb: "/project/site/assets/tripledecker_thumb.png",
     instagram: "https://www.instagram.com/reel/DZFl2SGoJQg/",
     video: "https://www.instagram.com/reel/DZFl2SGoJQg/",
     body: [
@@ -19,7 +19,7 @@ const ISSUES = [
   {
     n: 2, slug: "transit", title: "Transit", kicker: "Issue 02",
     teaser: "Extend the T and fix the reason it keeps breaking",
-    thumb: "project/site/assets/station_thumb.png",
+    thumb: "/project/site/assets/station_thumb.png",
     instagram: "https://www.instagram.com/reel/DXHveu6Ebon/",
     video: "https://www.instagram.com/reel/DXHveu6Ebon/",
     body: [
@@ -30,7 +30,7 @@ const ISSUES = [
   {
     n: 3, slug: "statehouse", title: "The State House", kicker: "Issue 03",
     teaser: "Restructure Beacon Hill so it's actually productive",
-    thumb: "project/site/assets/statehouse_thumb.png",
+    thumb: "/project/site/assets/statehouse_thumb.png",
     instagram: "https://www.instagram.com/reel/DXKitzFiETD/",
     video: "https://www.instagram.com/reel/DXKitzFiETD/",
     body: [
@@ -43,7 +43,7 @@ const ISSUES = [
   {
     n: 4, slug: "affordability", title: "Affordability", kicker: "Issue 04",
     teaser: "Ensure families can stay in our district",
-    thumb: "project/site/assets/childcare_thumb.png",
+    thumb: "/project/site/assets/childcare_thumb.png",
     instagram: "https://www.instagram.com/reel/DYmoI_hIX60/",
     video: "https://www.youtube.com/watch?v=C2SwXPgurkU",
     body: [
@@ -54,7 +54,7 @@ const ISSUES = [
   {
     n: 5, slug: "federal", title: "Trump & Federal Cuts", kicker: "Issue 05",
     teaser: "Build state resilience to Trump's policies",
-    thumb: "project/site/assets/trump_thumb.png",
+    thumb: "/project/site/assets/trump_thumb.png",
     instagram: "https://www.instagram.com/reel/DXR86ohEd9f/",
     video: "https://www.instagram.com/reel/DXR86ohEd9f/",
     body: [
