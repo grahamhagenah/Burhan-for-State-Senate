@@ -135,7 +135,7 @@ function VolForm() {
       <Button variant="orange" type="submit" className="vsubmit" arrow arrowColor="#003DA5" disabled={submitting}>
         {submitting ? "Sending…" : "Count me in"}
       </Button>
-      <p style={{ fontSize: 11, lineHeight: 1.5, color: "var(--blue)", opacity: .55, margin: "14px 0 0" }}>By submitting your cell phone number, you consent to receive periodic updates from The Azeem Campaign, including by automated text message. Messages include donation asks. Messaging frequency varies and Msg &amp; Data rates may apply. Text HELP for help, STOP to end. <a href="tos.html" style={{ color: "inherit" }}>Terms</a> &amp; <a href="privacy.html" style={{ color: "inherit" }}>Privacy policy</a>.</p>
+      <p style={{ fontSize: 11, lineHeight: 1.5, color: "var(--blue)", opacity: .55, margin: "14px 0 0" }}>By submitting your cell phone number, you consent to receive periodic updates from The Azeem Campaign, including by automated text message. Messages include donation asks. Messaging frequency varies and Msg &amp; Data rates may apply. Text HELP for help, STOP to end. <a href="/tos" style={{ color: "inherit" }}>Terms</a> &amp; <a href="/privacy" style={{ color: "inherit" }}>Privacy policy</a>.</p>
     </form>
   );
 }
