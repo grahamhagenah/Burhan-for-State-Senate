@@ -16,7 +16,7 @@ function VolAside() {
   ];
   return (
     <div className="vol-aside">
-      <div className="vol-portrait" style={{ backgroundImage: "url(project/site/assets/burhan-portrait-cutout.png)", backgroundColor: "#215BBE", backgroundPosition: "center -10px", backgroundSize: "auto 320px", backgroundRepeat: "no-repeat" }} />
+      <div className="vol-portrait" style={{ backgroundImage: "url(/project/site/assets/burhan-portrait-cutout.png)", backgroundColor: "#215BBE", backgroundPosition: "center -10px", backgroundSize: "auto 320px", backgroundRepeat: "no-repeat" }} />
       <div className="vbox">
         <h2 className="vbig">It takes all of us</h2>
         <ul className="vlist">

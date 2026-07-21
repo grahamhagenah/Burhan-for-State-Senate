@@ -77,7 +77,7 @@ const ISSUES = [
 // collapsed thumbnail (video or climate still)
 function IssueThumb({ it }) {
   if (it.climate) {
-    return <div className="athumb" style={{ backgroundImage: "url(project/site/assets/climate_thumb.png)", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }} />;
+    return <div className="athumb" style={{ backgroundImage: "url(/project/site/assets/climate_thumb.png)", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }} />;
   }
   return <div className="athumb" style={it.thumb ? { backgroundImage: `url(${it.thumb})` } : undefined} />;
 }
@@ -115,7 +115,7 @@ function IssueBodyContent({ it, modal }) {
         {it.instagram ? (
           <InstagramEmbed url={it.instagram} />
         ) : it.climate ? (
-          <div className="abody-video" style={{ backgroundImage: "url(project/site/assets/climate_thumb.png)", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat", boxShadow: "10px 10px 0 0 var(--red)" }} />
+          <div className="abody-video" style={{ backgroundImage: "url(/project/site/assets/climate_thumb.png)", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat", boxShadow: "10px 10px 0 0 var(--red)" }} />
         ) : (
           <VideoThumb className="abody-video" label="Watch the clip" style={modal ? { aspectRatio: "9/14" } : null} />
         )}

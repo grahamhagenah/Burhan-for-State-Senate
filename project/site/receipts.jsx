@@ -38,7 +38,7 @@ function Timeline({ orientation }) {
   );
   const photo = (
     <div className="tl-image">
-      <img src="project/site/Burhan_Youngest_Councilor.png" alt="Burhan being sworn in as the youngest-ever City Councilor in Cambridge history" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+      <img src="/project/site/Burhan_Youngest_Councilor.png" alt="Burhan being sworn in as the youngest-ever City Councilor in Cambridge history" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
     </div>
   );
   return (
