@@ -1,6 +1,6 @@
 // ============================================================
 // ISSUES PAGE — "What Burhan will deliver"
-// 6 issue cards; clicking opens a modal.
+// 7 issue cards; clicking opens a modal (or links out, if the issue has its own page).
 // ============================================================
 const { useState: useStateI } = React;
 
@@ -52,7 +52,13 @@ const ISSUES = [
     ],
   },
   {
-    n: 5, slug: "federal", title: "Trump & Federal Cuts", kicker: "Issue 05",
+    n: 5, slug: "ai", title: "Artificial Intelligence", kicker: "Issue 05",
+    teaser: "Set real safety rules and ensure workers share the gains",
+    thumb: "/project/site/assets/AI_Plan_Thumbnail.png",
+    href: "/ArtificialIntelligence",
+  },
+  {
+    n: 6, slug: "federal", title: "Trump & Federal Cuts", kicker: "Issue 06",
     teaser: "Build state resilience to Trump's policies",
     thumb: "/project/site/assets/trump_thumb.png",
     instagram: "https://www.instagram.com/reel/DXR86ohEd9f/",
@@ -63,7 +69,7 @@ const ISSUES = [
     ],
   },
   {
-    n: 6, slug: "climate", title: "Climate", kicker: "Issue 06", climate: true,
+    n: 7, slug: "climate", title: "Climate", kicker: "Issue 07", climate: true,
     teaser: "Clean tech is invented here, and should be built here, too",
     instagram: "https://www.instagram.com/reel/DZNJVYJobww/",
     video: "https://www.instagram.com/reel/DZNJVYJobww/",
@@ -125,10 +131,11 @@ function IssueBodyContent({ it, modal }) {
 }
 
 function IssueCard({ it, onToggle }) {
+  const go = it.href ? () => { window.location.href = it.href; } : onToggle;
   return (
     <div className={`acard${it.climate ? " climate" : ""}`}>
-      <div className="ahead" onClick={onToggle} role="button" tabIndex={0}
-           onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onToggle(); } }}>
+      <div className="ahead" onClick={go} role="link" tabIndex={0}
+           onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } }}>
         <div className="amid">
           <h3 className="atitle">{it.title}</h3>
           <p className="ateaser">{it.teaser}</p>

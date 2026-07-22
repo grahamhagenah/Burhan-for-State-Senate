@@ -88,14 +88,14 @@ function AIStepOne() {
           <span className="ai-eyebrow">Step one</span>
           <h2 style={{ maxWidth: "none" }}>Match the Strongest Laws in America</h2>
           <div className="ai-body">
-            <p>California, New York, and Illinois have already passed the country's first AI safety laws. They require the largest AI companies to publish their safety plans, report serious incidents, and protect the employees who speak up when something looks dangerous, and Illinois now brings in outside auditors to make sure the work is actually being done. Massachusetts should, at the very least, hold ourselves to those same standards.</p>
+            <p><AILink href="https://www.gov.ca.gov/2025/09/29/governor-newsom-signs-sb-53-advancing-californias-world-leading-artificial-intelligence-industry/">California</AILink>, <AILink href="https://fpf.org/blog/frontier-ai-goes-federal-how-the-great-american-ai-act-compares-to-state-laws/">New York</AILink>, and <AILink href="https://www.transparencycoalition.ai/news/illinois-lawmakers-send-significant-ai-frontier-model-safety-bill-to-gov-pritzker">Illinois</AILink> have already passed the country's first AI safety laws. They require the largest AI companies to publish their safety plans, report serious incidents, and protect the employees who speak up when something looks dangerous, and Illinois now brings in outside auditors to make sure the work is actually being done. Massachusetts should, at the very least, hold ourselves to those same standards.</p>
             <p>And these things tend to spread: New York borrowed from California, Illinois built on both, and Congress is now using all three as the starting point for a <AILink href="https://www.techpolicy.press/unpacking-the-great-american-artificial-intelligence-act-of-2026/">national framework</AILink>. <AILink href="https://whav.net/2026/07/20/poll-voters-want-ai-regulated-finegold-says-senate-bill-does-the-job/">Beacon Hill is debating a version right now</AILink>, and on this one the public is out ahead of the politicians.</p>
           </div>
         </div>
         <div className="ai-stats">
           <div className="ai-stat">
             <span className="ai-stat-num">75%</span>
-            <span className="ai-stat-label">of Massachusetts voters support the bill (poll, July 2026)</span>
+            <span className="ai-stat-label">of Massachusetts voters support the bill <AILink href="https://www.massincpolling.com/our-work/massachusetts-voters-support-state-oversight-of-powerful-ai-models-to-mitigate-risks-of-catastrophic-impacts">(poll, July 2026)</AILink></span>
           </div>
           <div className="ai-stat">
             <span className="ai-stat-num">~70%</span>

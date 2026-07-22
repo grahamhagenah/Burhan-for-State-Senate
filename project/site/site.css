@@ -235,7 +235,7 @@ a { color: inherit; }
 .acard { border: 1px solid var(--blue); border-left: 7px solid var(--orange); background: #fff; transition: box-shadow .15s ease; }
 .acard:hover { box-shadow: 10px 10px 0 0 var(--orange); }
 .acard.open { box-shadow: 12px 12px 0 0 var(--orange); border-color: var(--orange); }
-.acard .ahead { display: grid; grid-template-columns: 1fr 360px; align-items: stretch; cursor: pointer; min-height: 208px; }
+.acard .ahead { display: grid; grid-template-columns: 1fr 360px; align-items: stretch; cursor: pointer; min-height: 208px; text-decoration: none; }
 .acard .amid { padding: 34px 42px; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
 .acard .atitle { font-family: var(--font-heading); font-weight: 700; font-size: 40px; line-height: 1.0; letter-spacing: .02em; color: var(--blue); text-transform: uppercase; margin: 0; }
 .acard .ateaser { font-family: var(--font-body); font-size: 19px; line-height: 1.4; color: var(--blue); margin: 0; max-width: 48ch; }
