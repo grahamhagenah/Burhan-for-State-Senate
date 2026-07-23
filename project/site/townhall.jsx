@@ -24,7 +24,7 @@ const COHOSTS = [
   { name: "Greg Magofña", title: "Co-Founder, East Bay for Everyone" },
   { name: "Will Poff-Webster", title: "Infrastructure Policy Director, Institute for Progress" },
   { name: "Dan Reed", title: "Maryland Policy Director, Greater Greater Washington" },
-  { name: "Marina Rubina", title: "Host, Who Killed the Starter Home?" },
+  { name: "Marina Rubina", title: "Architect and Host, Who Killed the Starter Home?" },
   { name: "Justin Saif", title: "President, A Better Cambridge" },
 ];
 
