@@ -124,6 +124,10 @@ a { color: inherit; }
 .fcopy { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px calc((100vw - 100%) / 2 + 40px); margin-left: calc((100% - 100vw) / 2); margin-right: calc((100% - 100vw) / 2); background: #00256a; color: rgba(255,255,255,.78); font-size: 14px; flex-wrap: wrap; }
 .fcopy a { color: #fff; text-decoration: none; }
 .fcopy a:hover { text-decoration: underline; }
+.fsocial { display: flex; align-items: center; gap: 16px; }
+.fsocial a { display: flex; color: rgba(255,255,255,.78); }
+.fsocial a:hover { color: #fff; }
+.fsocial svg { width: 18px; height: 18px; }
 
 /* ============================================================
    REVEAL ANIMATION
