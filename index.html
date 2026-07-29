@@ -73,6 +73,95 @@
 })();
 </script>
 
+<!-- EVENT BANNER: housing town hall, Tue Aug 4 2026, 7PM ET. Auto-hides after the event. -->
+<div class="evt-banner" id="evt-banner" hidden>
+  <div class="evt-banner-inner" id="evt-banner-inner">
+    <span class="eb-copy" id="evt-banner-copy"></span>
+    <a class="eb-cta" id="evt-banner-cta" href="/housing"></a>
+    <button class="eb-close" id="evt-banner-close" aria-label="Dismiss">✕</button>
+  </div>
+</div>
+<script>
+(function() {
+  var EVENT_START = new Date(2026, 7, 4);   // Tue Aug 4, 2026, local midnight
+  var EVENT_END   = new Date(2026, 7, 5);   // banner disappears once the day is over
+  var DISMISS_KEY = 'hbDismiss';
+
+  var banner = document.getElementById('evt-banner');
+  var inner = document.getElementById('evt-banner-inner');
+  var copyEl = document.getElementById('evt-banner-copy');
+  var ctaEl = document.getElementById('evt-banner-cta');
+  var closeBtn = document.getElementById('evt-banner-close');
+
+  function phase(now) {
+    if (now >= EVENT_END) return 'past';
+    if (now >= EVENT_START) return 'live';
+    if (EVENT_START - now <= 48 * 3600 * 1000) return 'soon';
+    return 'early';
+  }
+
+  function whenLabel(now) {
+    if (EVENT_START - now <= 24 * 3600 * 1000) return 'Tomorrow, 7PM ET';
+    return 'Tue Aug 4';
+  }
+
+  function isDismissed(currentPhase, now) {
+    var raw = window.localStorage.getItem(DISMISS_KEY);
+    if (!raw) return false;
+    try {
+      var stored = JSON.parse(raw);
+    } catch (e) { return false; }
+    if (currentPhase === 'early') return stored.phase === 'early';
+    if (currentPhase === 'soon') return stored.phase === 'soon' && stored.day === now.toDateString();
+    return false;
+  }
+
+  var now = new Date();
+  var currentPhase = phase(now);
+
+  if (currentPhase === 'past') {
+    banner.parentNode.removeChild(banner);
+  } else if (currentPhase !== 'live' && isDismissed(currentPhase, now)) {
+    // stays hidden — dismissed within this phase already
+  } else {
+    if (currentPhase === 'live') {
+      banner.classList.add('live');
+      copyEl.innerHTML = '<span class="eb-dot"></span><span class="eb-when">Live today</span> — More Housing Is Possible';
+      ctaEl.textContent = 'Watch';
+      closeBtn.style.display = 'none';
+    } else {
+      copyEl.innerHTML = '<span class="eb-when">' + whenLabel(now) + '</span> Burhan is hosting the National Town Hall on Housing';
+      ctaEl.textContent = 'Register';
+    }
+    banner.hidden = false;
+
+    inner.addEventListener('click', function(e) {
+      if (closeBtn.contains(e.target) || ctaEl.contains(e.target)) return;
+      window.plausible && window.plausible('Housing Banner Click', { props: { state: currentPhase } });
+      ctaEl.click();
+    });
+    ctaEl.addEventListener('click', function() {
+      window.plausible && window.plausible('Housing Banner Click', { props: { state: currentPhase } });
+    });
+
+    if (currentPhase !== 'live') {
+      closeBtn.addEventListener('click', function() {
+        window.localStorage.setItem(DISMISS_KEY, JSON.stringify({ phase: currentPhase, day: now.toDateString() }));
+        window.plausible && window.plausible('Housing Banner Dismiss', { props: { state: currentPhase } });
+        banner.style.maxHeight = banner.scrollHeight + 'px';
+        banner.getBoundingClientRect();
+        banner.classList.add('closing');
+        banner.addEventListener('transitionend', function onEnd(e) {
+          if (e.propertyName !== 'max-height') return;
+          banner.removeEventListener('transitionend', onEnd);
+          banner.hidden = true;
+        });
+      });
+    }
+  }
+})();
+</script>
+
 <!-- HERO -->
 <section class="home-hero motif-bg">
   <div class="hero-photo">

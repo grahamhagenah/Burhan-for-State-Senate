@@ -71,6 +71,24 @@ a { color: inherit; }
 .hdr.menu-open .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hdr.menu-open .hamburger span:nth-child(2) { opacity: 0; }
 .hdr.menu-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* EVENT BANNER — homepage promo bar for a time-bound event (e.g. the housing town hall) */
+.evt-banner { background: var(--orange); color: var(--blue-900); overflow: hidden; max-height: 200px; transition: max-height .22s ease, opacity .18s ease; }
+.evt-banner.closing { max-height: 0; opacity: 0; }
+.evt-banner.live { background: var(--red); color: #fff; }
+.evt-banner-inner { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 2px 54px; flex-wrap: wrap; text-align: center; position: relative; cursor: pointer; }
+.evt-banner-inner:hover { background: rgba(0,0,0,.05); }
+.evt-banner-inner:active { background: rgba(0,0,0,.09); }
+.evt-banner .eb-copy { font-family: var(--font-body); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.evt-banner .eb-dot { width: 7px; height: 7px; border-radius: 50%; background: #fff; display: inline-block; animation: eb-pulse 1.6s infinite; flex: none; }
+@media (prefers-reduced-motion: reduce) { .evt-banner .eb-dot { animation: none; } }
+@keyframes eb-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+.evt-banner .eb-when { font-family: var(--font-heading); text-transform: uppercase; letter-spacing: .04em; font-weight: 700; }
+.evt-banner .eb-cta { font-family: var(--font-heading); font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; background: var(--blue-900); color: #fff; padding: 5px 12px; text-decoration: none; white-space: nowrap; }
+.evt-banner.live .eb-cta { background: #fff; color: var(--red); }
+.evt-banner .eb-close { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); background: none; border: none; color: inherit; opacity: .6; cursor: pointer; font-size: 18px; line-height: 1; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+.evt-banner .eb-close:hover { opacity: 1; }
+.evt-banner[hidden] { display: none; }
 .mobile-menu { display: none; position: fixed; top: 78px; left: 0; right: 0; background: #003DA5; z-index: 49; padding: 20px 20px 28px; flex-direction: column; gap: 0; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
 .mobile-menu.open { display: flex; }
 .mobile-menu a { font-family: var(--font-heading); font-weight: 400; font-size: 18px; letter-spacing: .03em; text-transform: uppercase; color: #fff; text-decoration: none; opacity: .9; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.15); }
@@ -609,6 +627,9 @@ a { color: inherit; }
   .qbar .qrule { display: none; }
 }
 @media (max-width: 600px) {
+  .evt-banner-inner { padding: 6px 46px; gap: 8px; }
+  .evt-banner .eb-copy { font-size: 12.5px; }
+  .evt-banner .eb-close { right: 2px; width: 40px; height: 40px; }
   .home-hero h1 { font-size: 48px; }
   .page-hero h1 { font-size: 36px; }
   .page-hero.vol-hero h1 { white-space: normal; }
