@@ -27,30 +27,186 @@
 </script>
 </head>
 <body>
-<div id="root"></div>
+<div class="site">
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-
-<script type="text/babel" src="/project/site/shared.jsx"></script>
-<script type="text/babel" src="/project/site/townhall.jsx"></script>
-
-<script type="text/babel">
-function TownhallApp() {
-  return (
-    <div className="site">
-      <SiteHeader />
-      <TownhallPage />
-      <div className="fcopy">
-        <span>© 2026 Committee to Elect Burhan Azeem</span>
-        <SocialLinks />
-        <a href="/contact">Contact Us</a>
-      </div>
+<header class="hdr" id="site-hdr">
+  <a class="logo" href="/">
+    <span class="word">BURHAN</span>
+    <span class="tag">2ND MIDDLESEX · STATE SENATE</span>
+  </a>
+  <nav>
+    <div class="navlinks">
+      <a href="/receipts">Meet Burhan</a>
+      <a href="/issues">Issues</a>
+      <a href="/volunteer">Volunteer</a>
     </div>
-  );
-}
-ReactDOM.createRoot(document.getElementById("root")).render(<TownhallApp />);
+    <a class="btn btn-orange" href="https://secure.actblue.com/donate/burhanwebsite" target="_blank" rel="noopener noreferrer" onclick="plausible('Donate Click', {props:{page:'housing'}})">Donate</a>
+    <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+  <a href="/receipts">Meet Burhan</a>
+  <a href="/issues">Issues</a>
+  <a href="/volunteer">Volunteer</a>
+  <a class="btn btn-orange" href="https://secure.actblue.com/donate/burhanwebsite" target="_blank" rel="noopener noreferrer" onclick="plausible('Donate Click', {props:{page:'housing'}})">Donate</a>
+</div>
+<script>
+(function() {
+  var btn = document.getElementById('hamburger-btn');
+  var menu = document.getElementById('mobile-menu');
+  var hdr = document.getElementById('site-hdr');
+  btn.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    hdr.classList.toggle('menu-open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', function(e) {
+    if (!hdr.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      hdr.classList.remove('menu-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
 </script>
+
+<!-- HERO -->
+<section class="th-hero">
+  <div class="reveal th-hero-grid">
+    <h1 class="th-headline">More <span class="th-bracket">[</span>Housing<span class="th-bracket">]</span> Is Possible</h1>
+    <p class="th-when">Tuesday, August 4 · 7PM ET / 4PM PT · Livestream</p>
+    <p class="th-sub">Join Vice Mayor Burhan Azeem and the people behind the Montana Miracle, California&rsquo;s SB79, and the ROAD to Housing Act to discuss recent wins, the path forward, and what's next for the housing movement.</p>
+    <div class="th-cta" id="th-cta">
+      <a class="btn btn-orange" href="https://www.mobilize.us/burhanforstatesenate/event/992771/" target="_blank" rel="noopener noreferrer" id="th-register-btn"
+         onclick="plausible('Townhall Register Click')">
+        Register on Mobilize
+        <svg class="ar" viewBox="0 0 16 16" fill="#003DA5" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+      </a>
+      <p class="th-micro" id="th-cta-note">Registered? Come back here on Aug 4 to watch live.</p>
+    </div>
+    <div class="th-flyer">
+      <picture>
+        <source media="(max-width: 640px)" srcset="/project/site/assets/townhall-poster-aug4.png">
+        <img src="/project/site/assets/townhall-poster-aug4.png" alt="More [Housing] Is Possible — A National Town Hall, Tuesday August 4, 7PM ET">
+      </picture>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT TO EXPECT -->
+<section class="th-expect">
+  <div class="reveal th-expect-inner">
+    <span class="eyebrow-label">What to expect</span>
+    <p>Speakers will dig into the policy that's moving the needle, the campaigns and organizing that got us here, and how local leadership can turn big ideas into more homes.</p>
+    <p>Expect sharp takes, lively panels, and the collective brainpower of the country's most effective housing advocates in one room.</p>
+  </div>
+</section>
+
+<!-- CO-HOSTS -->
+<section class="th-cohost">
+  <div class="reveal th-cohost-inner">
+    <h2>Co-hosted by organizers, policymakers, and advocates from across the country</h2>
+    <ul class="th-cohost-grid">
+      <li><span class="th-cohost-name">Jonathan Berk</span><span class="th-cohost-title">Founder, re:MAIN</span></li>
+      <li><span class="th-cohost-name">Chelsea Byers</span><span class="th-cohost-title">Councilmember &amp; Fmr. Mayor, West Hollywood</span></li>
+      <li><span class="th-cohost-name">Matt Darling</span><span class="th-cohost-title">Policy Fellow, Searchlight Institute</span></li>
+      <li><span class="th-cohost-name">Sam Deutsch</span><span class="th-cohost-title">Better Cities</span></li>
+      <li><span class="th-cohost-name">Armand Domalewski</span><span class="th-cohost-title">Co-Founder, YIMBY Democrats</span></li>
+      <li><span class="th-cohost-name">Gaelle Esposito</span><span class="th-cohost-title">President, Welcoming Neighbors Network</span></li>
+      <li><span class="th-cohost-name">Laura Foote</span><span class="th-cohost-title">Executive Director, YIMBY Action</span></li>
+      <li><span class="th-cohost-name">M. Nolan Gray</span><span class="th-cohost-title">Author, Arbitrary Lines &middot; California YIMBY</span></li>
+      <li><span class="th-cohost-name">Brian Hanlon</span><span class="th-cohost-title">Co-Founder &amp; CEO, California YIMBY</span></li>
+      <li><span class="th-cohost-name">Jesse Kanson-Benanav</span><span class="th-cohost-title">Executive Director, Abundant Housing MA</span></li>
+      <li><span class="th-cohost-name">Amanda Litman</span><span class="th-cohost-title">Co-Founder &amp; President, Run for Something</span></li>
+      <li><span class="th-cohost-name">Greg Magofña</span><span class="th-cohost-title">Co-Founder, East Bay for Everyone</span></li>
+      <li><span class="th-cohost-name">Will Poff-Webster</span><span class="th-cohost-title">Infrastructure Policy Director, Institute for Progress</span></li>
+      <li><span class="th-cohost-name">Dan Reed</span><span class="th-cohost-title">Maryland Policy Director, Greater Greater Washington</span></li>
+      <li><span class="th-cohost-name">Marina Rubina</span><span class="th-cohost-title">Architect and Host, Who Killed the Starter Home?</span></li>
+      <li><span class="th-cohost-name">Justin Saif</span><span class="th-cohost-title">President, A Better Cambridge</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- REGISTER CTA (shown before Aug 4) -->
+<section class="th-repeat" id="th-repeat-section">
+  <div class="reveal">
+    <a class="btn btn-orange" href="https://www.mobilize.us/burhanforstatesenate/event/992771/" target="_blank" rel="noopener noreferrer"
+       onclick="plausible('Townhall Register Click')">
+      Register on Mobilize
+      <svg class="ar" viewBox="0 0 16 16" fill="#003DA5" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- LIVESTREAM (shown on/after Aug 4, hidden until then) -->
+<section class="th-body" id="watch" style="display:none">
+  <div class="reveal th-video">
+    <iframe id="th-livestream-frame" src="" title="The YIMBY Agenda: A National Housing Town Hall"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</section>
+
+<div class="fcopy">
+  <span>&copy; 2026 Committee to Elect Burhan Azeem</span>
+  <div class="fsocial">
+    <a href="https://www.instagram.com/cllr.burhan.azeem" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="https://x.com/realBurhanAzeem" target="_blank" rel="noopener noreferrer" aria-label="X">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://bsky.app/profile/burhanazeem.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.81 9.498 7.823 4.308 4.267-4.308 1.172-6.498-2.74-7.078 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.479 0-.688-.139-1.861-.902-2.203-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
+    </a>
+    <a href="https://www.youtube.com/@BurhanAzeemMA" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 12s0-3.4-.4-5a3 3 0 0 0-2.1-2.1C18.9 4.4 12 4.4 12 4.4s-6.9 0-8.5.5A3 3 0 0 0 1.4 7 31 31 0 0 0 1 12s0 3.4.4 5A3 3 0 0 0 3.5 19c1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5a3 3 0 0 0 2.1-2.1c.4-1.6.4-5 .4-5ZM9.8 15.5v-7l6 3.5Z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@vicemayor_azeem" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 2h-3.2v13.6a3 3 0 1 1-2.6-3v-3.3a6.3 6.3 0 1 0 5.8 6.3V8.8a7.6 7.6 0 0 0 4.5 1.5V7a4.4 4.4 0 0 1-4.5-4.4V2Z"/></svg>
+    </a>
+  </div>
+  <a href="/contact">Contact Us</a>
+</div>
+
+</div>
+
+<script>
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < (window.innerHeight || 800) * 0.94) el.classList.add('in');
+      else io.observe(el);
+    });
+  } else {
+    els.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  // Swap in real video ID once the stream is live.
+  var YOUTUBE_ID = "";
+
+  function isEventDay() {
+    return new Date() >= new Date(2026, 7, 4);
+  }
+
+  if (isEventDay()) {
+    document.getElementById('th-cta').innerHTML =
+      '<p class="th-micro th-live-note">We’re live — scroll down to <a href="#watch">watch now</a>.</p>';
+    document.getElementById('th-repeat-section').style.display = 'none';
+    var watch = document.getElementById('watch');
+    watch.style.display = '';
+    document.getElementById('th-livestream-frame').src = 'https://www.youtube.com/embed/' + YOUTUBE_ID;
+  }
+})();
+</script>
+
 </body>
 </html>

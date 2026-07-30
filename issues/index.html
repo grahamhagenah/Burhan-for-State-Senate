@@ -26,37 +26,405 @@
 </script>
 </head>
 <body>
-<div id="root"></div>
+<div class="site">
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-
-<script type="text/babel" src="/project/site/shared.jsx"></script>
-<script type="text/babel" src="/project/site/issues.jsx"></script>
-
-<script type="text/babel">
-function IssuesApp() {
-  return (
-    <div className="site">
-      <SiteHeader active="Issues" />
-
-      <section className="page-hero motif-bg issues-hero">
-        <Reveal>
-          <div className="issues-hero-text">
-            <span className="kicker">The plan</span>
-            <h1>What Burhan will deliver</h1>
-            <p>Burhan is running to make Massachusetts affordable. He knows it's possible because he's already started.</p>
-          </div>
-          <IssuesList />
-        </Reveal>
-      </section>
-
-      <SiteFooter headline="More is possible" sub={"These aren't just promises. They are plans Burhan has already started delivering. \nHelp finish the job."} />
+<header class="hdr" id="site-hdr">
+  <a class="logo" href="/">
+    <span class="word">BURHAN</span>
+    <span class="tag">2ND MIDDLESEX · STATE SENATE</span>
+  </a>
+  <nav>
+    <div class="navlinks">
+      <a href="/receipts">Meet Burhan</a>
+      <a href="/issues" class="active">Issues</a>
+      <a href="/volunteer">Volunteer</a>
     </div>
-  );
-}
-ReactDOM.createRoot(document.getElementById("root")).render(<IssuesApp />);
+    <a class="btn btn-orange" href="https://secure.actblue.com/donate/burhanwebsite" target="_blank" rel="noopener noreferrer" onclick="plausible('Donate Click', {props:{page:'issues'}})">Donate</a>
+    <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+  <a href="/receipts">Meet Burhan</a>
+  <a href="/issues" class="active">Issues</a>
+  <a href="/volunteer">Volunteer</a>
+  <a class="btn btn-orange" href="https://secure.actblue.com/donate/burhanwebsite" target="_blank" rel="noopener noreferrer" onclick="plausible('Donate Click', {props:{page:'issues'}})">Donate</a>
+</div>
+<script>
+(function() {
+  var btn = document.getElementById('hamburger-btn');
+  var menu = document.getElementById('mobile-menu');
+  var hdr = document.getElementById('site-hdr');
+  btn.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    hdr.classList.toggle('menu-open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', function(e) {
+    if (!hdr.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      hdr.classList.remove('menu-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
 </script>
+
+<!-- HERO -->
+<section class="page-hero motif-bg issues-hero">
+  <div class="reveal issues-hero-text">
+    <span class="kicker">The plan</span>
+    <h1>What Burhan will deliver</h1>
+    <p>Burhan is running to make Massachusetts affordable. He knows it's possible because he's already started.</p>
+  </div>
+
+  <!-- ISSUES LIST -->
+  <div class="reveal acc">
+
+    <div class="acard">
+      <a class="ahead" href="#housing" data-slug="housing">
+        <div class="amid">
+          <h3 class="atitle">Housing</h3>
+          <p class="ateaser">Allow neighborhoods to build the housing they want and need</p>
+          <span class="atoggle">
+            See the Plan
+            <svg class="ar" viewBox="0 0 16 16" fill="#FF9600" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+          </span>
+        </div>
+        <div class="athumb" style="background-image:url(/project/site/assets/tripledecker_thumb.png)"></div>
+      </a>
+    </div>
+
+    <div class="acard">
+      <a class="ahead" href="#transit" data-slug="transit">
+        <div class="amid">
+          <h3 class="atitle">Transit</h3>
+          <p class="ateaser">Extend the T and fix the reason it keeps breaking</p>
+          <span class="atoggle">
+            See the Plan
+            <svg class="ar" viewBox="0 0 16 16" fill="#FF9600" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+          </span>
+        </div>
+        <div class="athumb" style="background-image:url(/project/site/assets/station_thumb.png)"></div>
+      </a>
+    </div>
+
+    <div class="acard">
+      <a class="ahead" href="#statehouse" data-slug="statehouse">
+        <div class="amid">
+          <h3 class="atitle">The State House</h3>
+          <p class="ateaser">Restructure Beacon Hill so it's actually productive</p>
+          <span class="atoggle">
+            See the Plan
+            <svg class="ar" viewBox="0 0 16 16" fill="#FF9600" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+          </span>
+        </div>
+        <div class="athumb" style="background-image:url(/project/site/assets/statehouse_thumb.png)"></div>
+      </a>
+    </div>
+
+    <div class="acard">
+      <a class="ahead" href="#affordability" data-slug="affordability">
+        <div class="amid">
+          <h3 class="atitle">Affordability</h3>
+          <p class="ateaser">Ensure families can stay in our district</p>
+          <span class="atoggle">
+            See the Plan
+            <svg class="ar" viewBox="0 0 16 16" fill="#FF9600" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+          </span>
+        </div>
+        <div class="athumb" style="background-image:url(/project/site/assets/childcare_thumb.png)"></div>
+      </a>
+    </div>
+
+    <div class="acard">
+      <a class="ahead" href="/ArtificialIntelligence">
+        <div class="amid">
+          <h3 class="atitle">Artificial Intelligence</h3>
+          <p class="ateaser">Set real safety rules and ensure workers share the gains</p>
+          <span class="atoggle">
+            See the Plan
+            <svg class="ar" viewBox="0 0 16 16" fill="#FF9600" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+          </span>
+        </div>
+        <div class="athumb" style="background-image:url(/project/site/assets/AI_Plan_Thumbnail.png)"></div>
+      </a>
+    </div>
+
+    <div class="acard">
+      <a class="ahead" href="#federal" data-slug="federal">
+        <div class="amid">
+          <h3 class="atitle">Trump &amp; Federal Cuts</h3>
+          <p class="ateaser">Build state resilience to Trump's policies</p>
+          <span class="atoggle">
+            See the Plan
+            <svg class="ar" viewBox="0 0 16 16" fill="#FF9600" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+          </span>
+        </div>
+        <div class="athumb" style="background-image:url(/project/site/assets/trump_thumb.png)"></div>
+      </a>
+    </div>
+
+    <div class="acard climate">
+      <a class="ahead" href="#climate" data-slug="climate">
+        <div class="amid">
+          <h3 class="atitle">Climate</h3>
+          <p class="ateaser">Clean tech is invented here, and should be built here, too</p>
+          <span class="atoggle">
+            See the Plan
+            <svg class="ar" viewBox="0 0 16 16" fill="#FF9600" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+          </span>
+        </div>
+        <div class="athumb"></div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section class="fcta motif-bg">
+  <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:22px">
+    <h2>More is possible</h2>
+    <p>These aren't just promises. They are plans Burhan has already started delivering.
+Help finish the job.</p>
+    <div class="fbtns">
+      <a class="btn btn-orange" href="/volunteer">Volunteer
+        <svg class="ar" viewBox="0 0 16 16" fill="#003DA5" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+      </a>
+      <a class="btn btn-red" href="https://secure.actblue.com/donate/burhanwebsite" target="_blank" rel="noopener noreferrer" onclick="plausible('Donate Click', {props:{page:'issues'}})">Donate
+        <svg class="ar" viewBox="0 0 16 16" fill="#fff" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+<div class="fcopy">
+  <span>&copy; 2026 Committee to Elect Burhan Azeem</span>
+  <div class="fsocial">
+    <a href="https://www.instagram.com/cllr.burhan.azeem" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="https://x.com/realBurhanAzeem" target="_blank" rel="noopener noreferrer" aria-label="X">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://bsky.app/profile/burhanazeem.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.81 9.498 7.823 4.308 4.267-4.308 1.172-6.498-2.74-7.078 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.479 0-.688-.139-1.861-.902-2.203-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
+    </a>
+    <a href="https://www.youtube.com/@BurhanAzeemMA" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 12s0-3.4-.4-5a3 3 0 0 0-2.1-2.1C18.9 4.4 12 4.4 12 4.4s-6.9 0-8.5.5A3 3 0 0 0 1.4 7 31 31 0 0 0 1 12s0 3.4.4 5A3 3 0 0 0 3.5 19c1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5a3 3 0 0 0 2.1-2.1c.4-1.6.4-5 .4-5ZM9.8 15.5v-7l6 3.5Z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@vicemayor_azeem" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 2h-3.2v13.6a3 3 0 1 1-2.6-3v-3.3a6.3 6.3 0 1 0 5.8 6.3V8.8a7.6 7.6 0 0 0 4.5 1.5V7a4.4 4.4 0 0 1-4.5-4.4V2Z"/></svg>
+    </a>
+  </div>
+  <a href="/contact">Contact Us</a>
+</div>
+
+</div>
+
+<!-- ISSUE MODALS (full text present in the page for search engines/AI crawlers; JS just toggles visibility) -->
+
+<div class="imodal-scrim" id="modal-housing" data-slug="housing" style="display:none">
+  <div class="imodal" role="dialog" aria-modal="true" aria-label="Housing">
+    <button class="imodal-close" aria-label="Close">&times;</button>
+    <div class="imodal-head">
+      <span class="imodal-eyebrow">The plan</span>
+      <h3 class="atitle">Housing</h3>
+    </div>
+    <div class="imodal-body">
+      <div class="atext">
+        <p>Massachusetts has a housing crisis because one hundred years ago, the state began making it illegal to build affordable housing. Burhan knows how to undo those laws and unlock new housing. In Cambridge, he passed the Affordable Housing Overlay and re-legalized triple-deckers and starter homes. As state senator, he'll roll out that model statewide.</p>
+        <p>He'll also make sure the whole state does their part. Right now, communities like Cambridge and Somerville are building, while the state has to sue other towns just to allow any multifamily housing at all. Burhan will push for a housing-by-right law near transit — modeled after California's SB79 — to override local zoning and allow taller, denser housing within a half-mile of transit stops.</p>
+      </div>
+      <div>
+        <div class="abody-video ig-embed-wrap">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZFl2SGoJQg/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;margin:0 auto;max-width:100%;min-width:0;padding:0;width:100%"></blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="imodal-scrim" id="modal-transit" data-slug="transit" style="display:none">
+  <div class="imodal" role="dialog" aria-modal="true" aria-label="Transit">
+    <button class="imodal-close" aria-label="Close">&times;</button>
+    <div class="imodal-head">
+      <span class="imodal-eyebrow">The plan</span>
+      <h3 class="atitle">Transit</h3>
+    </div>
+    <div class="imodal-body">
+      <div class="atext">
+        <p>The T can be faster, cheaper to run, and more reliable. It just hasn't happened because the people making decisions don't ride it. Burhan's plan: extend the Red Line to Arlington, the Green Line to West Medford, and build multiple connectors to make transfers faster. He'll fund this construction by implementing congestion pricing and curtailing the MBTA's spending on redundant consultants.</p>
+        <p>He'll also fix the MBTA longer term by empowering riders. Today, suburban drivers have more say than Boston metro riders. Burhan will propose a new governing body that gives the people who depend on the T more governance control, because a better T means faster commutes and a stronger local economy for everyone.</p>
+      </div>
+      <div>
+        <div class="abody-video ig-embed-wrap">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXHveu6Ebon/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;margin:0 auto;max-width:100%;min-width:0;padding:0;width:100%"></blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="imodal-scrim" id="modal-statehouse" data-slug="statehouse" style="display:none">
+  <div class="imodal" role="dialog" aria-modal="true" aria-label="The State House">
+    <button class="imodal-close" aria-label="Close">&times;</button>
+    <div class="imodal-head">
+      <span class="imodal-eyebrow">The plan</span>
+      <h3 class="atitle">The State House</h3>
+    </div>
+    <div class="imodal-body">
+      <div class="atext">
+        <p>Beacon Hill hasn't been delivering for Massachusetts voters for three reasons.</p>
+        <p>First, the State House has exempted itself from the public records law that applies to every other governing body in Massachusetts. Burhan will end that exception.</p>
+        <p>Second, secret voting. Fewer than 100 votes are made public each year, which means bills with 80% public support can die with no record of who killed them. Burhan built Cambridge's public legislative tracker so constituents could see exactly how their representatives voted. He'll push for the same transparency at the State House.</p>
+        <p>Third, a corrupt compensation system. Legislators earn an $82,000 base salary but can collect an additional $120,000 in stipends, awarded at the sole discretion of Beacon Hill leadership. Any legislator who tries to change the system gets a massive pay cut.</p>
+      </div>
+      <div>
+        <div class="abody-video ig-embed-wrap">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXKitzFiETD/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;margin:0 auto;max-width:100%;min-width:0;padding:0;width:100%"></blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="imodal-scrim" id="modal-affordability" data-slug="affordability" style="display:none">
+  <div class="imodal" role="dialog" aria-modal="true" aria-label="Affordability">
+    <button class="imodal-close" aria-label="Close">&times;</button>
+    <div class="imodal-head">
+      <span class="imodal-eyebrow">The plan</span>
+      <h3 class="atitle">Affordability</h3>
+    </div>
+    <div class="imodal-body">
+      <div class="atext">
+        <p>The number one reason families leave the district is when they have children. Childcare costs more than tuition at UMass, which is why Burhan passed universal pre-K in Cambridge. As state senator, he'll expand that model statewide, putting $21,000 back in every family's pocket.</p>
+        <p>The second bill that hits families hard is energy. Third-party electricity suppliers have never once saved a customer money. Burhan will move to ban them on day one. He'll also expand Cambridge's Community Energy bulk-purchasing model to every community in the district — a program that has already returned $95 million in savings to Cambridge residents, nearly $2,000 per household.</p>
+      </div>
+      <div>
+        <div class="abody-video ig-embed-wrap">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DYmoI_hIX60/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;margin:0 auto;max-width:100%;min-width:0;padding:0;width:100%"></blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="imodal-scrim" id="modal-federal" data-slug="federal" style="display:none">
+  <div class="imodal" role="dialog" aria-modal="true" aria-label="Trump &amp; Federal Cuts">
+    <button class="imodal-close" aria-label="Close">&times;</button>
+    <div class="imodal-head">
+      <span class="imodal-eyebrow">The plan</span>
+      <h3 class="atitle">Trump &amp; Federal Cuts</h3>
+    </div>
+    <div class="imodal-body">
+      <div class="atext">
+        <p>Massachusetts is facing one of the deepest recessions in the country right now. NIH cuts are threatening the research hospitals and universities that employ tens of thousands of people. Vaccine program cuts are dismantling the public health programs families depend on.</p>
+        <p>Burhan's answer is to build a more resilient Massachusetts. He will incentivize businesses to ensure new technology gets manufactured here, not just invented here. He'll also work with other New England states to jointly fund the health and research programs that Washington has walked away from.</p>
+      </div>
+      <div>
+        <div class="abody-video ig-embed-wrap">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXR86ohEd9f/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;margin:0 auto;max-width:100%;min-width:0;padding:0;width:100%"></blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="imodal-scrim" id="modal-climate" data-slug="climate" style="display:none">
+  <div class="imodal" role="dialog" aria-modal="true" aria-label="Climate">
+    <button class="imodal-close" aria-label="Close">&times;</button>
+    <div class="imodal-head">
+      <span class="imodal-eyebrow">The plan</span>
+      <h3 class="atitle">Climate</h3>
+    </div>
+    <div class="imodal-body">
+      <div class="atext">
+        <p>Massachusetts invents clean energy, but the manufacturing jobs and climate benefits go elsewhere. Burhan will change the green drain by making it easier for manufacturers to stay. He will speed up the permitting process for wind energy, which currently takes a decade to build. And he'll push the state to subsidize geothermal wells and fusion development — because those technologies are good climate policy and an economic strategy for what comes after fossil fuels.</p>
+      </div>
+      <div>
+        <div class="abody-video ig-embed-wrap">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZNJVYJobww/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;margin:0 auto;max-width:100%;min-width:0;padding:0;width:100%"></blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Instagram embed script (renders the blockquotes above into embeds) -->
+<script async src="//www.instagram.com/embed.js"></script>
+
+<script>
+(function () {
+  // Scroll-reveal
+  var els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < (window.innerHeight || 800) * 0.94) el.classList.add('in');
+      else io.observe(el);
+    });
+  } else {
+    els.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  // Issue modals
+  var modals = document.querySelectorAll('.imodal-scrim');
+  var openModalEl = null;
+
+  function openModal(slug) {
+    var m = document.getElementById('modal-' + slug);
+    if (!m) return;
+    if (openModalEl) closeModal();
+    m.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    openModalEl = m;
+    if (window.instgrm) window.instgrm.Embeds.process();
+    var closeBtn = m.querySelector('.imodal-close');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeModal() {
+    if (!openModalEl) return;
+    openModalEl.style.display = 'none';
+    document.body.style.overflow = '';
+    openModalEl = null;
+    if (window.location.hash) {
+      history.replaceState(null, '', window.location.pathname);
+    }
+  }
+
+  document.querySelectorAll('.ahead[data-slug]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.history.replaceState(null, '', '#' + a.getAttribute('data-slug'));
+      openModal(a.getAttribute('data-slug'));
+    });
+  });
+
+  modals.forEach(function (m) {
+    m.addEventListener('click', function (e) { if (e.target === m) closeModal(); });
+    var closeBtn = m.querySelector('.imodal-close');
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && openModalEl) closeModal();
+  });
+
+  // Deep-link support: /issues#housing opens the modal directly
+  var initialSlug = window.location.hash.replace('#', '');
+  if (initialSlug && document.getElementById('modal-' + initialSlug)) {
+    openModal(initialSlug);
+  }
+}());
+</script>
+
 </body>
 </html>

@@ -26,45 +26,208 @@
 </script>
 </head>
 <body>
-<div id="root"></div>
+<div class="site">
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-
-<script type="text/babel" src="/project/site/shared.jsx"></script>
-<script type="text/babel" src="/project/site/receipts.jsx"></script>
-
-<script type="text/babel">
-
-function ReceiptsApp() {
-  return (
-    <div className="site">
-      <SiteHeader active="Meet Burhan" />
-
-      <section className="page-hero motif-bg">
-        <Reveal className="page-hero-grid">
-          <div className="page-hero-text">
-            <span className="kicker">The Candidate</span>
-            <h1>Burhan Azeem</h1>
-            <p>Burhan is a transit rider, the founder of Abundant Housing Massachusetts, and the Vice Mayor of Cambridge.</p>
-            <p style={{ marginTop: 18 }}>Growing up, his family relied on Medicaid and food stamps, so he knows the power of helpful public policy. After graduating from MIT and becoming an EMT, he struggled to find an affordable apartment. So he stopped waiting for someone else to fix the problem, ran for office, and became Cambridge&rsquo;s youngest City Councilor.</p>
-            <p style={{ marginTop: 18 }}>During his tenure, he has re-legalized multifamily housing, delivered universal pre-K, and brought greater transparency to local government.</p>
-            <p style={{ marginTop: 18 }}>Now he&rsquo;s running for Senate to do even more: more housing, a faster T, and a State House that actually works.</p>
-          </div>
-          <div className="page-hero-photo">
-            <img src="/project/site/assets/why_burhan_runs.jpg" alt="Burhan Azeem" />
-          </div>
-        </Reveal>
-      </section>
-
-      <ReceiptsBody timeline="Vertical" clips="Collage" />
-
-      <SiteFooter headline="And this is just the beginning." sub="Help send a proven problem solver to the State Senate." />
-    </div>);
-
-}
-ReactDOM.createRoot(document.getElementById("root")).render(<ReceiptsApp />);
+<header class="hdr" id="site-hdr">
+  <a class="logo" href="/">
+    <span class="word">BURHAN</span>
+    <span class="tag">2ND MIDDLESEX · STATE SENATE</span>
+  </a>
+  <nav>
+    <div class="navlinks">
+      <a href="/receipts" class="active">Meet Burhan</a>
+      <a href="/issues">Issues</a>
+      <a href="/volunteer">Volunteer</a>
+    </div>
+    <a class="btn btn-orange" href="https://secure.actblue.com/donate/burhanwebsite" target="_blank" rel="noopener noreferrer" onclick="plausible('Donate Click', {props:{page:'receipts'}})">Donate</a>
+    <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+  <a href="/receipts" class="active">Meet Burhan</a>
+  <a href="/issues">Issues</a>
+  <a href="/volunteer">Volunteer</a>
+  <a class="btn btn-orange" href="https://secure.actblue.com/donate/burhanwebsite" target="_blank" rel="noopener noreferrer" onclick="plausible('Donate Click', {props:{page:'receipts'}})">Donate</a>
+</div>
+<script>
+(function() {
+  var btn = document.getElementById('hamburger-btn');
+  var menu = document.getElementById('mobile-menu');
+  var hdr = document.getElementById('site-hdr');
+  btn.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    hdr.classList.toggle('menu-open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', function(e) {
+    if (!hdr.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      hdr.classList.remove('menu-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
 </script>
+
+<!-- HERO -->
+<section class="page-hero motif-bg">
+  <div class="reveal page-hero-grid">
+    <div class="page-hero-text">
+      <span class="kicker">The Candidate</span>
+      <h1>Burhan Azeem</h1>
+      <p>Burhan is a transit rider, the founder of Abundant Housing Massachusetts, and the Vice Mayor of Cambridge.</p>
+      <p style="margin-top:18px">Growing up, his family relied on Medicaid and food stamps, so he knows the power of helpful public policy. After graduating from MIT and becoming an EMT, he struggled to find an affordable apartment. So he stopped waiting for someone else to fix the problem, ran for office, and became Cambridge&rsquo;s youngest City Councilor.</p>
+      <p style="margin-top:18px">During his tenure, he has re-legalized multifamily housing, delivered universal pre-K, and brought greater transparency to local government.</p>
+      <p style="margin-top:18px">Now he&rsquo;s running for Senate to do even more: more housing, a faster T, and a State House that actually works.</p>
+    </div>
+    <div class="page-hero-photo">
+      <img src="/project/site/assets/why_burhan_runs.jpg" alt="Burhan Azeem">
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section">
+  <div class="reveal" style="display:flex;flex-direction:column;gap:36px">
+    <div class="col" style="gap:8px;align-items:flex-start">
+      <span class="eyebrow">A record of results</span>
+      <span class="boxed">The last four years</span>
+    </div>
+    <div class="tl-with-image">
+      <div class="timeline vertical">
+        <div class="tl-line"></div>
+        <div class="tl-stops">
+          <div class="tl-stop">
+            <span class="tl-year">2022</span>
+            <span class="tl-dot"></span>
+            <span class="tl-win">Became the youngest City Councilor in Cambridge history</span>
+          </div>
+          <div class="tl-stop">
+            <span class="tl-year">2023</span>
+            <span class="tl-dot"></span>
+            <span class="tl-win">Passed the Affordable Housing Overlay 2.0</span>
+          </div>
+          <div class="tl-stop">
+            <span class="tl-year">2024</span>
+            <span class="tl-dot"></span>
+            <span class="tl-win">Secured universal childcare for Cambridge</span>
+          </div>
+          <div class="tl-stop">
+            <span class="tl-year">2025</span>
+            <span class="tl-dot"></span>
+            <span class="tl-win">Re-legalized triple-deckers and affordable apartments in Cambridge</span>
+          </div>
+          <div class="tl-stop last">
+            <span class="tl-year">2026</span>
+            <span class="tl-dot"></span>
+            <span class="tl-win">Elected Cambridge Vice Mayor</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-image">
+        <img src="/project/site/Burhan_Youngest_Councilor.png" alt="Burhan being sworn in as the youngest-ever City Councilor in Cambridge history" style="width:100%;height:100%;object-fit:cover;display:block">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS CLIPPINGS -->
+<section class="section" style="padding-top:24px">
+  <div class="reveal" style="display:flex;flex-direction:column;gap:40px">
+    <div class="col" style="gap:8px;align-items:flex-start">
+      <span class="eyebrow">Don't take our word for it</span>
+      <span class="boxed">In the press</span>
+    </div>
+    <div class="clip-grid">
+      <article class="clip c1 big">
+        <div class="clip-pub"><img src="/project/site/assets/logo-city-journal.png" alt="City Journal"></div>
+        <div class="clip-rule"></div>
+        <p class="clip-quote">&ldquo;Cambridge&rsquo;s city council deserves credit for showing other cities the way to a new approach.&rdquo;</p>
+      </article>
+      <article class="clip c2">
+        <div class="clip-pub"><img src="/project/site/assets/logo-mit-tech-review.png" alt="MIT Technology Review"></div>
+        <div class="clip-rule"></div>
+        <p class="clip-quote">&ldquo;A walking antidote to political cynicism.&rdquo;</p>
+      </article>
+      <article class="clip c3">
+        <div class="clip-pub"><span class="masthead">Winchester News</span></div>
+        <div class="clip-rule"></div>
+        <p class="clip-quote">&ldquo;In this race, [Burhan] is asking voters to expect more.&rdquo;</p>
+      </article>
+      <article class="clip c4">
+        <div class="clip-pub"><img src="/project/site/assets/logo-harvard-crimson.png" alt="The Harvard Crimson"></div>
+        <div class="clip-rule"></div>
+        <p class="clip-quote">&ldquo;One of the Council&rsquo;s most vocal advocates for legalizing multifamily housing citywide&rdquo;</p>
+      </article>
+      <article class="clip c5 big">
+        <div class="clip-pub"><img src="/project/site/assets/logo-boston-globe.png" alt="The Boston Globe"></div>
+        <div class="clip-rule"></div>
+        <p class="clip-quote">&ldquo;The most ambitious new zoning anywhere in the nation.&rdquo;</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section class="fcta motif-bg">
+  <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:22px">
+    <h2>And this is just the beginning.</h2>
+    <p>Help send a proven problem solver to the State Senate.</p>
+    <div class="fbtns">
+      <a class="btn btn-orange" href="/volunteer">Volunteer
+        <svg class="ar" viewBox="0 0 16 16" fill="#003DA5" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+      </a>
+      <a class="btn btn-red" href="https://secure.actblue.com/donate/burhanwebsite" target="_blank" rel="noopener noreferrer" onclick="plausible('Donate Click', {props:{page:'receipts'}})">Donate
+        <svg class="ar" viewBox="0 0 16 16" fill="#fff" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+<div class="fcopy">
+  <span>&copy; 2026 Committee to Elect Burhan Azeem</span>
+  <div class="fsocial">
+    <a href="https://www.instagram.com/cllr.burhan.azeem" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="https://x.com/realBurhanAzeem" target="_blank" rel="noopener noreferrer" aria-label="X">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://bsky.app/profile/burhanazeem.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.81 9.498 7.823 4.308 4.267-4.308 1.172-6.498-2.74-7.078 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.479 0-.688-.139-1.861-.902-2.203-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
+    </a>
+    <a href="https://www.youtube.com/@BurhanAzeemMA" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 12s0-3.4-.4-5a3 3 0 0 0-2.1-2.1C18.9 4.4 12 4.4 12 4.4s-6.9 0-8.5.5A3 3 0 0 0 1.4 7 31 31 0 0 0 1 12s0 3.4.4 5A3 3 0 0 0 3.5 19c1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5a3 3 0 0 0 2.1-2.1c.4-1.6.4-5 .4-5ZM9.8 15.5v-7l6 3.5Z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@vicemayor_azeem" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 2h-3.2v13.6a3 3 0 1 1-2.6-3v-3.3a6.3 6.3 0 1 0 5.8 6.3V8.8a7.6 7.6 0 0 0 4.5 1.5V7a4.4 4.4 0 0 1-4.5-4.4V2Z"/></svg>
+    </a>
+  </div>
+  <a href="/contact">Contact Us</a>
+</div>
+
+</div>
+
+<script>
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < (window.innerHeight || 800) * 0.94) el.classList.add('in');
+      else io.observe(el);
+    });
+  } else {
+    els.forEach(function (el) { el.classList.add('in'); });
+  }
+})();
+</script>
+
 </body>
 </html>
