@@ -26,25 +26,252 @@
 </script>
 </head>
 <body>
-<div id="root"></div>
+<div class="site">
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-
-<script type="text/babel" src="/project/site/shared.jsx"></script>
-<script type="text/babel" src="/project/site/artificialintelligence.jsx"></script>
-
-<script type="text/babel">
-function ArtificialIntelligenceApp() {
-  return (
-    <div className="site">
-      <SiteHeader />
-      <AIPage />
+<header class="hdr" id="site-hdr">
+  <a class="logo" href="/">
+    <span class="word">BURHAN</span>
+    <span class="tag">2ND MIDDLESEX · STATE SENATE</span>
+  </a>
+  <nav>
+    <div class="navlinks">
+      <a href="/receipts">Meet Burhan</a>
+      <a href="/issues">Issues</a>
+      <a href="/volunteer">Volunteer</a>
     </div>
-  );
-}
-ReactDOM.createRoot(document.getElementById("root")).render(<ArtificialIntelligenceApp />);
+    <a class="btn btn-orange" href="https://secure.actblue.com/donate/burhanwebsite" target="_blank" rel="noopener noreferrer" onclick="plausible('Donate Click', {props:{page:'ai'}})">Donate</a>
+    <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+  <a href="/receipts">Meet Burhan</a>
+  <a href="/issues">Issues</a>
+  <a href="/volunteer">Volunteer</a>
+  <a class="btn btn-orange" href="https://secure.actblue.com/donate/burhanwebsite" target="_blank" rel="noopener noreferrer" onclick="plausible('Donate Click', {props:{page:'ai'}})">Donate</a>
+</div>
+<script>
+(function() {
+  var btn = document.getElementById('hamburger-btn');
+  var menu = document.getElementById('mobile-menu');
+  var hdr = document.getElementById('site-hdr');
+  btn.addEventListener('click', function() {
+    var open = menu.classList.toggle('open');
+    hdr.classList.toggle('menu-open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', function(e) {
+    if (!hdr.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      hdr.classList.remove('menu-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
 </script>
+
+<!-- HERO -->
+<section class="page-hero motif-bg ai-hero">
+  <div class="reveal" style="display:flex;flex-direction:column;align-items:flex-start;gap:20px">
+    <span class="kicker">Policy: Artificial Intelligence</span>
+    <h1>Safety and Shared Prosperity</h1>
+    <p class="lede">Fifty years ago, Cambridge faced down a frightening new technology and chose to write the rules instead of running from them. That decision built the biotech capital of the world. We can do the same thing with AI.</p>
+  </div>
+</section>
+
+<!-- AI IS MOVING FAST -->
+<section class="ai-section alt">
+  <div class="reveal ai-row">
+    <div>
+      <span class="ai-eyebrow">The moment</span>
+      <h2>AI Is Moving Fast</h2>
+      <div class="ai-body">
+        <p>AI is moving faster than any technology we have ever seen. The amount of work these systems can do on their own is <a href="https://metr.org/time-horizons/" target="_blank" rel="noopener noreferrer" class="ai-link">roughly doubling every few months</a>, and that pace shows no sign of letting up.</p>
+        <p>A lot of what is coming will be good for us. Faster ways to find new medicines. Real expert help for families who could never afford a lawyer or a specialist. But a lot of it is worrying too. These tools have already been used to help plan cyberattacks. Our <a href="https://www.bostonglobe.com/2026/07/20/business/massachusetts-artificial-intelligence-poll/" target="_blank" rel="noopener noreferrer" class="ai-link">schools are struggling to keep up with them</a>. And if you are wondering what all of this means for your own job, the honest answer is that nobody can tell you yet.</p>
+        <p>What we can do is write good rules while it still matters, and I think Massachusetts is exactly the place to do it.</p>
+      </div>
+    </div>
+    <div class="ai-media">
+      <div class="ai-photo" style="--ar:4/3;background-image:url(/project/site/assets/ai_burhan_speaking.png)" role="img" aria-label="Burhan Azeem speaking at a podium"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMBRIDGE PRECEDENT -->
+<section class="ai-section">
+  <div class="reveal ai-row rev">
+    <div>
+      <span class="ai-eyebrow">The Cambridge precedent</span>
+      <h2>We've Gone Through This Before</h2>
+      <div class="ai-body">
+        <p>In 1976, Harvard wanted to build a lab here for a frightening new technology called recombinant DNA, the foundation of modern genetic engineering. Neighbors packed City Hall, and <a href="https://www.sciencehistory.org/stories/distillations-pod/the-people-vs-recombinant-dna/" target="_blank" rel="noopener noreferrer" class="ai-link">the mayor stood up and warned about Frankenstein</a>.</p>
+        <p>Cambridge did not panic and it did not look away. The city paused the research, sat regular residents on a review board next to the scientists, and then passed <a href="https://www.cambridgeday.com/2026/06/11/fifty-years-since-recombination-debate-ushered-in-biotech-in-cambridge/" target="_blank" rel="noopener noreferrer" class="ai-link">the first law anywhere in the world governing this kind of research</a>. That ordinance is still on the books today.</p>
+        <p>The clear rules gave companies the certainty to build here, and Kendall Square grew into <a href="https://www.bostonglobe.com/business/2016/03/17/how-cambridge-became-life-sciences-capital/MgKcguVmPSkVzvlKPp89cK/story.html" target="_blank" rel="noopener noreferrer" class="ai-link">the biotech capital of the world</a>. What started in our City Hall spread outward, to <a href="https://www.sciencehistory.org/stories/magazine/an-absolute-good/" target="_blank" rel="noopener noreferrer" class="ai-link">Princeton, San Diego, Ann Arbor, and beyond</a> — and <a href="https://archive.org/details/geneticalchemyso00krim" target="_blank" rel="noopener noreferrer" class="ai-link">someone even wrote a book about how it all happened</a>. A lot of the treatments saving lives today trace back to a city council that chose to write the rules instead of running from them.</p>
+        <p>We can do the same thing with AI.</p>
+      </div>
+    </div>
+    <div class="ai-media">
+      <div class="ai-photo" style="--ar:4/3;background-image:url(/project/site/assets/ai_cambridge_cityhall.jpg)" role="img" aria-label="Cambridge City Hall"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STEP ONE -->
+<section class="ai-section alt">
+  <div class="reveal">
+    <div style="max-width:760px">
+      <span class="ai-eyebrow">Step one</span>
+      <h2 style="max-width:none">Match the Strongest Laws in America</h2>
+      <div class="ai-body">
+        <p><a href="https://www.gov.ca.gov/2025/09/29/governor-newsom-signs-sb-53-advancing-californias-world-leading-artificial-intelligence-industry/" target="_blank" rel="noopener noreferrer" class="ai-link">California</a>, <a href="https://fpf.org/blog/frontier-ai-goes-federal-how-the-great-american-ai-act-compares-to-state-laws/" target="_blank" rel="noopener noreferrer" class="ai-link">New York</a>, and <a href="https://www.transparencycoalition.ai/news/illinois-lawmakers-send-significant-ai-frontier-model-safety-bill-to-gov-pritzker" target="_blank" rel="noopener noreferrer" class="ai-link">Illinois</a> have already passed the country's first AI safety laws. They require the largest AI companies to publish their safety plans, report serious incidents, and protect the employees who speak up when something looks dangerous, and Illinois now brings in outside auditors to make sure the work is actually being done. Massachusetts should, at the very least, hold ourselves to those same standards.</p>
+        <p>And these things tend to spread: New York borrowed from California, Illinois built on both, and Congress is now using all three as the starting point for a <a href="https://www.techpolicy.press/unpacking-the-great-american-artificial-intelligence-act-of-2026/" target="_blank" rel="noopener noreferrer" class="ai-link">national framework</a>. <a href="https://whav.net/2026/07/20/poll-voters-want-ai-regulated-finegold-says-senate-bill-does-the-job/" target="_blank" rel="noopener noreferrer" class="ai-link">Beacon Hill is debating a version right now</a>, and on this one the public is out ahead of the politicians.</p>
+      </div>
+    </div>
+    <div class="ai-stats">
+      <div class="ai-stat">
+        <span class="ai-stat-num">75%</span>
+        <span class="ai-stat-label">of Massachusetts voters support the bill <a href="https://www.massincpolling.com/our-work/massachusetts-voters-support-state-oversight-of-powerful-ai-models-to-mitigate-risks-of-catastrophic-impacts" target="_blank" rel="noopener noreferrer" class="ai-link">(poll, July 2026)</a></span>
+      </div>
+      <div class="ai-stat">
+        <span class="ai-stat-num">~70%</span>
+        <span class="ai-stat-label">say they do not want to wait on Washington to act</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="ai-section">
+  <div class="reveal">
+    <span class="ai-eyebrow">The plan</span>
+    <h2 style="max-width:none;margin-bottom:8px">Four Places Massachusetts Should Lead</h2>
+    <div class="ai-pillars">
+      <div class="ai-pillar">
+        <span class="ai-pillar-n">Issue 01</span>
+        <h3>Real safety standards</h3>
+        <p>Right now <a href="https://www.gov.ca.gov/2025/09/29/governor-newsom-signs-sb-53-advancing-californias-world-leading-artificial-intelligence-industry/" target="_blank" rel="noopener noreferrer" class="ai-link">the law only asks companies to describe</a> their own safety plans. We should set actual requirements the most powerful systems have to meet before internal deployment, including locking the models down so they cannot be stolen or quietly tampered with. We crash-test cars and we run trials on new medicine. This is the same common sense.</p>
+      </div>
+      <div class="ai-pillar">
+        <span class="ai-pillar-n">Issue 02</span>
+        <h3>Real accountability</h3>
+        <p>If a company's AI causes a genuine catastrophe, that company should be <a href="https://www.nbcnews.com/tech/tech-news/ai-law-california-ca-companies-regulation-newsom-rcna234562" target="_blank" rel="noopener noreferrer" class="ai-link">on the hook for the harm</a>.</p>
+      </div>
+      <div class="ai-pillar">
+        <span class="ai-pillar-n">Issue 03</span>
+        <h3>Independent testing</h3>
+        <p>The most powerful models should be checked by <a href="https://www.transparencycoalition.ai/news/illinois-lawmakers-send-significant-ai-frontier-model-safety-bill-to-gov-pritzker" target="_blank" rel="noopener noreferrer" class="ai-link">qualified outside experts</a> before the rest of us ever use them. On something this consequential, no one should be grading their own homework.</p>
+      </div>
+      <div class="ai-pillar">
+        <span class="ai-pillar-n">Issue 04</span>
+        <h3>An AI dividend</h3>
+        <p>If these systems create the kind of wealth their builders keep promising, working families ought to share in it. When companies profit from automating the work people used to do, some of that gain should come back to the public that made it possible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TWO FUTURES -->
+<section class="ai-section alt">
+  <div class="reveal">
+    <div style="max-width:780px;margin-bottom:8px">
+      <span class="ai-eyebrow">Why the rules matter</span>
+      <h2 style="max-width:none">Two Futures</h2>
+      <div class="ai-body">
+        <p>I want to be clear about why I care so much about getting the rules right, because the range of outcomes here is enormous.</p>
+      </div>
+    </div>
+    <div class="ai-futures">
+      <div class="ai-future bad">
+        <span class="ai-future-label">Future one</span>
+        <p>AI puts half the country out of work.</p>
+      </div>
+      <span class="ai-vs">vs.</span>
+      <div class="ai-future good">
+        <span class="ai-future-label">Future two</span>
+        <p>AI simply lets all of us do the same work in half the time, for the same pay.</p>
+      </div>
+    </div>
+    <div class="ai-body" style="max-width:780px">
+      <p>On an economist's spreadsheet those two futures look almost identical, because in both cases the same work gets done with far fewer hours. In the lives of actual people they could not be more different. One of them hollows out families and whole towns. The other doesn't sound half bad.</p>
+      <p>Technology will keep moving no matter what any of us do about it. What policy decides is who ends up better off when it does. That, to me, is the entire point of doing this job well.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ME -->
+<section class="ai-section">
+  <div class="reveal">
+    <span class="ai-eyebrow">Why this fight, and why me</span>
+    <div class="ai-bio">
+      <div class="ai-bio-photo" style="background-image:url(/project/site/assets/ai_bio_portrait.png)"></div>
+      <div class="ai-body">
+        <p>There is not a single engineer in the Massachusetts State Senate, and AI is moving so fast that even the people building it are struggling to keep up. I studied engineering at MIT, I have built AI products myself, and I have spent years close to the AI researchers and advocates shaping this policy. I do not claim to have every answer, because nobody honestly does yet. But I do think I bring a particular kind of insight to these questions, and a real willingness to do the hard work of getting them right.</p>
+        <p>Fifty years ago, this community looked at a frightening new technology, chose to write the rules, and ended up leading the very industry it was afraid of. That is the Massachusetts way, and it is the work I want to take to Beacon Hill.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section class="fcta motif-bg">
+  <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:22px">
+    <h2>Let's write the rules</h2>
+    <p>Massachusetts got ahead of biotech and became its capital.
+We can do the same with AI.</p>
+    <div class="fbtns">
+      <a class="btn btn-orange" href="/volunteer">Volunteer
+        <svg class="ar" viewBox="0 0 16 16" fill="#003DA5" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+      </a>
+      <a class="btn btn-red" href="https://secure.actblue.com/donate/burhanwebsite" target="_blank" rel="noopener noreferrer" onclick="plausible('Donate Click', {props:{page:'ai'}})">Donate
+        <svg class="ar" viewBox="0 0 16 16" fill="#fff" aria-hidden="true"><path d="M 12.175 9 L 0 9 L 0 7 L 12.175 7 L 6.575 1.4 L 8 0 L 16 8 L 8 16 L 6.575 14.6 L 12.175 9 Z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+<div class="fcopy">
+  <span>&copy; 2026 Committee to Elect Burhan Azeem</span>
+  <div class="fsocial">
+    <a href="https://www.instagram.com/cllr.burhan.azeem" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="https://x.com/realBurhanAzeem" target="_blank" rel="noopener noreferrer" aria-label="X">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://bsky.app/profile/burhanazeem.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.81 9.498 7.823 4.308 4.267-4.308 1.172-6.498-2.74-7.078 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.479 0-.688-.139-1.861-.902-2.203-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>
+    </a>
+    <a href="https://www.youtube.com/@BurhanAzeemMA" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 12s0-3.4-.4-5a3 3 0 0 0-2.1-2.1C18.9 4.4 12 4.4 12 4.4s-6.9 0-8.5.5A3 3 0 0 0 1.4 7 31 31 0 0 0 1 12s0 3.4.4 5A3 3 0 0 0 3.5 19c1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5a3 3 0 0 0 2.1-2.1c.4-1.6.4-5 .4-5ZM9.8 15.5v-7l6 3.5Z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@vicemayor_azeem" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 2h-3.2v13.6a3 3 0 1 1-2.6-3v-3.3a6.3 6.3 0 1 0 5.8 6.3V8.8a7.6 7.6 0 0 0 4.5 1.5V7a4.4 4.4 0 0 1-4.5-4.4V2Z"/></svg>
+    </a>
+  </div>
+  <a href="/contact">Contact Us</a>
+</div>
+
+</div>
+
+<script>
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < (window.innerHeight || 800) * 0.94) el.classList.add('in');
+      else io.observe(el);
+    });
+  } else {
+    els.forEach(function (el) { el.classList.add('in'); });
+  }
+})();
+</script>
+
 </body>
 </html>
