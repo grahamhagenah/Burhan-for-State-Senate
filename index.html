@@ -128,10 +128,12 @@
       banner.classList.add('live');
       copyEl.innerHTML = '<span class="eb-dot"></span><span class="eb-when">Live today</span> — More Housing Is Possible';
       ctaEl.textContent = 'Watch';
+      ctaEl.href = '/livestream';
       closeBtn.style.display = 'none';
     } else {
       copyEl.innerHTML = '<span class="eb-when">' + whenLabel(now) + '</span> Burhan is hosting the National Town Hall on Housing';
       ctaEl.textContent = 'Register';
+      ctaEl.href = '/housing';
     }
     banner.hidden = false;
 
