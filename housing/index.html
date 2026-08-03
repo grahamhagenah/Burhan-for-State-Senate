@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>
+(function(){
+  // 6:00 PM ET, Tue Aug 4 2026. EDT is UTC-4 in August, so this is 22:00 UTC.
+  var REDIRECT_AT = new Date(Date.UTC(2026, 7, 4, 22, 0, 0));
+  if (new Date() >= REDIRECT_AT) {
+    window.location.replace("/livestream" + window.location.search);
+  }
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="/project/site/Burhan_favicon.png">
 <title>More [Housing] Is Possible — A National Town Hall</title>

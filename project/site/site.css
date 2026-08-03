@@ -73,7 +73,7 @@ a { color: inherit; }
 .hdr.menu-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* EVENT BANNER — homepage promo bar for a time-bound event (e.g. the housing town hall) */
-.evt-banner { background: var(--orange); color: var(--blue-900); overflow: hidden; max-height: 200px; transition: max-height .22s ease, opacity .18s ease; }
+.evt-banner { background: var(--orange); color: var(--blue-900); overflow: hidden; max-height: 200px; transition: max-height .22s ease, opacity .18s ease; margin-left: calc((100% - 100vw) / 2); margin-right: calc((100% - 100vw) / 2); }
 .evt-banner.closing { max-height: 0; opacity: 0; }
 .evt-banner.live { background: var(--red); color: #fff; }
 .evt-banner-inner { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 2px 54px; flex-wrap: wrap; text-align: center; position: relative; cursor: pointer; }
