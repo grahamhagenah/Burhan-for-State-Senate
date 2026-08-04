@@ -7,7 +7,7 @@ const { useState: useStateT, useEffect: useEffectT } = React;
 
 const MOBILIZE_URL = "https://www.mobilize.us/burhanforstatesenate/event/992771/";
 // Swap in the real video ID once the stream is live.
-const YOUTUBE_ID = "";
+const YOUTUBE_ID = "yz_XWRIvk5A";
 
 const COHOSTS = [
   { name: "Jonathan Berk", title: "Founder, re:MAIN" },
