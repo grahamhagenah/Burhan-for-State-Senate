@@ -86,6 +86,11 @@
   <div class="reveal th-hero-grid">
     <h1 class="th-headline">More <span class="th-bracket">[</span>Housing<span class="th-bracket">]</span> Is Possible</h1>
     <p class="th-when">Tuesday, August 4 · 7PM ET / 4PM PT · Livestream</p>
+    <div class="th-live-wrap" id="th-live-wrap" style="display:none">
+      <a class="btn btn-red th-live-btn" href="/livestream">
+        <span class="th-live-dot"></span>LIVE: WATCH NOW
+      </a>
+    </div>
     <p class="th-sub">Join Vice Mayor Burhan Azeem and the people behind the Montana Miracle, California&rsquo;s SB79, and the ROAD to Housing Act to discuss recent wins, the path forward, and what's next for the housing movement.</p>
     <div class="th-cta" id="th-cta">
       <a class="btn btn-orange" href="https://www.mobilize.us/burhanforstatesenate/event/992771/" target="_blank" rel="noopener noreferrer" id="th-register-btn"
@@ -149,14 +154,6 @@
   </div>
 </section>
 
-<!-- LIVESTREAM (shown on/after Aug 4, hidden until then) -->
-<section class="th-body" id="watch" style="display:none">
-  <div class="reveal th-video">
-    <iframe id="th-livestream-frame" src="" title="The YIMBY Agenda: A National Housing Town Hall"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-</section>
-
 <div class="fcopy">
   <span>&copy; 2026 Committee to Elect Burhan Azeem</span>
   <div class="fsocial">
@@ -199,21 +196,15 @@
     els.forEach(function (el) { el.classList.add('in'); });
   }
 
-  // Swap in real video ID once the stream is live.
-  var YOUTUBE_ID = "";
-
-  function isEventDay() {
-    return new Date() >= new Date(2026, 7, 4);
-  }
-
-  if (isEventDay()) {
-    document.getElementById('th-cta').innerHTML =
-      '<p class="th-micro th-live-note">We’re live — scroll down to <a href="#watch">watch now</a>.</p>';
-    document.getElementById('th-repeat-section').style.display = 'none';
-    var watch = document.getElementById('watch');
-    watch.style.display = '';
-    document.getElementById('th-livestream-frame').src = 'https://www.youtube.com/embed/' + YOUTUBE_ID;
-  }
+  // 6:00 PM ET, Tue Aug 4 2026 — EDT is UTC-4 in August, so this is 22:00 UTC.
+  // Same threshold as the redirect script in <head>; kept as a live timer here
+  // in case someone is already on the page (the head script only runs on load).
+  var LIVE_AT = new Date(Date.UTC(2026, 7, 4, 22, 0, 0));
+  var liveWrap = document.getElementById('th-live-wrap');
+  function showLiveButton() { if (liveWrap) liveWrap.style.display = ''; }
+  var msUntilLive = LIVE_AT - new Date();
+  if (msUntilLive <= 0) showLiveButton();
+  else setTimeout(showLiveButton, msUntilLive);
 })();
 </script>
 

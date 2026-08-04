@@ -456,6 +456,7 @@ a { color: inherit; }
   grid-template-areas:
     "head flyer"
     "when flyer"
+    "live flyer"
     "sub  flyer"
     "cta  flyer";
 }
@@ -464,6 +465,11 @@ a { color: inherit; }
 .th-when { grid-area: when; font-family: var(--font-heading); font-weight: 700; font-size: 19px; letter-spacing: .04em; text-transform: uppercase; color: var(--orange); margin: 0; }
 .th-sub { grid-area: sub; font-family: var(--font-body); font-size: 18px; line-height: 1.5; color: var(--blue); margin: 0; max-width: 50ch; }
 .th-cta { grid-area: cta; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 4px; }
+.th-live-wrap { grid-area: live; }
+.th-live-btn { display: inline-flex; align-items: center; gap: 10px; }
+.th-live-btn .th-live-dot { width: 10px; height: 10px; border-radius: 999px; background: #fff; flex: none; animation: th-pulse 1.4s ease-in-out infinite; }
+@keyframes th-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+@media (prefers-reduced-motion: reduce) { .th-live-btn .th-live-dot { animation: none; } }
 .th-micro { font-family: var(--font-body); font-size: 14px; line-height: 1.4; color: var(--fg-muted); margin: 0; max-width: 40ch; }
 .th-live-note { font-weight: 600; }
 .th-live-note a { color: var(--blue); text-decoration: underline; }
@@ -550,6 +556,100 @@ a { color: inherit; }
 .ai-bio-photo { width: 100%; aspect-ratio: 4/5; background: var(--line-grey) center/cover no-repeat; box-shadow: 14px 14px 0 0 var(--red); }
 
 /* ============================================================
+   HOUSING PLAN PAGE (/issues/housing)
+   ============================================================ */
+.hp-hero { padding-bottom: 64px; }
+.hp-hero .lede { font-family: var(--font-body); font-size: 22px; line-height: 1.5; color: #fff; max-width: 62ch; margin: 0; opacity: .95; }
+
+.hp-section { padding: 88px 120px; }
+.hp-section.alt { background: #fff; }
+.hp-section .hp-eyebrow { font-family: var(--font-heading); font-weight: 700; font-size: 15px; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); display: block; margin-bottom: 10px; }
+.hp-section .hp-kicker { font-family: var(--font-display); font-weight: 700; font-size: 30px; line-height: 1.15; letter-spacing: .02em; color: var(--blue); text-transform: uppercase; margin: 0 0 36px; }
+
+.hp-row { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: center; }
+.hp-row.rev { grid-template-columns: 1fr 1.15fr; }
+.hp-row.rev .hp-media { order: -1; }
+.hp-row h2, .hp-block h2 { font-family: var(--font-display); font-weight: 700; font-size: 32px; line-height: 1.14; letter-spacing: .02em; color: var(--blue); text-transform: uppercase; margin: 0 0 18px; max-width: 20ch; }
+.hp-body p { font-family: var(--font-body); font-size: 18px; line-height: 1.55; color: var(--blue); margin: 0 0 16px; }
+.hp-body p:last-child { margin-bottom: 0; }
+.hp-link { color: var(--blue); text-decoration: underline; text-decoration-color: var(--orange); text-decoration-thickness: 2px; text-underline-offset: 2px; }
+.hp-link:hover { color: var(--orange); }
+
+/* image placeholder */
+.hp-ph { position: relative; width: 100%; aspect-ratio: var(--ar, 4/3); background: var(--line-grey); box-shadow: 14px 14px 0 0 var(--orange); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; overflow: hidden; }
+.hp-ph .hp-ph-ico { width: 56px; height: 56px; border: 3px solid rgba(0,61,165,.32); border-radius: 999px; display: flex; align-items: center; justify-content: center; }
+.hp-ph .hp-ph-ico svg { width: 26px; height: 26px; fill: rgba(0,61,165,.32); }
+.hp-ph .hp-ph-label { font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: rgba(0,61,165,.55); text-align: center; padding: 0 18px; }
+.hp-photo { position: relative; width: 100%; aspect-ratio: var(--ar, 4/3); background-size: cover; background-position: center; background-repeat: no-repeat; box-shadow: 14px 14px 0 0 var(--orange); }
+
+/* stacked sub-blocks within "The Problem" */
+.hp-blocks { display: flex; flex-direction: column; gap: 72px; }
+.hp-block { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; }
+.hp-block.rev { grid-template-columns: 1fr 1.15fr; }
+.hp-block.rev .hp-media { order: -1; }
+.hp-block.stack { display: block; }
+
+/* stat callouts */
+.hp-stats { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--blue); background: #fff; box-shadow: 14px 14px 0 0 var(--orange); margin-top: 30px; }
+.hp-stats.two { grid-template-columns: repeat(2, 1fr); }
+.hp-stat { padding: 28px 26px; display: flex; flex-direction: column; gap: 6px; border-right: 1px solid var(--line-grey); }
+.hp-stat:last-child { border-right: none; }
+.hp-stat .hp-stat-num { font-family: var(--font-display); font-weight: 800; font-size: 46px; line-height: 1; color: var(--orange); }
+.hp-stat .hp-stat-label { font-family: var(--font-body); font-size: 15px; line-height: 1.35; color: var(--blue); }
+
+/* chart card shell — shared by the Austin trend chart + seats chart */
+.hp-chart-card { background: #fff; border: 1px solid var(--blue); box-shadow: 14px 14px 0 0 var(--orange); padding: 30px 32px 26px; margin-top: 30px; }
+.hp-chart-label { font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); display: block; margin-bottom: 18px; }
+.hp-chart-caption { font-family: var(--font-body); font-size: 13px; font-style: italic; color: var(--fg-muted); margin: 14px 0 0; }
+
+/* Austin rent-vs-supply line chart */
+.hp-linechart { width: 100%; height: auto; display: block; }
+.hp-linechart .lc-rent { fill: none; stroke: var(--red); stroke-width: 3.5; }
+.hp-linechart .lc-supply { fill: none; stroke: var(--orange); stroke-width: 3.5; stroke-dasharray: 8 6; }
+.hp-linechart .lc-marker { fill: var(--blue); }
+.hp-linechart .lc-gridline { stroke: var(--line-grey); stroke-width: 1; }
+.hp-linechart .lc-refline { stroke: var(--blue); stroke-width: 1.5; stroke-dasharray: 4 4; opacity: .5; }
+.hp-linechart .lc-axis-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 15px; fill: var(--fg-muted); }
+.hp-linechart .lc-annot { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 17px; }
+.hp-linechart .lc-annot.rent { fill: var(--red); }
+.hp-linechart .lc-annot.supply { fill: var(--orange); }
+.hp-linechart .lc-annot.ref { fill: var(--blue); }
+.hp-chart-legend { display: flex; gap: 26px; margin-top: 6px; flex-wrap: wrap; }
+.hp-chart-legend span { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 14px; color: var(--blue); }
+.hp-chart-legend .sw { width: 22px; height: 0; border-top: 3.5px solid; flex: none; }
+.hp-chart-legend .sw.rent { border-color: var(--red); }
+.hp-chart-legend .sw.supply { border-color: var(--orange); border-top-style: dashed; }
+
+/* congressional-seats diverging bar chart */
+.hp-divchart { display: flex; flex-direction: column; gap: 22px; }
+.hp-divrow { display: grid; grid-template-columns: 130px 1fr 1fr 54px; align-items: center; column-gap: 0; }
+.hp-divname { font-family: var(--font-heading); font-weight: 700; font-size: 16px; letter-spacing: .02em; color: var(--blue); text-transform: uppercase; }
+.hp-divleft, .hp-divright { height: 28px; display: flex; align-items: center; }
+.hp-divleft { justify-content: flex-end; border-right: 2px solid var(--blue); }
+.hp-divright { justify-content: flex-start; }
+.hp-divbar { height: 100%; }
+.hp-divbar.loss { background: var(--blue); }
+.hp-divbar.gain { background: var(--red); }
+.hp-divval { font-family: var(--font-display); font-weight: 800; font-size: 19px; text-align: right; }
+.hp-divval.loss { color: var(--blue); }
+.hp-divval.gain { color: var(--red); }
+.hp-divaxis { display: grid; grid-template-columns: 130px 1fr 1fr 54px; margin-top: 4px; }
+.hp-divaxis span { font-family: var(--font-heading); font-weight: 700; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-muted); }
+.hp-divaxis .axl { grid-column: 2; text-align: right; padding-right: 12px; }
+.hp-divaxis .axr { grid-column: 3; text-align: left; padding-left: 12px; }
+
+/* pillars grid — six-point plan */
+.hp-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 21px; margin-top: 8px; }
+.hp-pillar { background: #fff; border: 1px solid var(--blue); border-left: 7px solid var(--orange); padding: 26px 28px 28px; display: flex; flex-direction: column; gap: 10px; }
+.hp-pillar .hp-pillar-n { font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); }
+.hp-pillar h3 { font-family: var(--font-heading); font-weight: 700; font-size: 21px; letter-spacing: .02em; color: var(--blue); text-transform: uppercase; margin: 0; }
+.hp-pillar p { font-family: var(--font-body); font-size: 15.5px; line-height: 1.48; color: var(--blue); margin: 0; }
+
+/* bio row */
+.hp-bio { display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
+.hp-bio-photo { width: 100%; aspect-ratio: 4/5; background: var(--line-grey) center/cover no-repeat; box-shadow: 14px 14px 0 0 var(--red); }
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1080px) {
@@ -558,6 +658,7 @@ a { color: inherit; }
   .th-body { padding-left: 56px; padding-right: 56px; }
   .th-hero, .th-expect, .th-cohost, .th-repeat { padding-left: 56px; padding-right: 56px; }
   .ai-section { padding-left: 56px; padding-right: 56px; }
+  .hp-section { padding-left: 56px; padding-right: 56px; }
 }
 @media (max-width: 900px) {
   .section, .page-hero, .fcta, .vol-wrap, .home-hero, .stats-band, .issues-intro-video, .white-stats { padding-left: 24px; padding-right: 24px; }
@@ -572,6 +673,20 @@ a { color: inherit; }
   .ai-futures { grid-template-columns: 1fr; }
   .ai-vs { padding: 4px 0; }
   .ai-bio { grid-template-columns: 1fr; }
+  .hp-section { padding-left: 24px; padding-right: 24px; padding-top: 56px; padding-bottom: 56px; }
+  .hp-row, .hp-row.rev, .hp-block, .hp-block.rev { grid-template-columns: 1fr; }
+  .hp-row.rev .hp-media, .hp-block.rev .hp-media { order: 0; }
+  .hp-blocks { gap: 48px; }
+  .hp-pillars { grid-template-columns: 1fr; }
+  .hp-stats, .hp-stats.two { grid-template-columns: 1fr; }
+  .hp-stat { border-right: none; border-bottom: 1px solid var(--line-grey); }
+  .hp-stat:last-child { border-bottom: none; }
+  .hp-bio { grid-template-columns: 1fr; }
+  .hp-bio-photo { max-width: 240px; }
+  .hp-chart-card { padding: 24px 20px 22px; }
+  .hp-divrow, .hp-divaxis { grid-template-columns: 92px 1fr 1fr 40px; }
+  .hp-divname { font-size: 13px; }
+  .hp-divval { font-size: 16px; }
   .ai-bio-photo { max-width: 240px; }
   .intern-stats-row { grid-template-columns: 1fr; }
   .intern-stat { border-right: none; border-bottom: 1px solid var(--line-grey); }
@@ -589,6 +704,7 @@ a { color: inherit; }
     grid-template-areas:
       "head"
       "when"
+      "live"
       "cta"
       "sub"
       "flyer";
