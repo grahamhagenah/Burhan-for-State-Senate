@@ -73,103 +73,51 @@
 })();
 </script>
 
-<!-- EVENT BANNER: housing town hall, Tue Aug 4 2026. Goes "live" at local midnight (Register CTA),
-     then "live now" at 6PM ET (Watch CTA, fixed UTC instant so it's correct for every visitor's clock).
-     Auto-hides after the event. -->
+<!-- EVENT BANNER: limited edition Charlie C(y)ard yard sign promo. Dismissible; stays dismissed via localStorage. -->
 <div class="evt-banner" id="evt-banner" hidden>
   <div class="evt-banner-inner" id="evt-banner-inner">
-    <span class="eb-copy" id="evt-banner-copy"></span>
-    <a class="eb-cta" id="evt-banner-cta" href="/housing"></a>
+    <span class="eb-copy" id="evt-banner-copy">JUST DROPPED: limited edition charlie c(y)ard signs</span>
+    <a class="eb-cta" id="evt-banner-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSeTv_Mjfz_-gSLo4Ok19ZzewPEmq5FUv7MFw0xxLdiDOXhnrg/viewform" target="_blank" rel="noopener">Claim yours</a>
     <button class="eb-close" id="evt-banner-close" aria-label="Dismiss">✕</button>
   </div>
 </div>
 <script>
 (function() {
-  var EVENT_START   = new Date(2026, 7, 4);                  // Tue Aug 4, 2026, local midnight
-  var EVENT_END     = new Date(2026, 7, 5);                  // banner disappears once the day is over
-  var LIVE_AT_UTC    = new Date(Date.UTC(2026, 7, 4, 22, 0, 0)); // 6:00 PM ET (EDT, UTC-4), fixed instant regardless of viewer's timezone
-  var DISMISS_KEY = 'hbDismiss';
+  var DISMISS_KEY = 'yardSignBannerDismiss';
 
   var banner = document.getElementById('evt-banner');
   var inner = document.getElementById('evt-banner-inner');
-  var copyEl = document.getElementById('evt-banner-copy');
   var ctaEl = document.getElementById('evt-banner-cta');
   var closeBtn = document.getElementById('evt-banner-close');
 
-  function phase(now) {
-    if (now >= EVENT_END) return 'past';
-    if (now >= LIVE_AT_UTC) return 'live_now';
-    if (now >= EVENT_START) return 'live_today';
-    if (EVENT_START - now <= 48 * 3600 * 1000) return 'soon';
-    return 'early';
-  }
-
-  function whenLabel(now) {
-    if (EVENT_START - now <= 24 * 3600 * 1000) return 'Tomorrow, 7PM ET';
-    return 'Tue Aug 4';
-  }
-
-  function isDismissed(currentPhase, now) {
-    var raw = window.localStorage.getItem(DISMISS_KEY);
-    if (!raw) return false;
-    try {
-      var stored = JSON.parse(raw);
-    } catch (e) { return false; }
-    if (currentPhase === 'early') return stored.phase === 'early';
-    if (currentPhase === 'soon') return stored.phase === 'soon' && stored.day === now.toDateString();
-    if (currentPhase === 'live_today') return stored.phase === 'live_today' && stored.day === now.toDateString();
-    return false;
-  }
-
-  var now = new Date();
-  var currentPhase = phase(now);
-
-  if (currentPhase === 'past') {
+  if (window.localStorage.getItem(DISMISS_KEY)) {
     banner.parentNode.removeChild(banner);
-  } else if (currentPhase !== 'live_now' && isDismissed(currentPhase, now)) {
-    // stays hidden — dismissed within this phase already
-  } else {
-    if (currentPhase === 'live_now') {
-      banner.classList.add('live');
-      copyEl.innerHTML = '<span class="eb-dot"></span><span class="eb-when">Live Now:</span> More Housing is Possible';
-      ctaEl.textContent = 'Watch';
-      ctaEl.href = '/livestream';
-      closeBtn.style.display = 'none';
-    } else if (currentPhase === 'live_today') {
-      copyEl.innerHTML = '<span class="eb-dot"></span><span class="eb-when">Live Today:</span> More Housing is Possible';
-      ctaEl.textContent = 'Register';
-      ctaEl.href = '/housing';
-    } else {
-      copyEl.innerHTML = '<span class="eb-when">' + whenLabel(now) + '</span> Burhan is hosting the National Town Hall on Housing';
-      ctaEl.textContent = 'Register';
-      ctaEl.href = '/housing';
-    }
-    banner.hidden = false;
-
-    inner.addEventListener('click', function(e) {
-      if (closeBtn.contains(e.target) || ctaEl.contains(e.target)) return;
-      window.plausible && window.plausible('Housing Banner Click', { props: { state: currentPhase } });
-      ctaEl.click();
-    });
-    ctaEl.addEventListener('click', function() {
-      window.plausible && window.plausible('Housing Banner Click', { props: { state: currentPhase } });
-    });
-
-    if (currentPhase !== 'live_now') {
-      closeBtn.addEventListener('click', function() {
-        window.localStorage.setItem(DISMISS_KEY, JSON.stringify({ phase: currentPhase, day: now.toDateString() }));
-        window.plausible && window.plausible('Housing Banner Dismiss', { props: { state: currentPhase } });
-        banner.style.maxHeight = banner.scrollHeight + 'px';
-        banner.getBoundingClientRect();
-        banner.classList.add('closing');
-        banner.addEventListener('transitionend', function onEnd(e) {
-          if (e.propertyName !== 'max-height') return;
-          banner.removeEventListener('transitionend', onEnd);
-          banner.hidden = true;
-        });
-      });
-    }
+    return;
   }
+
+  banner.hidden = false;
+
+  inner.addEventListener('click', function(e) {
+    if (closeBtn.contains(e.target) || ctaEl.contains(e.target)) return;
+    window.plausible && window.plausible('Yard Sign Banner Click');
+    window.open(ctaEl.href, '_blank', 'noopener');
+  });
+  ctaEl.addEventListener('click', function() {
+    window.plausible && window.plausible('Yard Sign Banner Click');
+  });
+
+  closeBtn.addEventListener('click', function() {
+    window.localStorage.setItem(DISMISS_KEY, '1');
+    window.plausible && window.plausible('Yard Sign Banner Dismiss');
+    banner.style.maxHeight = banner.scrollHeight + 'px';
+    banner.getBoundingClientRect();
+    banner.classList.add('closing');
+    banner.addEventListener('transitionend', function onEnd(e) {
+      if (e.propertyName !== 'max-height') return;
+      banner.removeEventListener('transitionend', onEnd);
+      banner.hidden = true;
+    });
+  });
 })();
 </script>
 
