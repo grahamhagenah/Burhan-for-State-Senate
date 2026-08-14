@@ -217,6 +217,27 @@ a { color: inherit; }
 .ecard .ephoto { width: 100%; aspect-ratio: 1/1.08; background: var(--line-grey) center/cover no-repeat; }
 .ecard .enm { font-family: var(--font-heading); font-weight: 700; font-size: 23px; letter-spacing: .02em; color: var(--blue); text-transform: uppercase; line-height: 1.05; }
 .ecard .erole { font-family: var(--font-body); font-size: 17px; line-height: 1.3; color: var(--blue); }
+/* org logo tile: fit whole logo instead of cropping (for non-square logo art) */
+.ecard .ephoto.elogo { background-color: #fff; background-size: contain; background-origin: content-box; padding: 16px; box-sizing: border-box; }
+
+/* full-bleed band: paint a section's background beyond the centered .site column
+   (the body shows through beside the 1280px column on wide screens otherwise) */
+.hp-section.fullbleed { box-shadow: 0 0 0 100vmax #fff; clip-path: inset(0 -100vmax); }
+
+/* endorsements — local support people grid (circular headshots, tagged clusters).
+   Groups flow side by side across the row like the printed graphic; each cluster
+   carries its handwritten red tag. Cards are fixed-width so they wrap on mobile. */
+.epgroups { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 48px 44px; }
+.epgroup { display: flex; flex-direction: column; }
+.epgroup-tag { display: block; font-family: var(--font-script); font-size: 22px; line-height: 1.2; color: var(--red); margin-bottom: 14px; }
+/* keep untagged clusters bottom-aligned with tagged neighbours */
+.epgroup:not(:has(.epgroup-tag))::before { content: ""; height: 40px; }
+.epgrid { display: flex; flex-wrap: wrap; gap: 28px 24px; }
+.epcard { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; width: 132px; }
+.epcard .epphoto { width: 112px; height: 112px; border-radius: 999px; background: var(--line-grey) center/cover no-repeat; }
+.epcard .enm { font-family: var(--font-heading); font-weight: 700; font-size: 18px; letter-spacing: .02em; color: var(--blue); text-transform: uppercase; line-height: 1.1; }
+.epcard .erole { font-family: var(--font-body); font-size: 15px; line-height: 1.3; color: var(--blue); }
+.epcard .epnote { font-family: var(--font-script); font-size: 15px; color: var(--red); margin-top: 2px; }
 
 /* ============================================================
    ISSUES PAGE
@@ -718,6 +739,13 @@ a { color: inherit; }
   .home-hero h1 { font-size: 60px; }
   .page-hero h1 { font-size: 44px; }
   .endorse .egrid { grid-template-columns: 1fr 1fr; }
+  /* endorsements page: clusters stack full-width, cards flow two-up and center */
+  .epgroups { flex-direction: column; gap: 40px; align-items: stretch; }
+  .epgroup:not(:has(.epgroup-tag))::before { display: none; }
+  .epgroup-tag { text-align: center; }
+  .epgrid { gap: 24px 16px; justify-content: center; }
+  .epcard { width: calc(50% - 8px); }
+  .epcard .epphoto { width: 96px; height: 96px; }
   .stats-row, .checks-grid, .contact-grid { grid-template-columns: 1fr; }
   .statbox { border-right: none; border-bottom: 1px solid var(--line-grey); }
   .statbox:last-child { border-bottom: none; }
