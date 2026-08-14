@@ -222,7 +222,9 @@ a { color: inherit; }
 
 /* full-bleed band: paint a section's background beyond the centered .site column
    (the body shows through beside the 1280px column on wide screens otherwise) */
-.hp-section.fullbleed { box-shadow: 0 0 0 100vmax #fff; clip-path: inset(0 -100vmax); }
+.hp-section.fullbleed { box-shadow: 0 0 0 100vmax var(--bleed-bg, #fff); clip-path: inset(0 -100vmax); }
+/* tan band (endorsements local-support) — pale tint of the site's amber-cream */
+.hp-section.tan { --bleed-bg: #FBF3E2; background: var(--bleed-bg); }
 
 /* endorsements — local support people grid (circular headshots, tagged clusters).
    Groups flow side by side across the row like the printed graphic; each cluster
