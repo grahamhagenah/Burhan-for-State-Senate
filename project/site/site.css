@@ -219,6 +219,12 @@ a { color: inherit; }
 .ecard .erole { font-family: var(--font-body); font-size: 17px; line-height: 1.3; color: var(--blue); }
 /* org logo tile: fit whole logo instead of cropping (for non-square logo art) */
 .ecard .ephoto.elogo { background-color: #fff; background-size: contain; background-origin: content-box; padding: 16px; box-sizing: border-box; }
+/* org tiles that link out to the organization's site */
+a.ecard { text-decoration: none; transition: transform .15s ease; }
+a.ecard:hover { transform: translateY(-3px); }
+a.ecard:hover .enm { color: var(--orange); }
+a.ecard:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { a.ecard { transition: none; } a.ecard:hover { transform: none; } }
 
 /* full-bleed band: paint a section's background beyond the centered .site column
    (the body shows through beside the 1280px column on wide screens otherwise) */
