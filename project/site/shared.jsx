@@ -103,6 +103,7 @@ function SiteHeader({ active }) {
   const links = [
     { label: "Meet Burhan", href: "/receipts" },
     { label: "Issues", href: "/issues" },
+    { label: "Endorsements", href: "/endorsements" },
     { label: "Volunteer", href: "/volunteer" },
   ];
 
