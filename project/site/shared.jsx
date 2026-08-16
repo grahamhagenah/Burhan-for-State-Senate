@@ -102,7 +102,7 @@ function SiteHeader({ active }) {
   const hdrRef = useRef(null);
   const links = [
     { label: "Meet Burhan", href: "/receipts" },
-    { label: "Issues", href: "/issues" },
+    { label: "Vision", href: "/issues" },
     { label: "Endorsements", href: "/endorsements" },
     { label: "Volunteer", href: "/volunteer" },
   ];

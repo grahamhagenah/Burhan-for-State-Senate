@@ -231,6 +231,23 @@ a.ecard:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
 .hp-section.fullbleed { box-shadow: 0 0 0 100vmax var(--bleed-bg, #fff); clip-path: inset(0 -100vmax); }
 /* tan band (endorsements local-support) — pale tint of the site's amber-cream */
 .hp-section.tan { --bleed-bg: #FBF3E2; background: var(--bleed-bg); }
+/* endorsements page has no hero — give its opening section room under the header */
+.hp-section.endorsements-open { padding-top: 64px; }
+
+/* org logos — transparent-PNG marks floating on the page's light-blue background,
+   no card, no name (the mark already carries the org's name).
+   Grid (not flex-wrap) so rows step down cleanly: 6 → 3 → 2 → 1 per line
+   as the six logos stop fitting on one row, instead of an uneven wrap. */
+.ologos { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); align-items: center; justify-items: start; gap: 36px 48px; }
+.ologos a { display: flex; align-items: center; transition: transform .15s ease, opacity .15s ease; }
+.ologos img { display: block; height: 64px; width: auto; max-width: 100%; object-fit: contain; }
+.ologos a:hover { transform: translateY(-2px); opacity: .82; }
+.ologos a:focus-visible { outline: 3px solid var(--orange); outline-offset: 6px; }
+@media (prefers-reduced-motion: reduce) { .ologos a { transition: none; } .ologos a:hover { transform: none; } }
+@media (max-width: 900px) { .ologos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 720px) { .ologos { gap: 28px 32px; } .ologos img { height: 52px; } }
+@media (max-width: 560px) { .ologos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 380px) { .ologos { grid-template-columns: repeat(1, minmax(0, 1fr)); justify-items: center; } }
 
 /* endorsements — local support people grid (circular headshots, tagged clusters).
    Groups flow side by side across the row like the printed graphic; each cluster
