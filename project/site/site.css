@@ -312,7 +312,7 @@ a.ecard:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
 .acard .abody-video { width: 100%; aspect-ratio: 9/12; box-shadow: 10px 10px 0 0 var(--red); align-self: start; }
 .acard .ig-embed-wrap { aspect-ratio: unset; box-shadow: 10px 10px 0 0 var(--red); }
 .ig-embed-wrap { overflow: hidden; max-width: 100%; }
-.acard.climate .athumb { background: linear-gradient(135deg, #0a4d8c, #0a2a6e); }
+.acard.climate .athumb { background: linear-gradient(135deg, #0a4d8c, #0a2a6e) center/cover no-repeat; }
 
 /* issues modal */
 .imodal-scrim { position: fixed; inset: 0; z-index: 200; background: rgba(0,28,82,.62); display: flex; align-items: flex-start; justify-content: center; padding: 48px 24px; overflow-y: auto; }
