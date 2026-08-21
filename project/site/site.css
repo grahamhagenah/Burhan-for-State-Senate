@@ -685,6 +685,7 @@ a.ecard:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
 /* pillars grid — six-point plan */
 .hp-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 21px; margin-top: 8px; }
 .hp-pillar { background: #fff; border: 1px solid var(--blue); border-left: 7px solid var(--orange); padding: 26px 28px 28px; display: flex; flex-direction: column; gap: 10px; }
+.hp-pillar-wide { grid-column: 1 / -1; margin-top: 21px; }
 .hp-pillar .hp-pillar-n { font-family: var(--font-heading); font-weight: 700; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); }
 .hp-pillar h3 { font-family: var(--font-heading); font-weight: 700; font-size: 21px; letter-spacing: .02em; color: var(--blue); text-transform: uppercase; margin: 0; }
 .hp-pillar p { font-family: var(--font-body); font-size: 15.5px; line-height: 1.48; color: var(--blue); margin: 0; }
