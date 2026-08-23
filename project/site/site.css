@@ -76,7 +76,7 @@ a { color: inherit; }
 .evt-banner { background: var(--orange); color: var(--blue-900); overflow: hidden; max-height: 200px; transition: max-height .22s ease, opacity .18s ease; margin-left: calc((100% - 100vw) / 2); margin-right: calc((100% - 100vw) / 2); }
 .evt-banner.closing { max-height: 0; opacity: 0; }
 .evt-banner.live { background: var(--red); color: #fff; }
-.evt-banner-inner { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 2px 54px; flex-wrap: wrap; text-align: center; position: relative; cursor: pointer; }
+.evt-banner-inner { display: flex; align-items: center; justify-content: center; column-gap: 14px; row-gap: 8px; padding: 6px 54px; flex-wrap: wrap; text-align: center; position: relative; cursor: pointer; }
 .evt-banner-inner:hover { background: rgba(0,0,0,.05); }
 .evt-banner-inner:active { background: rgba(0,0,0,.09); }
 .evt-banner .eb-copy { font-family: var(--font-body); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; }
@@ -930,8 +930,7 @@ a.ecard:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
   .qbar .qrule { display: none; }
 }
 @media (max-width: 600px) {
-  .evt-banner-inner { padding: 6px 46px; gap: 8px; }
-  .evt-banner .eb-copy { font-size: 12.5px; }
+  .evt-banner-inner { padding: 6px 46px; column-gap: 8px; }
   .evt-banner .eb-close { right: 2px; width: 40px; height: 40px; }
   .home-hero h1 { font-size: 48px; }
   .page-hero h1 { font-size: 36px; }
