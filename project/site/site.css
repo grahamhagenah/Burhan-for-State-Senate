@@ -219,23 +219,8 @@ a { color: inherit; }
 /* endorsements page has no hero — give its opening section room under the header */
 .hp-section.endorsements-open { padding-top: 64px; }
 
-/* org logos — transparent-PNG marks floating on the page's light-blue background,
-   no card, no name (the mark already carries the org's name). Shared by the home
-   page strip and the endorsements page.
-
-   Sized by WIDTH, not height. Width is what decides whether the six fit on one
-   line, so pinning it makes the row's total width independent of the logo art:
-   re-cropping a logo changes its aspect ratio and therefore only its height, and
-   can never push the strip onto a second row. Heights follow each image's own
-   ratio via height:auto, so a re-crop needs no CSS change at all.
-
-   Widths aim at roughly equal ink rather than equal height — a 4:1 wordmark set
-   to a square mark's height reads far heavier. Bucket by aspect ratio using
-   w = sqrt(7800 * ratio); only a large re-crop warrants moving a logo's bucket.
-
-   Belt and braces: the row is nowrap above phone widths and items may shrink, so
-   a stale bucket or an oversized new logo degrades by scaling the row down
-   proportionally instead of wrapping. */
+/* org logos — shared by the home strip and the endorsements page. Sized by width,
+   not height, so re-cropping a logo changes only its height, never the row's fit. */
 .ologos { display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: clamp(18px, 2.6vw, 40px); padding-block: 26px; }
 .ologos a { flex: 0 1 auto; min-width: 0; display: flex; align-items: center; transition: transform .15s ease, opacity .15s ease; }
 .ologos img { display: block; width: var(--logo-w, 127px); height: auto; max-width: 100%; max-height: 104px; object-fit: contain; }
@@ -690,8 +675,7 @@ a { color: inherit; }
 
 /* pillars grid — six-point plan */
 .hp-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 21px; margin-top: 8px; }
-/* two-up variant: for sections with a few long-form pillars, where three narrow
-   columns leave the shorter cards mostly whitespace */
+/* two-up variant: for sections with a few long-form pillars */
 .hp-pillars.two-up { grid-template-columns: repeat(2, 1fr); }
 .hp-pillar { background: #fff; border: 1px solid var(--blue); border-left: 7px solid var(--orange); padding: 26px 28px 28px; display: flex; flex-direction: column; gap: 10px; }
 .hp-pillar-wide { grid-column: 1 / -1; margin-top: 21px; }
