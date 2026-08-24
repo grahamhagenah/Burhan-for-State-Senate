@@ -211,21 +211,6 @@ a { color: inherit; }
 .qbar .qtext { font-family: var(--font-heading); font-weight: 700; font-size: 23px; line-height: 1.15; letter-spacing: .02em; color: var(--blue); text-transform: uppercase; }
 .qbar .qrule { flex: none; width: 1px; align-self: stretch; background: var(--line-grey); }
 
-/* endorsements */
-.endorse .egrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-.ecard { display: flex; flex-direction: column; gap: 10px; }
-.ecard .ephoto { width: 100%; aspect-ratio: 1/1.08; background: var(--line-grey) center/cover no-repeat; }
-.ecard .enm { font-family: var(--font-heading); font-weight: 700; font-size: 23px; letter-spacing: .02em; color: var(--blue); text-transform: uppercase; line-height: 1.05; }
-.ecard .erole { font-family: var(--font-body); font-size: 17px; line-height: 1.3; color: var(--blue); }
-/* org logo tile: fit whole logo instead of cropping (for non-square logo art) */
-.ecard .ephoto.elogo { background-color: #fff; background-size: contain; background-origin: content-box; padding: 16px; box-sizing: border-box; }
-/* org tiles that link out to the organization's site */
-a.ecard { text-decoration: none; transition: transform .15s ease; }
-a.ecard:hover { transform: translateY(-3px); }
-a.ecard:hover .enm { color: var(--orange); }
-a.ecard:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
-@media (prefers-reduced-motion: reduce) { a.ecard { transition: none; } a.ecard:hover { transform: none; } }
-
 /* full-bleed band: paint a section's background beyond the centered .site column
    (the body shows through beside the 1280px column on wide screens otherwise) */
 .hp-section.fullbleed { box-shadow: 0 0 0 100vmax var(--bleed-bg, #fff); clip-path: inset(0 -100vmax); }
@@ -235,19 +220,40 @@ a.ecard:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
 .hp-section.endorsements-open { padding-top: 64px; }
 
 /* org logos — transparent-PNG marks floating on the page's light-blue background,
-   no card, no name (the mark already carries the org's name).
-   Grid (not flex-wrap) so rows step down cleanly: 6 → 3 → 2 → 1 per line
-   as the six logos stop fitting on one row, instead of an uneven wrap. */
-.ologos { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); align-items: center; justify-items: start; gap: 36px 48px; }
-.ologos a { display: flex; align-items: center; transition: transform .15s ease, opacity .15s ease; }
-.ologos img { display: block; height: 64px; width: auto; max-width: 100%; object-fit: contain; }
+   no card, no name (the mark already carries the org's name). Shared by the home
+   page strip and the endorsements page.
+
+   Sized by optical weight, not a shared height: these logos span 1:1 to 4.16:1,
+   and one fixed height makes the square marks read at half the visual weight of
+   the wordmarks — while an equal-width grid column letterboxes the widest
+   wordmark to half its height. Each logo instead carries a size class tuned so
+   the marks land on roughly equal ink. Flex (not grid) so every logo takes its
+   natural width and the line wraps cleanly once they stop fitting. */
+.ologos { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 30px 40px; }
+.ologos a { flex: 0 0 auto; display: flex; align-items: center; transition: transform .15s ease, opacity .15s ease; }
+.ologos img { display: block; height: var(--logo-h, 62px); width: auto; max-width: 100%; object-fit: contain; }
+.ologos .lg-square { --logo-h: 88px; }  /* ~1:1 marks */
+.ologos .lg-mid    { --logo-h: 68px; }  /* ~1.7:1   */
+.ologos .lg-wide   { --logo-h: 62px; }  /* ~2:1     */
+.ologos .lg-xwide  { --logo-h: 44px; }  /* ~4:1     */
 .ologos a:hover { transform: translateY(-2px); opacity: .82; }
 .ologos a:focus-visible { outline: 3px solid var(--orange); outline-offset: 6px; }
 @media (prefers-reduced-motion: reduce) { .ologos a { transition: none; } .ologos a:hover { transform: none; } }
-@media (max-width: 900px) { .ologos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 720px) { .ologos { gap: 28px 32px; } .ologos img { height: 52px; } }
-@media (max-width: 560px) { .ologos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 380px) { .ologos { grid-template-columns: repeat(1, minmax(0, 1fr)); justify-items: center; } }
+/* keep all six on one row down to smaller laptops by easing the logos and gap */
+@media (max-width: 1170px) {
+  .ologos { gap: 28px 28px; }
+  .ologos .lg-square { --logo-h: 78px; }
+  .ologos .lg-mid    { --logo-h: 60px; }
+  .ologos .lg-wide   { --logo-h: 55px; }
+  .ologos .lg-xwide  { --logo-h: 39px; }
+}
+@media (max-width: 1000px) { .ologos { justify-content: flex-start; } }
+@media (max-width: 720px) {
+  .ologos .lg-square { --logo-h: 68px; }
+  .ologos .lg-mid    { --logo-h: 54px; }
+  .ologos .lg-wide   { --logo-h: 50px; }
+  .ologos .lg-xwide  { --logo-h: 36px; }
+}
 
 /* endorsements — local support people grid (circular headshots, tagged clusters).
    Groups flow side by side across the row like the printed graphic; each cluster
@@ -877,7 +883,7 @@ a.ecard:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
   .hdr .navlinks { display: none; }
   .hdr nav .btn { display: inline-flex; font-size: 14px; padding: 7px 13px; }
   .hdr .hamburger { display: flex; flex-direction: column; }
-  .home-hero, .thirty, .feature, .vol-wrap, .endorse .egrid, .priorities .pgrid, .ii-card, .tl-with-image, .ihv-grid, .page-hero-grid { grid-template-columns: 1fr; }
+  .home-hero, .thirty, .feature, .vol-wrap, .priorities .pgrid, .ii-card, .tl-with-image, .ihv-grid, .page-hero-grid { grid-template-columns: 1fr; }
   .th-hero-grid {
     grid-template-columns: 1fr;
     row-gap: 14px;
@@ -897,7 +903,6 @@ a.ecard:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
   .ii-video { min-height: 200px; }
   .home-hero h1 { font-size: 60px; }
   .page-hero h1 { font-size: 44px; }
-  .endorse .egrid { grid-template-columns: 1fr 1fr; }
   /* endorsements page: clusters stack full-width, cards flow two-up and center */
   .epgroups { flex-direction: column; gap: 40px; align-items: stretch; }
   .epgroup:not(:has(.epgroup-tag))::before { display: none; }
